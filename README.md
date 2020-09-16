@@ -18,4 +18,19 @@ The general scheme:
 CLI version exposes 3 commands: 
 
 ```
- 
+  config    Configures Virgil Sync to use specific Virgil card and Dropbox account.
+  start     Starts configured application
+  reset     Removes stored Virgil Card, Private key and Dropbox authentication token from local store.
+```
+
+### Config
+
+Configures Virgil sync software. It requires following options:
+
+```
+  -v, --virgil-card    Required. Path to the Virgil card file created from CLI.
+  -k, --private-key    Required. Path to the private key of the specified Virgil card.
+  -s, --source-dir     Required. Path to the directory you want to synchronize with Dropbox.
+```
+
+Config imports `virgil-card` a
