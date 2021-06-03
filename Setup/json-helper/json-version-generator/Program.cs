@@ -46,4 +46,20 @@
                 DownloadUrl = $@"https://cdn.virgilsecurity.com/apps/virgil-sync/windows/VirgilSync_{version}.exe"
             };
 
-            var ser = new DataContractJsonSerializer(typeof(UpdatesInfo), new DataCon
+            var ser = new DataContractJsonSerializer(typeof(UpdatesInfo), new DataContractJsonSerializerSettings()
+            {
+                
+            });
+
+            var memoryStream = new MemoryStream();
+            ser.WriteObject(memoryStream,dto);
+            var streamReader = new StreamReader(memoryStream);
+            memoryStream.Position = 0;
+            var json = streamReader.ReadToEnd();
+
+            Directory.CreateDirectory(outputPath);
+            var path = outputPath + @"\version.json";
+            File.WriteAllText(path, json);
+        }
+    }
+}
