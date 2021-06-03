@@ -32,4 +32,18 @@
             var outputPath = args[1];
 
             var installer = Directory.EnumerateFiles(installerFolder)
-                .First(it => it.EndsW
+                .First(it => it.EndsWith("exe", StringComparison.CurrentCultureIgnoreCase));
+
+            var regex = new Regex(@"(?<version>[0-9][0-9,\.].+)\.exe");
+
+            var version = regex.Match(installer).Groups["version"].Value;
+
+            var dto = new UpdatesInfo()
+            {
+                Description = "Virgil Sync",
+                Version = version,
+                SetupUrl = $@"https://cdn.virgilsecurity.com/apps/virgil-sync/windows/VirgilSync_{version}.exe",
+                DownloadUrl = $@"https://cdn.virgilsecurity.com/apps/virgil-sync/windows/VirgilSync_{version}.exe"
+            };
+
+            var ser = new DataContractJsonSerializer(typeof(UpdatesInfo), new DataCon
