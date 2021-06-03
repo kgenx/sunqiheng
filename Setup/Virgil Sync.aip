@@ -1,0 +1,173 @@
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="12.7.2" version="12.7.2" Modules="professional" RootPath="." Language="en" Id="{3DCBE2AC-019F-4871-9B80-A2021E858BBA}">
+  <COMPONENT cid="caphyon.advinst.msicomp.ProjectOptionsComponent">
+    <ROW Name="HiddenItems" Value="MsiJavaComponent;MsiDriverPackagesComponent;UserAccountsComponent;ScheduledTasksComponent;SqlConnectionComponent;AutorunComponent;FirewallExceptionComponent;GameUxComponent;MsiDirectEditorComponent;SharePointSlnComponent;SilverlightSlnComponent;MultipleInstancesComponent;SccmComponent;ActSyncAppComponent"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="AI_COLOR_DISABLED_TEXT" Value="3026478" MultiBuildValue="DefaultBuild:15461355" MsiKey="AI_COLOR_DISABLED_TEXT"/>
+    <ROW Property="AI_CONTROL_VISUAL_STYLE" Value="2960685;4276545;6776679;16176031" MultiBuildValue="DefaultBuild:16777215;16580605;10395294;4108658" MsiKey="AI_CONTROL_VISUAL_STYLE"/>
+    <ROW Property="AI_CONTROL_VISUAL_STYLE_EX" Value="1513239;3026478;3026478" MultiBuildValue="DefaultBuild:16514043;15461355;15461355" MsiKey="AI_CONTROL_VISUAL_STYLE_EX"/>
+    <ROW Property="AI_CONTROL_VISUAL_STYLE_FLAT" MultiBuildValue="DefaultBuild:15925239;15138798;10395294;4108658" MsiKey="AI_CONTROL_VISUAL_STYLE_FLAT"/>
+    <ROW Property="AI_FINDEXE_TITLE" Value="Select the installation package for [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
+    <ROW Property="AI_FrameBtnsColor" Value="metroblack" MultiBuildValue="DefaultBuild:metrolime" MsiKey="AI_FrameBtnsColor"/>
+    <ROW Property="AI_FrameColor" Value="metroblack" MultiBuildValue="DefaultBuild:metrolime" MsiKey="AI_FrameColor"/>
+    <ROW Property="AI_PREDEF_LCONDS_PROPS" Value="AI_DETECTED_DOTNET_VERSION"/>
+    <ROW Property="AI_REQUIRED_DOTNET_DISPLAY" MultiBuildValue="DefaultBuild:4.6" ValueLocId="-"/>
+    <ROW Property="AI_REQUIRED_DOTNET_VERSION" MultiBuildValue="DefaultBuild:4.6" ValueLocId="-"/>
+    <ROW Property="AI_SHORTCUTSREG" Value="0|0|0|0|"/>
+    <ROW Property="AI_ThemeStyle" Value="default" MultiBuildValue="DefaultBuild:metrowhite" MsiKey="AI_ThemeStyle"/>
+    <ROW Property="ALLUSERS" Value="1"/>
+    <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
+    <ROW Property="ARPHELPLINK" Value="https://virgilsecurity.com/"/>
+    <ROW Property="ARPPRODUCTICON" Value="virgil_icon.exe" Type="8"/>
+    <ROW Property="ARPURLINFOABOUT" Value="https://virgilsecurity.com/"/>
+    <ROW Property="ARPURLUPDATEINFO" Value="https://virgilsecurity.com/"/>
+    <ROW Property="AiSkipExitDlg" Value="1"/>
+    <ROW Property="AppLogoIcon" Value="applogoicon" MultiBuildValue="DefaultBuild:sync.bmp" Type="1" MsiKey="AppLogoIcon"/>
+    <ROW Property="CTRLS" Value="2"/>
+    <ROW Property="Manufacturer" Value="Virgil Security, Inc"/>
+    <ROW Property="ProductCode" Value="1033:{B61A1306-B838-4EB6-97F9-86703D5B835B} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="Virgil Sync"/>
+    <ROW Property="ProductVersion" Value="1.1.58.0" Type="32" TargetFile="Virgil.Sync.exe"/>
+    <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
+    <ROW Property="UpgradeCode" Value="{D4212066-4490-4D95-9D17-F45146DFC678}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT" MultiBuildValue="DefaultBuild:Windows 9x/ME/NT/2000/XP/Vista/Windows 7/Windows 8 x86/Windows 8.1 x86/Windows 10 x86" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50Display" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT64" MultiBuildValue="DefaultBuild:Windows XP x64, Windows XP x64 Service Pack 1, Windows XP x64 Service Pack 2, Windows Server 2003 x64, Windows Server 2003 x64 Service Pack 1, Windows Server 2003 x64 Service Pack 2, Windows Vista x64, Windows Vista x64 Service Pack 1, Windows Vista x64 Service Pack 2, Windows Server 2008 x64, Windows 7 x64, Windows 7 x64 Service Pack 1, Windows Server 2008 R2 x64, Windows Server 2008 R2 x64 Service Pack 1, Windows 8 x64" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT64Display" MultiBuildValue="DefaultBuild:Windows XP x64, Windows Server 2003 x64, Windows Vista x64, Windows Server 2008 x64, Windows 7 x64, Windows Server 2008 R2 x64, Windows 8 x64" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNTDisplay" MultiBuildValue="DefaultBuild:32 bit Operating Systems" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="DESKTO~1|DesktopFolder" IsPseudoRoot="1"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="StartupFolder" Directory_Parent="TARGETDIR" DefaultDir="STARTU~1|StartupFolder" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="de_Dir" Directory_Parent="APPDIR" DefaultDir="de"/>
+    <ROW Directory="en_Dir" Directory_Parent="APPDIR" DefaultDir="en"/>
+    <ROW Directory="es_Dir" Directory_Parent="APPDIR" DefaultDir="es"/>
+    <ROW Directory="fr_Dir" Directory_Parent="APPDIR" DefaultDir="fr"/>
+    <ROW Directory="it_Dir" Directory_Parent="APPDIR" DefaultDir="it"/>
+    <ROW Directory="ja_Dir" Directory_Parent="APPDIR" DefaultDir="ja"/>
+    <ROW Directory="ko_Dir" Directory_Parent="APPDIR" DefaultDir="ko"/>
+    <ROW Directory="ru_Dir" Directory_Parent="APPDIR" DefaultDir="ru"/>
+    <ROW Directory="x64_Dir" Directory_Parent="APPDIR" DefaultDir="x64"/>
+    <ROW Directory="x86_Dir" Directory_Parent="APPDIR" DefaultDir="x86"/>
+    <ROW Directory="zhHans_Dir" Directory_Parent="APPDIR" DefaultDir="zh-Hans"/>
+    <ROW Directory="zhHant_Dir" Directory_Parent="APPDIR" DefaultDir="zh-Hant"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="AIShRegAnswer" ComponentId="{A9CABB10-3B1E-49C2-AA18-32824794FD9C}" Directory_="APPDIR" Attributes="4" KeyPath="AIShRegAnswer"/>
+    <ROW Component="AI_ExePath" ComponentId="{1B2321BC-5119-409C-AB0E-8E25E206ABC9}" Directory_="APPDIR" Attributes="4" KeyPath="AI_ExePath"/>
+    <ROW Component="B5158184F44A6981C5919229A6AEBE" ComponentId="{0C430B68-C794-405C-AB26-E0C0C3A4D895}" Directory_="APPDIR" Attributes="260" KeyPath="B5158184F44A6981C5919229A6AEBE" Options="2"/>
+    <ROW Component="D7E473DF14F3E98497864847195F2" ComponentId="{E460F0F5-1913-4146-A41F-1A62E4984541}" Directory_="APPDIR" Attributes="260" KeyPath="D7E473DF14F3E98497864847195F2" Options="2"/>
+    <ROW Component="Dropbox.Api.dll" ComponentId="{71C2384C-631B-4A90-9561-B721CF0CC36E}" Directory_="APPDIR" Attributes="0" KeyPath="Dropbox.Api.dll"/>
+    <ROW Component="Dropbox.Api.xml" ComponentId="{EBCA59E1-F838-453C-9A09-54D89984F5D8}" Directory_="APPDIR" Attributes="0" KeyPath="Virgil.Sync.exe.config" Type="0"/>
+    <ROW Component="Hardcodet.Wpf.TaskbarNotification.dll" ComponentId="{A20CA86D-4241-4D96-AE0D-8FE362328D8F}" Directory_="APPDIR" Attributes="0" KeyPath="Hardcodet.Wpf.TaskbarNotification.dll"/>
+    <ROW Component="Infrastructure.Messaging.dll" ComponentId="{60A9926D-9DA4-453A-B8EF-4F6A9B961C45}" Directory_="APPDIR" Attributes="0" KeyPath="Infrastructure.Messaging.dll"/>
+    <ROW Component="Infrastructure.dll" ComponentId="{9CC0AFF6-BBD7-4392-9EBA-1C0C11D783A0}" Directory_="APPDIR" Attributes="0" KeyPath="Infrastructure.dll"/>
+    <ROW Component="Microsoft.Threading.Tasks.Extensions.Des" ComponentId="{41158019-756F-443D-B986-BE6EE3AEBB64}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Threading.Tasks.Extensions.Desktop.dll"/>
+    <ROW Component="Microsoft.Threading.Tasks.Extensions.dll" ComponentId="{3EB76F73-4E0E-47F3-8DF9-EFDA6FD63438}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Threading.Tasks.Extensions.dll"/>
+    <ROW Component="Microsoft.Threading.Tasks.dll" ComponentId="{3EA19B2E-8FC0-47CE-A3C5-DAE1E6BCDCC9}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Threading.Tasks.dll"/>
+    <ROW Component="Newtonsoft.Json.dll" ComponentId="{52700347-1C9E-4C10-B045-1B899CE1079B}" Directory_="APPDIR" Attributes="0" KeyPath="Newtonsoft.Json.dll"/>
+    <ROW Component="Ninject.Extensions.Conventions.dll" ComponentId="{11FEEF28-FA43-470C-8400-C784F23E87B0}" Directory_="APPDIR" Attributes="0" KeyPath="Ninject.Extensions.Conventions.dll"/>
+    <ROW Component="Ninject.dll" ComponentId="{1E6E3BF8-91F4-4C0D-8317-0133F57FF003}" Directory_="APPDIR" Attributes="0" KeyPath="Ninject.dll"/>
+    <ROW Component="Ookii.Dialogs.Wpf.dll" ComponentId="{7659E90E-68DD-4210-988E-BF2E4E29A9F6}" Directory_="APPDIR" Attributes="0" KeyPath="Ookii.Dialogs.Wpf.dll"/>
+    <ROW Component="ProductInformation" ComponentId="{BF5166D2-1317-4AD6-B7AE-7D79CFDF64F9}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
+    <ROW Component="SHORTCUTDIR" ComponentId="{26B5A1EB-F429-4FA3-B947-22AE97C52F05}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="System.Net.Http.Extensions.dll" ComponentId="{FC9040C7-4A7A-4504-9C41-D91E124F1CFC}" Directory_="APPDIR" Attributes="0" KeyPath="System.Net.Http.Extensions.dll"/>
+    <ROW Component="System.Net.Http.Primitives.dll" ComponentId="{9E3C3CE5-59C3-4D05-B6A5-75CE22042CE9}" Directory_="APPDIR" Attributes="0" KeyPath="System.Net.Http.Primitives.dll"/>
+    <ROW Component="System.Reactive.Core.dll" ComponentId="{D679DB84-E0B5-4000-9B3C-B31DEA3CD07A}" Directory_="APPDIR" Attributes="0" KeyPath="System.Reactive.Core.dll"/>
+    <ROW Component="System.Reactive.Interfaces.dll" ComponentId="{524B76B0-D6B5-437F-B283-A868DE1D7F85}" Directory_="APPDIR" Attributes="0" KeyPath="System.Reactive.Interfaces.dll"/>
+    <ROW Component="System.Reactive.Linq.dll" ComponentId="{6DDEC6C8-5393-428A-965E-A5EA18C89080}" Directory_="APPDIR" Attributes="0" KeyPath="System.Reactive.Linq.dll"/>
+    <ROW Component="System.Windows.Interactivity.dll" ComponentId="{AB1DF377-9418-4F54-B531-BED96AFB20AB}" Directory_="APPDIR" Attributes="0" KeyPath="System.Windows.Interactivity.dll"/>
+    <ROW Component="System.Windows.Interactivity.resources.d" ComponentId="{1A2381E4-803D-4DE1-B77B-21B13AB86EBB}" Directory_="de_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll"/>
+    <ROW Component="System.Windows.Interactivity.resources_1" ComponentId="{2F47F20E-3483-49DB-86D3-57CF025191F0}" Directory_="en_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_1"/>
+    <ROW Component="System.Windows.Interactivity.resources_2" ComponentId="{E7071B94-DDBA-4D6A-9A5A-3308A93884DA}" Directory_="es_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_2"/>
+    <ROW Component="System.Windows.Interactivity.resources_3" ComponentId="{D4FE9779-FD19-4BBF-99E9-1C4A94F221C0}" Directory_="fr_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_3"/>
+    <ROW Component="System.Windows.Interactivity.resources_4" ComponentId="{D517CC72-EFB8-46F3-841D-93C94A053183}" Directory_="it_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_4"/>
+    <ROW Component="System.Windows.Interactivity.resources_5" ComponentId="{68450A9D-5C32-4078-A0E1-5860E33773F8}" Directory_="ja_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_5"/>
+    <ROW Component="System.Windows.Interactivity.resources_6" ComponentId="{C7A027A5-EE56-4F36-A25F-D22A16DC6454}" Directory_="ko_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_6"/>
+    <ROW Component="System.Windows.Interactivity.resources_7" ComponentId="{ED72A21D-E461-4CAD-800F-D2557BC33CB1}" Directory_="ru_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_7"/>
+    <ROW Component="System.Windows.Interactivity.resources_8" ComponentId="{B0F5FF28-E8B8-41FA-912E-FAE9F1CDFBFE}" Directory_="zhHans_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_8"/>
+    <ROW Component="System.Windows.Interactivity.resources_9" ComponentId="{59228B79-D972-4130-BE4E-4615FE614FF8}" Directory_="zhHant_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.resources.dll_9"/>
+    <ROW Component="Virgil.Crypto.dll" ComponentId="{432E50CD-FD54-4FCC-B2F3-E66251C39D56}" Directory_="APPDIR" Attributes="0" KeyPath="Virgil.Crypto.dll"/>
+    <ROW Component="Virgil.FolderLink.dll" ComponentId="{2B482FB0-31CC-4770-BCC1-DF03384FCC9C}" Directory_="APPDIR" Attributes="0" KeyPath="Virgil.FolderLink.dll"/>
+    <ROW Component="Virgil.SDK.Domain.dll" ComponentId="{0112D967-0B3A-44DB-BD52-710E112E0632}" Directory_="APPDIR" Attributes="0" KeyPath="Virgil.SDK.Domain.dll"/>
+    <ROW Component="Virgil.SDK.dll" ComponentId="{2E7E13F3-BC79-41FA-BB1E-BF660FE38EE6}" Directory_="APPDIR" Attributes="0" KeyPath="Virgil.SDK.dll"/>
+    <ROW Component="Virgil.Sync.exe" ComponentId="{928F820B-2E84-4CFF-B50A-E3565C40BC02}" Directory_="APPDIR" Attributes="0" KeyPath="Virgil.Sync.exe"/>
+    <ROW Component="WpfAnimatedGif.dll" ComponentId="{62288CF4-A44D-4B8A-A186-343F32477FF0}" Directory_="APPDIR" Attributes="0" KeyPath="WpfAnimatedGif.dll"/>
+    <ROW Component="virgil_crypto_net.dll" ComponentId="{42C49E83-A29D-4F84-8E1F-E6EC67490411}" Directory_="x64_Dir" Attributes="256" KeyPath="virgil_crypto_net.dll"/>
+    <ROW Component="virgil_crypto_net.dll_1" ComponentId="{82AD10F9-9654-475A-B45D-86AE8094D289}" Directory_="x86_Dir" Attributes="0" KeyPath="virgil_crypto_net.dll_1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="B5158184F44A6981C5919229A6AEBE" Title="Visual C++ Redistributable for Visual Studio 2015 x64" Description="Visual C++ Redistributable for Visual Studio 2015 x64" Display="3" Level="1" Attributes="0" Components="AI_ExePath B5158184F44A6981C5919229A6AEBE"/>
+    <ROW Feature="D7E473DF14F3E98497864847195F2" Title="Visual C++ Redistributable for Visual Studio 2015 x86" Description="Visual C++ Redistributable for Visual Studio 2015 x86" Display="5" Level="1" Attributes="0" Components="AI_ExePath D7E473DF14F3E98497864847195F2"/>
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AIShRegAnswer AI_ExePath Dropbox.Api.dll Dropbox.Api.xml Hardcodet.Wpf.TaskbarNotification.dll Infrastructure.Messaging.dll Infrastructure.dll Microsoft.Threading.Tasks.Extensions.Des Microsoft.Threading.Tasks.Extensions.dll Microsoft.Threading.Tasks.dll Newtonsoft.Json.dll Ninject.Extensions.Conventions.dll Ninject.dll Ookii.Dialogs.Wpf.dll ProductInformation SHORTCUTDIR System.Net.Http.Extensions.dll System.Net.Http.Primitives.dll System.Reactive.Core.dll System.Reactive.Interfaces.dll System.Reactive.Linq.dll System.Windows.Interactivity.dll System.Windows.Interactivity.resources.d System.Windows.Interactivity.resources_1 System.Windows.Interactivity.resources_2 System.Windows.Interactivity.resources_3 System.Windows.Interactivity.resources_4 System.Windows.Interactivity.resources_5 System.Windows.Interactivity.resources_6 System.Windows.Interactivity.resources_7 System.Windows.Interactivity.resources_8 System.Windows.Interactivity.resources_9 Virgil.Crypto.dll Virgil.FolderLink.dll Virgil.SDK.Domain.dll Virgil.SDK.dll Virgil.Sync.exe WpfAnimatedGif.dll virgil_crypto_net.dll virgil_crypto_net.dll_1"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="Dropbox.Api.dll" Component_="Dropbox.Api.dll" FileName="DROPBO~1.DLL|Dropbox.Api.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Dropbox.Api.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_1"/>
+    <ROW File="Hardcodet.Wpf.TaskbarNotification.dll" Component_="Hardcodet.Wpf.TaskbarNotification.dll" FileName="HARDCO~1.DLL|Hardcodet.Wpf.TaskbarNotification.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Hardcodet.Wpf.TaskbarNotification.dll" SelfReg="false" NextFile="Infrastructure.dll"/>
+    <ROW File="Infrastructure.Messaging.dll" Component_="Infrastructure.Messaging.dll" FileName="INFRAS~2.DLL|Infrastructure.Messaging.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Infrastructure.Messaging.dll" SelfReg="false"/>
+    <ROW File="Infrastructure.dll" Component_="Infrastructure.dll" FileName="INFRAS~1.DLL|Infrastructure.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Infrastructure.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_4"/>
+    <ROW File="Microsoft.Threading.Tasks.Extensions.Desktop.dll" Component_="Microsoft.Threading.Tasks.Extensions.Des" FileName="MICROS~2.DLL|Microsoft.Threading.Tasks.Extensions.Desktop.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Microsoft.Threading.Tasks.Extensions.Desktop.dll" SelfReg="false" NextFile="Microsoft.Threading.Tasks.Extensions.dll"/>
+    <ROW File="Microsoft.Threading.Tasks.Extensions.dll" Component_="Microsoft.Threading.Tasks.Extensions.dll" FileName="MICROS~3.DLL|Microsoft.Threading.Tasks.Extensions.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Microsoft.Threading.Tasks.Extensions.dll" SelfReg="false" NextFile="Newtonsoft.Json.dll"/>
+    <ROW File="Microsoft.Threading.Tasks.dll" Component_="Microsoft.Threading.Tasks.dll" FileName="MICROS~1.DLL|Microsoft.Threading.Tasks.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Microsoft.Threading.Tasks.dll" SelfReg="false" NextFile="Microsoft.Threading.Tasks.Extensions.Desktop.dll"/>
+    <ROW File="Newtonsoft.Json.dll" Component_="Newtonsoft.Json.dll" FileName="NEWTON~1.DLL|Newtonsoft.Json.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Newtonsoft.Json.dll" SelfReg="false" NextFile="Ninject.dll"/>
+    <ROW File="Ninject.Extensions.Conventions.dll" Component_="Ninject.Extensions.Conventions.dll" FileName="NINJEC~1.DLL|Ninject.Extensions.Conventions.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Ninject.Extensions.Conventions.dll" SelfReg="false" NextFile="Ookii.Dialogs.Wpf.dll"/>
+    <ROW File="Ninject.dll" Component_="Ninject.dll" FileName="Ninject.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Ninject.dll" SelfReg="false" NextFile="Ninject.Extensions.Conventions.dll"/>
+    <ROW File="Ookii.Dialogs.Wpf.dll" Component_="Ookii.Dialogs.Wpf.dll" FileName="OOKIID~1.DLL|Ookii.Dialogs.Wpf.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Ookii.Dialogs.Wpf.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_7"/>
+    <ROW File="System.Net.Http.Extensions.dll" Component_="System.Net.Http.Extensions.dll" FileName="SYSTEM~1.DLL|System.Net.Http.Extensions.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\System.Net.Http.Extensions.dll" SelfReg="false" NextFile="System.Net.Http.Primitives.dll"/>
+    <ROW File="System.Net.Http.Primitives.dll" Component_="System.Net.Http.Primitives.dll" FileName="SYSTEM~2.DLL|System.Net.Http.Primitives.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\System.Net.Http.Primitives.dll" SelfReg="false" NextFile="System.Reactive.Core.dll"/>
+    <ROW File="System.Reactive.Core.dll" Component_="System.Reactive.Core.dll" FileName="SYSTEM~3.DLL|System.Reactive.Core.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\System.Reactive.Core.dll" SelfReg="false" NextFile="System.Reactive.Interfaces.dll"/>
+    <ROW File="System.Reactive.Interfaces.dll" Component_="System.Reactive.Interfaces.dll" FileName="SYSTEM~4.DLL|System.Reactive.Interfaces.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\System.Reactive.Interfaces.dll" SelfReg="false" NextFile="System.Reactive.Linq.dll"/>
+    <ROW File="System.Reactive.Linq.dll" Component_="System.Reactive.Linq.dll" FileName="SYSTEM~5.DLL|System.Reactive.Linq.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\System.Reactive.Linq.dll" SelfReg="false" NextFile="System.Windows.Interactivity.dll"/>
+    <ROW File="System.Windows.Interactivity.dll" Component_="System.Windows.Interactivity.dll" FileName="SYSTEM~6.DLL|System.Windows.Interactivity.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\System.Windows.Interactivity.dll" SelfReg="false" NextFile="Virgil.Crypto.dll"/>
+    <ROW File="System.Windows.Interactivity.resources.dll" Component_="System.Windows.Interactivity.resources.d" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\de\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="Dropbox.Api.dll"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_1" Component_="System.Windows.Interactivity.resources_1" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\en\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_2"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_2" Component_="System.Windows.Interactivity.resources_2" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\es\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_3"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_3" Component_="System.Windows.Interactivity.resources_3" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\fr\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="Hardcodet.Wpf.TaskbarNotification.dll"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_4" Component_="System.Windows.Interactivity.resources_4" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\it\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_5"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_5" Component_="System.Windows.Interactivity.resources_5" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\ja\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_6"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_6" Component_="System.Windows.Interactivity.resources_6" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\ko\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="Microsoft.Threading.Tasks.dll"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_7" Component_="System.Windows.Interactivity.resources_7" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\ru\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="System.Net.Http.Extensions.dll"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_8" Component_="System.Windows.Interactivity.resources_8" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\zh-Hans\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_9"/>
+    <ROW File="System.Windows.Interactivity.resources.dll_9" Component_="System.Windows.Interactivity.resources_9" FileName="SYSTEM~1.DLL|System.Windows.Interactivity.resources.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\zh-Hant\System.Windows.Interactivity.resources.dll" SelfReg="false" NextFile="Infrastructure.Messaging.dll"/>
+    <ROW File="Virgil.Crypto.dll" Component_="Virgil.Crypto.dll" FileName="VIRGIL~1.DLL|Virgil.Crypto.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Virgil.Crypto.dll" SelfReg="false" NextFile="Virgil.FolderLink.dll"/>
+    <ROW File="Virgil.FolderLink.dll" Component_="Virgil.FolderLink.dll" FileName="VIRGIL~2.DLL|Virgil.FolderLink.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Virgil.FolderLink.dll" SelfReg="false" NextFile="Virgil.SDK.dll"/>
+    <ROW File="Virgil.SDK.Domain.dll" Component_="Virgil.SDK.Domain.dll" FileName="VIRGIL~5.DLL|Virgil.SDK.Domain.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Virgil.SDK.Domain.dll" SelfReg="false" NextFile="Virgil.Sync.exe"/>
+    <ROW File="Virgil.SDK.dll" Component_="Virgil.SDK.dll" FileName="VIRGIL~4.DLL|Virgil.SDK.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Virgil.SDK.dll" SelfReg="false" NextFile="Virgil.SDK.Domain.dll"/>
+    <ROW File="Virgil.Sync.exe" Component_="Virgil.Sync.exe" FileName="VIRGIL~2.EXE|Virgil.Sync.exe" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Virgil.Sync.exe" SelfReg="false" NextFile="Virgil.Sync.exe.config" DigSign="true"/>
+    <ROW File="Virgil.Sync.exe.config" Component_="Dropbox.Api.xml" FileName="VIRGIL~2.CON|Virgil.Sync.exe.config" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\Virgil.Sync.exe.config" SelfReg="false" NextFile="WpfAnimatedGif.dll"/>
+    <ROW File="WpfAnimatedGif.dll" Component_="WpfAnimatedGif.dll" FileName="WPFANI~1.DLL|WpfAnimatedGif.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\WpfAnimatedGif.dll" SelfReg="false" NextFile="virgil_crypto_net.dll"/>
+    <ROW File="virgil_crypto_net.dll" Component_="virgil_crypto_net.dll" FileName="VIRGIL~1.DLL|virgil_crypto_net.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\x64\virgil_crypto_net.dll" SelfReg="false" NextFile="virgil_crypto_net.dll_1"/>
+    <ROW File="virgil_crypto_net.dll_1" Component_="virgil_crypto_net.dll_1" FileName="VIRGIL~1.DLL|virgil_crypto_net.dll" Attributes="0" SourcePath="..\Sources\Virgil.Disk\bin\Release\x86\virgil_crypto_net.dll" SelfReg="false" NextFile="System.Windows.Interactivity.resources.dll_8"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="Output" PackageFileName="VirgilSync_[|ProductVersion]" Languages="en" InstallationType="4" CabsLocation="1" PackageType="1" FilesInsideExe="true" ExtractionFolder="[AppDataFolder][|Manufacturer]\[|ProductName] [|ProductVersion]\install" ExtUI="true" UseLargeSchema="true" MsiPackageType="x64"/>
+    <ATTRIBUTE name="CurrentBuild" value="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DigCertStoreComponent">
+    <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="[|ProductName]" SignOptions="7" SignTool="0" UseSha256="1" Thumbprint="1e198d4ec0d6c713b73abd2ba6ba2e82d19efb17 Subject: Virgil Security, Inc.&#10;Issuer: DigiCert SHA2 Assured ID Code Signing CA&#10;Valid from 02/26/2016 to 11/02/2016"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="InstallDlg.aip" Path="&lt;AI_THEMES&gt;surface\fragments\InstallDlg.aip"/>
+    <ROW Fragment="LicenseAgreementDlg.aip" Path="&lt;AI_THEMES&gt;surface\fragments\LicenseAgreementDlg.aip"/>
+    <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;surface\fragments\MaintenanceTypeDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;surface\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
