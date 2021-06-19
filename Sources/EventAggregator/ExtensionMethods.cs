@@ -21,4 +21,16 @@
         /// <summary>
         /// Gets all the attributes of a particular type.
         /// </summary>
-        /// <
+        /// <typeparam name="T">The type of attributes to get.</typeparam>
+        /// <param name="member">The member to inspect for attributes.</param>
+        /// <param name="inherit">Whether or not to search for inherited attributes.</param>
+        /// <returns>The list of attributes found.</returns>
+        public static IEnumerable<T> GetAttributes<T>(this MemberInfo member, bool inherit) {
+            return Attribute.GetCustomAttributes(member, inherit).OfType<T>();
+        }
+
+        /// <summary>
+        /// Applies the action to each element in the list.
+        /// </summary>
+        /// <typeparam name="T">The enumerable item's type.</typeparam>
+        /// <par
