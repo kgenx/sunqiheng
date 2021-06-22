@@ -1,0 +1,4 @@
+namespace Infrastructure.Messaging
+{
+    /// <summary>
+    ///  
