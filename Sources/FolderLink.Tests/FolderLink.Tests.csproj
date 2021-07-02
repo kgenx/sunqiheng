@@ -101,4 +101,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Virgil.FolderLink\Virgil.FolderLink.csproj">
-      <Project>{10188A5A-FF14-4D1E-86AC-0F775D3C7C7E}</Proj
+      <Project>{10188A5A-FF14-4D1E-86AC-0F775D3C7C7E}</Project>
+      <Name>Virgil.FolderLink</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Virgil.SDK.Domain\Virgil.SDK.Domain.csproj">
+      <Project>{5A1CE0B6-D6FE-4620-BAC5-9A319E461913}</Project>
+      <Name>Virgil.SDK.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.<
