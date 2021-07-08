@@ -16,4 +16,19 @@
         }
 
         
-        [TestCase("C:\\World", "C:\\World\\hello1\\file"
+        [TestCase("C:\\World", "C:\\World\\hello1\\file")]
+        [TestCase("C:\\World\\", "C:\\World\\hello1\\file")]
+        [TestCase(@"\\World\", "\\\\World\\hello1\\file")]
+        public void UniversalToLocalTransition(string root, string relative)
+        {
+            var folderRoot = new LocalFolderRoot(root);
+            var localPath = new LocalPath(relative, folderRoot);
+            var universalPath = localPath.ToUniversalPath();
+
+            var result = LocalPath.CreateFromUniversal(universalPath, folderRoot);
+
+            universalPath.Value.Should().Be("/hello1/file");
+            result.Should().Be(localPath);
+        }
+    }
+}
