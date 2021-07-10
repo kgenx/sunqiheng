@@ -573,3 +573,426 @@ namespace Infrastructure.Properties
 
   [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
   public sealed class AspMvcAreaViewLocationFormatAttribute : Attribute
+  {
+    public AspMvcAreaViewLocationFormatAttribute(string format)
+    {
+      this.Format = format;
+    }
+
+    public string Format { get; private set; }
+  }
+
+  [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
+  public sealed class AspMvcMasterLocationFormatAttribute : Attribute
+  {
+    public AspMvcMasterLocationFormatAttribute(string format)
+    {
+      this.Format = format;
+    }
+
+    public string Format { get; private set; }
+  }
+
+  [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
+  public sealed class AspMvcPartialViewLocationFormatAttribute : Attribute
+  {
+    public AspMvcPartialViewLocationFormatAttribute(string format)
+    {
+      this.Format = format;
+    }
+
+    public string Format { get; private set; }
+  }
+
+  [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
+  public sealed class AspMvcViewLocationFormatAttribute : Attribute
+  {
+    public AspMvcViewLocationFormatAttribute(string format)
+    {
+      this.Format = format;
+    }
+
+    public string Format { get; private set; }
+  }
+
+  /// <summary>
+  /// ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+  /// is an MVC action. If applied to a method, the MVC action name is calculated
+  /// implicitly from the context. Use this attribute for custom wrappers similar to
+  /// <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
+  public sealed class AspMvcActionAttribute : Attribute
+  {
+    public AspMvcActionAttribute() { }
+    public AspMvcActionAttribute(string anonymousProperty)
+    {
+      this.AnonymousProperty = anonymousProperty;
+    }
+
+    public string AnonymousProperty { get; private set; }
+  }
+
+  /// <summary>
+  /// ASP.NET MVC attribute. Indicates that a parameter is an MVC area.
+  /// Use this attribute for custom wrappers similar to
+  /// <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Parameter)]
+  public sealed class AspMvcAreaAttribute : Attribute
+  {
+    public AspMvcAreaAttribute() { }
+    public AspMvcAreaAttribute(string anonymousProperty)
+    {
+      this.AnonymousProperty = anonymousProperty;
+    }
+
+    public string AnonymousProperty { get; private set; }
+  }
+
+  /// <summary>
+  /// ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter is
+  /// an MVC controller. If applied to a method, the MVC controller name is calculated
+  /// implicitly from the context. Use this attribute for custom wrappers similar to
+  /// <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String, String)</c>.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
+  public sealed class AspMvcControllerAttribute : Attribute
+  {
+    public AspMvcControllerAttribute() { }
+    public AspMvcControllerAttribute(string anonymousProperty)
+    {
+      this.AnonymousProperty = anonymousProperty;
+    }
+
+    public string AnonymousProperty { get; private set; }
+  }
+
+  /// <summary>
+  /// ASP.NET MVC attribute. Indicates that a parameter is an MVC Master. Use this attribute
+  /// for custom wrappers similar to <c>System.Web.Mvc.Controller.View(String, String)</c>.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Parameter)]
+  public sealed class AspMvcMasterAttribute : Attribute { }
+
+  /// <summary>
+  /// ASP.NET MVC attribute. Indicates that a parameter is an MVC model type. Use this attribute
+  /// for custom wrappers similar to <c>System.Web.Mvc.Controller.View(String, Object)</c>.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Parameter)]
+  public sealed class AspMvcModelTypeAttribute : Attribute { }
+
+  /// <summary>
+  /// ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter is an MVC
+  /// partial view. If applied to a method, the MVC partial view name is calculated implicitly
+  /// from the context. Use this attribute for custom wrappers similar to
+  /// <c>System.Web.Mvc.Html.RenderPartialExtensions.RenderPartial(HtmlHelper, String)</c>.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
+  public sealed class AspMvcPartialViewAttribute : Attribute { }
+
+  /// <summary>
+  /// ASP.NET MVC attribute. Allows disabling inspections for MVC views within a class or a method.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+  public sealed class AspMvcSuppressViewErrorAttribute : Attribute { }
+
+  /// <summary>
+  /// ASP.NET MVC attribute. Indicates that a parameter is an MVC display template.
+  /// Use this attribute for custom wrappers similar to 
+  /// <c>System.Web.Mvc.Html.DisplayExtensions.DisplayForModel(HtmlHelper, String)</c>.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Parameter)]
+  public sealed class AspMvcDisplayTemplateAttribute : Attribute { }
+
+  /// <summary>
+  /// ASP.NET MVC attribute. Indicates that a parameter is an MVC editor template.
+  /// Use this attribute for custom wrappers similar to
+  /// <c>System.Web.Mvc.Html.EditorExtensions.EditorForModel(HtmlHelper, String)</c>.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Parameter)]
+  public sealed class AspMvcEditorTemplateAttribute : Attribute { }
+
+  /// <summary>
+  /// ASP.NET MVC attribute. Indicates that a parameter is an MVC template.
+  /// Use this attribute for custom wrappers similar to
+  /// <c>System.ComponentModel.DataAnnotations.UIHintAttribute(System.String)</c>.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Parameter)]
+  public sealed class AspMvcTemplateAttribute : Attribute { }
+
+  /// <summary>
+  /// ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+  /// is an MVC view component. If applied to a method, the MVC view name is calculated implicitly
+  /// from the context. Use this attribute for custom wrappers similar to
+  /// <c>System.Web.Mvc.Controller.View(Object)</c>.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
+  public sealed class AspMvcViewAttribute : Attribute { }
+
+  /// <summary>
+  /// ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+  /// is an MVC view component name.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Parameter)]
+  public sealed class AspMvcViewComponentAttribute : Attribute { }
+
+  /// <summary>
+  /// ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+  /// is an MVC view component view. If applied to a method, the MVC view component view name is default.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
+  public sealed class AspMvcViewComponentViewAttribute : Attribute { }
+
+  /// <summary>
+  /// ASP.NET MVC attribute. When applied to a parameter of an attribute,
+  /// indicates that this parameter is an MVC action name.
+  /// </summary>
+  /// <example><code>
+  /// [ActionName("Foo")]
+  /// public ActionResult Login(string returnUrl) {
+  ///   ViewBag.ReturnUrl = Url.Action("Foo"); // OK
+  ///   return RedirectToAction("Bar"); // Error: Cannot resolve action
+  /// }
+  /// </code></example>
+  [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property)]
+  public sealed class AspMvcActionSelectorAttribute : Attribute { }
+
+  [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field)]
+  public sealed class HtmlElementAttributesAttribute : Attribute
+  {
+    public HtmlElementAttributesAttribute() { }
+    public HtmlElementAttributesAttribute(string name)
+    {
+      this.Name = name;
+    }
+
+    public string Name { get; private set; }
+  }
+
+  [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property)]
+  public sealed class HtmlAttributeValueAttribute : Attribute
+  {
+    public HtmlAttributeValueAttribute([NotNull] string name)
+    {
+      this.Name = name;
+    }
+
+    [NotNull] public string Name { get; private set; }
+  }
+
+  /// <summary>
+  /// Razor attribute. Indicates that a parameter or a method is a Razor section.
+  /// Use this attribute for custom wrappers similar to 
+  /// <c>System.Web.WebPages.WebPageBase.RenderSection(String)</c>.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
+  public sealed class RazorSectionAttribute : Attribute { }
+
+  /// <summary>
+  /// Indicates how method, constructor invocation or property access
+  /// over collection type affects content of the collection.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Method | AttributeTargets.Constructor | AttributeTargets.Property)]
+  public sealed class CollectionAccessAttribute : Attribute
+  {
+    public CollectionAccessAttribute(CollectionAccessType collectionAccessType)
+    {
+      this.CollectionAccessType = collectionAccessType;
+    }
+
+    public CollectionAccessType CollectionAccessType { get; private set; }
+  }
+
+  [Flags]
+  public enum CollectionAccessType
+  {
+    /// <summary>Method does not use or modify content of the collection.</summary>
+    None = 0,
+    /// <summary>Method only reads content of the collection but does not modify it.</summary>
+    Read = 1,
+    /// <summary>Method can change content of the collection but does not add new elements.</summary>
+    ModifyExistingContent = 2,
+    /// <summary>Method can add new elements to the collection.</summary>
+    UpdatedContent = ModifyExistingContent | 4
+  }
+
+  /// <summary>
+  /// Indicates that the marked method is assertion method, i.e. it halts control flow if
+  /// one of the conditions is satisfied. To set the condition, mark one of the parameters with 
+  /// <see cref="AssertionConditionAttribute"/> attribute.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Method)]
+  public sealed class AssertionMethodAttribute : Attribute { }
+
+  /// <summary>
+  /// Indicates the condition parameter of the assertion method. The method itself should be
+  /// marked by <see cref="AssertionMethodAttribute"/> attribute. The mandatory argument of
+  /// the attribute is the assertion type.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Parameter)]
+  public sealed class AssertionConditionAttribute : Attribute
+  {
+    public AssertionConditionAttribute(AssertionConditionType conditionType)
+    {
+      this.ConditionType = conditionType;
+    }
+
+    public AssertionConditionType ConditionType { get; private set; }
+  }
+
+  /// <summary>
+  /// Specifies assertion type. If the assertion method argument satisfies the condition,
+  /// then the execution continues. Otherwise, execution is assumed to be halted.
+  /// </summary>
+  public enum AssertionConditionType
+  {
+    /// <summary>Marked parameter should be evaluated to true.</summary>
+    IS_TRUE = 0,
+    /// <summary>Marked parameter should be evaluated to false.</summary>
+    IS_FALSE = 1,
+    /// <summary>Marked parameter should be evaluated to null value.</summary>
+    IS_NULL = 2,
+    /// <summary>Marked parameter should be evaluated to not null value.</summary>
+    IS_NOT_NULL = 3,
+  }
+
+  /// <summary>
+  /// Indicates that the marked method unconditionally terminates control flow execution.
+  /// For example, it could unconditionally throw exception.
+  /// </summary>
+  [Obsolete("Use [ContractAnnotation('=> halt')] instead")]
+  [AttributeUsage(AttributeTargets.Method)]
+  public sealed class TerminatesProgramAttribute : Attribute { }
+
+  /// <summary>
+  /// Indicates that method is pure LINQ method, with postponed enumeration (like Enumerable.Select,
+  /// .Where). This annotation allows inference of [InstantHandle] annotation for parameters
+  /// of delegate type by analyzing LINQ method chains.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Method)]
+  public sealed class LinqTunnelAttribute : Attribute { }
+
+  /// <summary>
+  /// Indicates that IEnumerable, passed as parameter, is not enumerated.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Parameter)]
+  public sealed class NoEnumerationAttribute : Attribute { }
+
+  /// <summary>
+  /// Indicates that parameter is regular expression pattern.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Parameter)]
+  public sealed class RegexPatternAttribute : Attribute { }
+
+  /// <summary>
+  /// XAML attribute. Indicates the type that has <c>ItemsSource</c> property and should be treated
+  /// as <c>ItemsControl</c>-derived type, to enable inner items <c>DataContext</c> type resolve.
+  /// </summary>
+  [AttributeUsage(AttributeTargets.Class)]
+  public sealed class XamlItemsControlAttribute : Attribute { }
+
+  /// <summary>
+  /// XAML attribute. Indicates the property of some <c>BindingBase</c>-derived type, that
+  /// is used to bind some item of <c>ItemsControl</c>-derived type. This annotation will
+  /// enable the <c>DataContext</c> type resolve for XAML bindings for such properties.
+  /// </summary>
+  /// <remarks>
+  /// Property should have the tree ancestor of the <c>ItemsControl</c> type or
+  /// marked with the <see cref="XamlItemsControlAttribute"/> attribute.
+  /// </remarks>
+  [AttributeUsage(AttributeTargets.Property)]
+  public sealed class XamlItemBindingOfItemsControlAttribute : Attribute { }
+
+  [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+  public sealed class AspChildControlTypeAttribute : Attribute
+  {
+    public AspChildControlTypeAttribute(string tagName, Type controlType)
+    {
+      this.TagName = tagName;
+      this.ControlType = controlType;
+    }
+
+    public string TagName { get; private set; }
+    public Type ControlType { get; private set; }
+  }
+
+  [AttributeUsage(AttributeTargets.Property | AttributeTargets.Method)]
+  public sealed class AspDataFieldAttribute : Attribute { }
+
+  [AttributeUsage(AttributeTargets.Property | AttributeTargets.Method)]
+  public sealed class AspDataFieldsAttribute : Attribute { }
+
+  [AttributeUsage(AttributeTargets.Property)]
+  public sealed class AspMethodPropertyAttribute : Attribute { }
+
+  [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+  public sealed class AspRequiredAttributeAttribute : Attribute
+  {
+    public AspRequiredAttributeAttribute([NotNull] string attribute)
+    {
+      this.Attribute = attribute;
+    }
+
+    public string Attribute { get; private set; }
+  }
+
+  [AttributeUsage(AttributeTargets.Property)]
+  public sealed class AspTypePropertyAttribute : Attribute
+  {
+    public bool CreateConstructorReferences { get; private set; }
+
+    public AspTypePropertyAttribute(bool createConstructorReferences)
+    {
+      this.CreateConstructorReferences = createConstructorReferences;
+    }
+  }
+
+  [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
+  public sealed class RazorImportNamespaceAttribute : Attribute
+  {
+    public RazorImportNamespaceAttribute(string name)
+    {
+      this.Name = name;
+    }
+
+    public string Name { get; private set; }
+  }
+
+  [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
+  public sealed class RazorInjectionAttribute : Attribute
+  {
+    public RazorInjectionAttribute(string type, string fieldName)
+    {
+      this.Type = type;
+      this.FieldName = fieldName;
+    }
+
+    public string Type { get; private set; }
+    public string FieldName { get; private set; }
+  }
+
+  [AttributeUsage(AttributeTargets.Method)]
+  public sealed class RazorHelperCommonAttribute : Attribute { }
+
+  [AttributeUsage(AttributeTargets.Property)]
+  public sealed class RazorLayoutAttribute : Attribute { }
+
+  [AttributeUsage(AttributeTargets.Method)]
+  public sealed class RazorWriteLiteralMethodAttribute : Attribute { }
+
+  [AttributeUsage(AttributeTargets.Method)]
+  public sealed class RazorWriteMethodAttribute : Attribute { }
+
+  [AttributeUsage(AttributeTargets.Parameter)]
+  public sealed class RazorWriteMethodParameterAttribute : Attribute { }
+
+  /// <summary>
+  /// Prevents the Member Reordering feature from tossing members of the marked class.
+  /// </summary>
+  /// <remarks>
+  /// The attribute must be mentioned in your member reordering patterns
+  /// </remarks>
+  [AttributeUsage(AttributeTargets.All)]
+  public sealed class NoReorder : Attribute { }
+}
