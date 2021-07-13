@@ -1,1 +1,6 @@
-namespace Infrastructu
+namespace Infrastructure.Messaging.Application
+{
+    public class ConfirmationSuccessfull
+    {
+    }
+}
