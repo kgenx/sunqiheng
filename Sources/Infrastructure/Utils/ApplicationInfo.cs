@@ -4,4 +4,8 @@
 
     public class ApplicationInfo
     {
-        public static string Versi
+        public static string Version => $"Version: {Assembly.GetExecutingAssembly().GetName().Version}";
+
+        public static string VersionInfo => Assembly.GetExecutingAssembly().GetName().Version.ToString();
+    }
+}
