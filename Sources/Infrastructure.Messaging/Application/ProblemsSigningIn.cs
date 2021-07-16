@@ -8,4 +8,10 @@ namespace Infrastructure.Messaging.Application
         }
 
         public ProblemsSigningIn()
-     
+        {
+            this.Email = "";
+        }
+
+        public string Email { get; }
+    }
+}
