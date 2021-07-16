@@ -4,4 +4,11 @@
     {
         public ErrorMessage(string error, string title)
         {
-            this.E
+            this.Error = error;
+            this.Title = title;
+        }
+
+        public string Error { get; set; }
+        public string Title { get; set; }
+    }
+}
