@@ -40,4 +40,15 @@
         /// the message type supplied.
         /// </summary>
         /// <param name="messageType">The message type to check with</param>
-        /// <returns>True if any handler is found,
+        /// <returns>True if any handler is found, false if not.</returns>
+        public bool HandlerExistsFor(Type messageType) {
+                return this.handlers.Any(handler => handler.Handles(messageType) & !handler.IsDead);
+        }
+
+        /// <summary>
+        ///   Subscribes an instance to all events declared through implementations of <see cref = "IHandle{T}" />
+        /// </summary>
+        /// <param name = "subscriber">The instance to subscribe for event publication.</param>
+        public virtual void Subscribe(object subscriber) {
+            if (subscriber == null) {
+                throw new ArgumentNullException("subscribe
