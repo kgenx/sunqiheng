@@ -51,4 +51,24 @@
         /// <param name = "subscriber">The instance to subscribe for event publication.</param>
         public virtual void Subscribe(object subscriber) {
             if (subscriber == null) {
-                throw new ArgumentNullException("subscribe
+                throw new ArgumentNullException("subscriber");
+            }
+            lock(this.handlers) {
+                if (this.handlers.Any(x => x.Matches(subscriber))) {
+                    return;
+                }
+
+                this.handlers.Add(new Handler(subscriber));
+            }
+        }
+
+        /// <summary>
+        ///   Unsubscribes the instance from all events.
+        /// </summary>
+        /// <param name = "subscriber">The instance to unsubscribe.</param>
+        public virtual void Unsubscribe(object subscriber) {
+            if (subscriber == null) {
+                throw new ArgumentNullException("subscriber");
+            }
+            lock(this.handlers) {
+                var found = this.
