@@ -71,4 +71,23 @@
                 throw new ArgumentNullException("subscriber");
             }
             lock(this.handlers) {
-                var found = this.
+                var found = this.handlers.FirstOrDefault(x => x.Matches(subscriber));
+
+                if (found != null) {
+                    this.handlers.Remove(found);
+                }
+            }
+        }
+
+        /// <summary>
+        ///   Publishes a message.
+        /// </summary>
+        /// <param name = "message">The message instance.</param>
+        /// <remarks>
+        ///   Does not marshall the the publication to any special thread by default.
+        /// </remarks>
+        public virtual void Publish(object message) {
+            if (message == null) {
+                throw new ArgumentNullException("message");
+            }
+            this.Publish(message, this.Publicat
