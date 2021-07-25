@@ -90,4 +90,22 @@
             if (message == null) {
                 throw new ArgumentNullException("message");
             }
-            this.Publish(message, this.Publicat
+            this.Publish(message, this.PublicationThreadMarshaller);
+        }
+
+        /// <summary>
+        ///   Publishes a message.
+        /// </summary>
+        /// <param name = "message">The message instance.</param>
+        /// <param name = "marshal">Allows the publisher to provide a custom thread marshaller for the message publication.</param>
+        public virtual void Publish(object message, Action<Action> marshal) {
+            if (message == null){
+                throw new ArgumentNullException("message");
+            }
+            if (marshal == null) {
+                throw new ArgumentNullException("marshal");
+            }
+
+            Handler[] toNotify;
+            lock (this.handlers) {
+         
