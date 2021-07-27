@@ -108,4 +108,24 @@
 
             Handler[] toNotify;
             lock (this.handlers) {
-         
+                toNotify = this.handlers.ToArray();
+            }
+
+            marshal(() => {
+                var messageType = message.GetType();
+
+                var dead = toNotify
+                    .Where(handler => !handler.Handle(messageType, message))
+                    .ToList();
+
+                if(dead.Any()) {
+                    lock(this.handlers) {
+                        dead.Apply(x => this.handlers.Remove(x));
+                    }
+                }
+            });
+        }
+
+        class Handler {
+            readonly WeakReference reference;
+            readonly Dictionary<Type, MethodInfo> supportedHandlers = new 
