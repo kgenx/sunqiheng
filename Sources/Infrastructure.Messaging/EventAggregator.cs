@@ -128,4 +128,20 @@
 
         class Handler {
             readonly WeakReference reference;
-            readonly Dictionary<Type, MethodInfo> supportedHandlers = new 
+            readonly Dictionary<Type, MethodInfo> supportedHandlers = new Dictionary<Type, MethodInfo>();
+
+            public bool IsDead {
+                get { return this.reference.Target == null; }
+            }
+
+            public Handler(object handler) {
+                this.reference = new WeakReference(handler);
+
+                var interfaces = handler.GetType().GetInterfaces()
+                    .Where(x => typeof(IHandle).IsAssignableFrom(x) && x.IsGenericType);
+
+                foreach(var @interface in interfaces) {
+                    var type = @interface.GetGenericArguments()[0];
+                    var method = @interface.GetMethod("Handle");
+                    this.supportedHandlers[type] = method;
+        
