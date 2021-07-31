@@ -144,4 +144,22 @@
                     var type = @interface.GetGenericArguments()[0];
                     var method = @interface.GetMethod("Handle");
                     this.supportedHandlers[type] = method;
-        
+                }
+
+            }
+
+            public bool Matches(object instance) {
+                return this.reference.Target == instance;
+            }
+
+            public bool Handle(Type messageType, object message) {
+                var target = this.reference.Target;
+                if (target == null) {
+                    return false;
+                }
+
+                foreach(var pair in this.supportedHandlers) {
+                    if(pair.Key.IsAssignableFrom(messageType)) {
+                        var result = pair.Value.Invoke(target, new[] { message });
+                        if (result != null) {
+                            HandlerResultProcessing(target, resu
