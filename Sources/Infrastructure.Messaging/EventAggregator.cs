@@ -162,4 +162,17 @@
                     if(pair.Key.IsAssignableFrom(messageType)) {
                         var result = pair.Value.Invoke(target, new[] { message });
                         if (result != null) {
-                            HandlerResultProcessing(target, resu
+                            HandlerResultProcessing(target, result);
+                        }
+                    }
+                }
+                
+                return true;
+            }
+
+            public bool Handles(Type messageType) {
+                return this.supportedHandlers.Any(pair => pair.Key.IsAssignableFrom(messageType));
+            }
+        }
+    }
+}
