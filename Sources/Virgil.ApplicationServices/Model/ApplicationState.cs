@@ -101,4 +101,15 @@ namespace Virgil.Disk.Model
                     },
                     public_key = new PublicKeyDto
                     {
-                        id 
+                        id = personalCard.PublicKey.Id,
+                        value = personalCard.PublicKey.Data
+                    }
+                }
+            };
+
+            var json = JsonConvert.SerializeObject(new[] { dto });
+            var base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(json));
+            File.WriteAllText(filepath, base64);
+        }
+    }
+}
