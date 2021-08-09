@@ -42,4 +42,25 @@ namespace Virgil.Disk.Model
             this.PrivateKeyPassword = message.PrivateKeyPassword;
             this.HasAccount = true;
 
-            var data = new StorageDto { PrivateKeyPassword = this.PrivateKeyPassword, PersonalCard = this.CurrentCa
+            var data = new StorageDto { PrivateKeyPassword = this.PrivateKeyPassword, PersonalCard = this.CurrentCard.Export() };
+
+            var json = JsonConvert.SerializeObject(data);
+
+            this.storageProvider.Save(json);
+        }
+
+        public void Restore()
+        {
+            try
+            {
+                var json = this.storageProvider.Load();
+
+                var data = JsonConvert.DeserializeObject<StorageDto>(json);
+
+                this.PrivateKeyPassword = data.PrivateKeyPassword;
+                this.CurrentCard = PersonalCard.Import(data.PersonalCard);
+                this.HasAccount = true;
+            }
+            catch (Exception exception)
+            {
+                this.Pr
