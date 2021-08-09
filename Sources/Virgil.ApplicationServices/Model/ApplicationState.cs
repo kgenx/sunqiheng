@@ -86,4 +86,19 @@ namespace Virgil.Disk.Model
 
         public void ExportCurrentAccount(string filepath)
         {
-          
+            var personalCard = this.CurrentCard;
+
+            var dto = new LocalStorage.VirgilCardDto
+            {
+                private_key = personalCard.PrivateKey.Data,
+                card = new CardDto
+                {
+                    id = personalCard.Id,
+                    identity = new IdentityDto
+                    {
+                        type = personalCard.Identity.Type.ToString(),
+                        value = personalCard.Identity.Value
+                    },
+                    public_key = new PublicKeyDto
+                    {
+                        id 
