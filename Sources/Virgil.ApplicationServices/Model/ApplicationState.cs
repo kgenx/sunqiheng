@@ -63,4 +63,27 @@ namespace Virgil.Disk.Model
             }
             catch (Exception exception)
             {
-                this.Pr
+                this.PrivateKeyPassword = null;
+                this.CurrentCard = null;
+                this.HasAccount = false;
+                this.Exception = exception;
+            }
+        }
+
+        public void Logout()
+        {
+            this.aggregator.Publish(new BeforeLogout());
+
+            this.PrivateKeyPassword = null;
+            this.CurrentCard = null;
+            this.HasAccount = false;
+
+            var json = JsonConvert.SerializeObject(new StorageDto());
+            this.storageProvider.Save(json);
+
+            this.aggregator.Publish(new Logout());
+        }
+
+        public void ExportCurrentAccount(string filepath)
+        {
+          
