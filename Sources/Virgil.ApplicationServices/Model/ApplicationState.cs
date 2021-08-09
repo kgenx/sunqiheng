@@ -22,4 +22,24 @@ namespace Virgil.Disk.Model
             aggregator.Subscribe(this);
         }
 
-        public PersonalCard CurrentCa
+        public PersonalCard CurrentCard { get; private set; }
+
+        public string PrivateKeyPassword { get; private set; }
+
+        public bool HasAccount { get; private set; }
+
+        public Exception Exception { get; private set; }
+
+        public class StorageDto
+        {
+            public string PrivateKeyPassword { get; set; }
+            public string PersonalCard { get; set; }
+        }
+
+        public void Handle(CardLoaded message)
+        {
+            this.CurrentCard = message.Card;
+            this.PrivateKeyPassword = message.PrivateKeyPassword;
+            this.HasAccount = true;
+
+            var data = new StorageDto { PrivateKeyPassword = this.PrivateKeyPassword, PersonalCard = this.CurrentCa
