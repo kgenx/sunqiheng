@@ -29,4 +29,29 @@
         {
             return string.IsNullOrEmpty(this.AccessToken) && string.IsNullOrWhiteSpace(this.UserId);
         }
-   
+    }
+
+    public class PerUserFolderSettings : Dictionary<string, FolderSettings>
+    {
+    }
+
+    public class FolderSettings
+    {
+        public FolderSettings()
+        {
+            this.TargetFolders = new List<Folder>();
+            this.SourceFolder = new Folder();
+            this.DropboxCredentials = new DropboxCredentials();
+        }
+
+        [JsonProperty]
+        public List<Folder> TargetFolders { get; set; } 
+
+        [JsonProperty]
+        public Folder SourceFolder { get; set; }
+
+        [JsonProperty]
+        public DropboxCredentials DropboxCredentials { get; set;  }
+
+        public ValidationErrors Validate()
+        {
