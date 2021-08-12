@@ -55,3 +55,19 @@
 
         public ValidationErrors Validate()
         {
+            var validationErrors = new ValidationErrors();
+
+            validationErrors.AddErrorsFor(this.SourceFolder.UUID, this.SourceFolder.Validate());
+
+            foreach (var target in this.TargetFolders)
+            {
+                validationErrors.AddErrorsFor(target.UUID, target.Validate());
+
+                if (target.IntersectsWith(SourceFolder))
+                {
+                    validationErrors.AddErrorFor(target.UUID, "Selected folder intersects with source folder");
+                }
+
+                if(this.TargetFolders.Any(it => it.UUID != target.UUID && it.IntersectsWith(target)))
+                {
+             
