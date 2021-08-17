@@ -89,4 +89,7 @@
 
         public bool IsEmpty()
         {
-            return string.IsNullOrWhiteSpace(this.So
+            return string.IsNullOrWhiteSpace(this.SourceFolder?.FolderPath) && this.TargetFolders?.Count == 0 && this.DropboxCredentials?.IsEmpty() == true;
+        }
+    }
+}
