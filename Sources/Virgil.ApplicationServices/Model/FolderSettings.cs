@@ -70,4 +70,23 @@
 
                 if(this.TargetFolders.Any(it => it.UUID != target.UUID && it.IntersectsWith(target)))
                 {
-             
+                    validationErrors.AddErrorFor(target.UUID, "Specified folder is a subpath of one of the added folders");
+                }
+            }
+
+            var duplicateIds = this.TargetFolders
+                .GroupBy(it => it.FolderPath.ToLowerInvariant())
+                .SelectMany(grp => grp.Skip(1))
+                .Select(it => it.UUID);
+
+            foreach (var duplicateId in duplicateIds)
+            {
+                validationErrors.AddErrorFor(duplicateId, "Folder duplicated");
+            }
+
+            return validationErrors;
+        }
+
+        public bool IsEmpty()
+        {
+            return string.IsNullOrWhiteSpace(this.So
