@@ -50,4 +50,17 @@
                 }
             }
 
-            if (!File.Exists(this.V
+            if (!File.Exists(this.VirgilCardPath))
+            {
+                validationErrors.Add("Virgil card file does not exist");
+            }
+            
+            if (!File.Exists(this.PrivateKeyPath))
+            {
+                validationErrors.Add("Private key file does not exist");
+            }
+
+            return validationErrors;
+        }
+    }
+}
