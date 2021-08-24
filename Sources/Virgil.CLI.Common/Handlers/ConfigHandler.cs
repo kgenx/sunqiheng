@@ -154,3 +154,47 @@ namespace Virgil.CLI.Common.Handlers
             if (result.IsValid())
             {
                 var pc = new PersonalCard(new RecipientCard(cardModel), privateKey);
+                result.SetResult(pc);
+            }
+
+            return result;
+        }
+
+        private static DropboxCredentials ParseDropboxUri()
+        {
+            var oauth2State = Guid.NewGuid().ToString("N");
+            var authUri = DropboxOAuth2Helper.GetAuthorizeUri(
+                OAuthResponseType.Token, ApiConfig.DropboxClientId, new Uri(RedirectUri), state: oauth2State)
+                .ToString();
+
+            Console.WriteLine("    We will open browser with the DropBox sign in url.");
+            Console.WriteLine("    Please login to your dropbox account to grant Virgil Sync access to it.");
+            Console.WriteLine("    When you'l finish, please copy final url in your browser tab. It should starts with " + RedirectUri);
+
+            Process.Start(authUri);
+            Console.Write("    Url: ");
+            var uri = Console.ReadLine();
+
+            try
+            {
+                var result = DropboxOAuth2Helper.ParseTokenFragment(new Uri(uri));
+
+                if (result.State != oauth2State)
+                {
+                    throw new Exception("OAuth state was changed");
+                }
+
+                return new DropboxCredentials
+                {
+                    AccessToken = result.AccessToken,
+                    UserId = result.Uid,
+                };
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+    }
+}
