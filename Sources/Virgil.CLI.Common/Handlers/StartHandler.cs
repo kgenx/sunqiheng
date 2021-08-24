@@ -36,4 +36,21 @@ namespace Virgil.CLI.Common.Handlers
 
             if (!appState.HasAccount)
             {
-                Console.WriteLine("  
+                Console.WriteLine("    There is no Virgil Card stored");
+                return 1;
+            }
+
+            var folderSettings = this.bootstrapper.Container.Resolve<FolderSettingsStorage>();
+
+            if (folderSettings.FolderSettings.IsEmpty())
+            {
+                Console.WriteLine("    There is no folder to bropbox link configured");
+                return 1;
+            }
+
+            var validationErrors = folderSettings.FolderSettings.Validate();
+            if (validationErrors.Any())
+            {
+                foreach (var validationError in validationErrors)
+                {
+                    
