@@ -31,3 +31,23 @@
             };
             
             return help;
+        }
+
+        public List<string> Validate()
+        {
+            var validationErrors = new List<string>();
+
+            if (!Directory.Exists(this.SourceDirectory))
+            {
+                validationErrors.Add("Source directory does not exist");
+            }
+            else
+            {
+                this.SourceDirectory = Path.GetFullPath(this.SourceDirectory);
+                if (!Directory.Exists(this.SourceDirectory))
+                {
+                    validationErrors.Add($"Can't parse source directory {this.SourceDirectory}, plese provide absolute path.");
+                }
+            }
+
+            if (!File.Exists(this.V
