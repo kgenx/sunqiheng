@@ -53,4 +53,28 @@ namespace Virgil.CLI.Common.Handlers
             {
                 foreach (var validationError in validationErrors)
                 {
-                    
+                    Console.WriteLine("    " + validationError);
+                }
+                return 1;
+            }
+
+            ExceptionNotifier.Current.OnDropboxSessionExpired(() =>
+            {
+                eventAggregator.Publish(new DropboxSessionExpired());
+                Console.WriteLine("    Dropbox session has expired");
+                Environment.Exit(1);
+            });
+
+			var folderLinkFacade = this.bootstrapper.Container.Resolve<FolderLinkFacade>();
+            
+			Task.Factory.StartNew(() => folderLinkFacade.Rebuild());
+
+            Console.WriteLine("    Virgil sync is running");
+
+			while (true) 
+			{
+				Console.ReadLine ();
+			}
+        }
+    }
+}
