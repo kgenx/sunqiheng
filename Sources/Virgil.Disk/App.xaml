@@ -7,4 +7,20 @@
 
         <Brush x:Key="ErrorBackground">#FFdc000c</Brush>
 
-        <converters:HeightToNegativeMargin x:Key="Height
+        <converters:HeightToNegativeMargin x:Key="HeightToNegativeMargin" />
+
+        <Style TargetType="UserControl" x:Key="AppPage">
+            <Setter Property="Background" Value="#414A54" />
+            <Setter Property="Height" Value="790" />
+            <Setter Property="Width" Value="480" />
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="LargeText">
+            <Setter Property="Foreground" Value="White"  />
+            <Setter Property="HorizontalAlignment" Value="Center"  />
+            <Setter Property="FontSize" Value="25"  />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Set
