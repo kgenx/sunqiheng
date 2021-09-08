@@ -23,4 +23,20 @@
         </Style>
 
         <Style TargetType="Button">
-            <Set
+            <Setter Property="Padding" Value="20 1 20 2">
+            </Setter>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Offset="0" Color="#FFF4F3F8" />
+                        <GradientStop Offset="1" Color="#FFDFDEE2" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="LinkButton" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+         
