@@ -55,4 +55,15 @@
             </Style.Triggers>
         </Style>
 
-        <Style x:Key="BorderedButton" TargetType="Button"
+        <Style x:Key="BorderedButton" TargetType="Button">
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Template">
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border"  CornerRadius="15" Background="Transparent" BorderThickness="4" Padding="2" BorderBrush="#65727C">
+                            <ContentPresenter x:Name="ContentPresenter" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Tar
