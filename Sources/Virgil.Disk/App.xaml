@@ -75,4 +75,20 @@
                                 <Setter TargetName="Border" Property="Background" Value="Gray" />
                                 <Setter TargetName="ContentPresenter" Property="Opacity" Value="0.5" />
                             </Trigger>
-                        </ControlTemplate.Trig
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SignInButton" TargetType="Button">
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border" CornerRadius="15" Background="#F7B626" BorderThickness="1" Padding="2">
+                            <Conte
