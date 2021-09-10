@@ -101,4 +101,21 @@
                             <Trigger Property="IsPressed" Value="true">
                                 <Setter TargetName="Border" Property="Opacity" Value="0.8" />
                             </Trigger>
-                      
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="Border" Property="Background" Value="#906A16" />
+                                <Setter TargetName="ContentPresenter" Property="Opacity" Value="0.5" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="controls:TransparentTextBox">
+            <Setter Property="Height" Value="45" />
+            <Setter Property="Margin" Value="30 0 30 15"/>
+        </Style>
+
+
+        <!--Sc
