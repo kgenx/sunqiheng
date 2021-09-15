@@ -227,4 +227,15 @@
             <Setter Property="Padding" Value="1" />
             <Setter Property="Template">
                 <Setter.Value>
-                    <Contro
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border
+                        x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        SnapsToDevicePixels="true">
+                            <ContentPresenter
+                            x:Name="contentPresenter"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment
