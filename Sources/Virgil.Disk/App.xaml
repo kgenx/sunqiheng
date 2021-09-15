@@ -263,4 +263,16 @@
 
         <Style x:Key="OptionMarkFocusVisual">
             <Setter Property="Control.Template">
-            
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="14,0,0,0" SnapsToDevicePixels="true" 
+                                   Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                                   StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Background" Color="#00000000"/>
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Border" Color="#FFA0A5AA"/>
+        <SolidColorBrush x:Key="Option
