@@ -170,4 +170,15 @@
                                 <Setter Value="#656E77" TargetName="Thumb" Property="Background" />
                             </Trigger>
                             <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
-                                <Setter Value="#8F98A0" Targe
+                                <Setter Value="#8F98A0" TargetName="Thumb" Property="Background" />
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                            <Trigger Property="Orientation" Value="Horizontal">
+                                <Setter TargetName="GridRoot" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90" />
+                                    </Setter.Value>
+                      
