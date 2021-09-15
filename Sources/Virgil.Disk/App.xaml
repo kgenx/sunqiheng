@@ -190,4 +190,18 @@
                                 <Setter Property="Width" Value="Auto" />
                                 <Setter Property="Height" Value="12" />
                                 <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
-                                <Setter TargetName="PageDown" Property="Command" Value="Scro
+                                <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
+                                <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="WindowButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle">
+                <Setter.Value>
+                    <Style>
+                        <Setter Property="Control.Template">
+                         
