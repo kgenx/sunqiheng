@@ -275,4 +275,13 @@
 
         <SolidColorBrush x:Key="OptionMark.MouseOver.Background" Color="#00000000"/>
         <SolidColorBrush x:Key="OptionMark.MouseOver.Border" Color="#FFA0A5AA"/>
-        <SolidColorBrush x:Key="Option
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Glyph" Color="#FFA0A5AA"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Background" Color="#00000000"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Border" Color="#FFA0A5AA"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Glyph" Color="#FFA0A5AA"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Background" Color="#00000000"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Border" Color="#FFA0A5AA"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="#FFA0A5AA"/>
+        <SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="#FFA0A5AA"/>
+
+        <Style TargetType="CheckBox" x:Key="C
