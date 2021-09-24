@@ -296,4 +296,13 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type CheckBox}">
                         <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
-                 
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border x:Name="checkBoxBorder" BorderBrush="{TemplateBinding BorderBrush}" 
+                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                    Background="{TemplateBinding Background}" 
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"                                    
+                                    Ve
