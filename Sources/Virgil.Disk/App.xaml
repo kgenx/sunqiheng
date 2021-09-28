@@ -354,4 +354,17 @@
                             </Trigger>
                             <Trigger Property="IsChecked" Value="{x:Null}">
                                 <Setter Property="Opacity" TargetName="optionMark" Value="0"/>
-                                <Setter Property="Opacity"
+                                <Setter Property="Opacity" TargetName="indeterminateMark" Value="1"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converters:BoolToVisibilityConverter TrueValue="Collapsed" FalseValue="Visible" x:Key="NotBoolToVisibilityConverter" />
+        <converters:NotEmptyStringToVisibilityConverter x:Key="NotEmptyStringToVisibilityConverter" />
+
+    </Application.Resources>
+</Application>
