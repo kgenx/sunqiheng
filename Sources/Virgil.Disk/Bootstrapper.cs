@@ -29,4 +29,15 @@
             this.IoC.Bind<IRegenerateKeypairModel>()
                 .To<CreateAccountViewModel>()
                 .InSingletonScope()
-                .WithParameter(new ConstructorArgument("state", CreateAccountViewModel.State.Regenerate
+                .WithParameter(new ConstructorArgument("state", CreateAccountViewModel.State.RegenerateKeyPair));
+
+            this.IoC.Bind<ICreateNewAccountModel>()
+                .To<CreateAccountViewModel>()
+                .InSingletonScope()
+                .WithParameter(new ConstructorArgument("state", CreateAccountViewModel.State.CreateNewAccount));
+
+            this.IoC.Bind<FolderSettingsViewModel>().ToSelf().InSingletonScope();
+            this.IoC.Bind<SignInViewModel>().ToSelf().InSingletonScope();
+            this.IoC.Bind<ContainerViewModel>().ToSelf().InSingletonScope();
+            this.IoC.Bind<DropBoxSignInViewModel>().ToSelf().InSingletonScope();
+            this.IoC.Bind<OperationStatusViewModel>().ToSelf(
