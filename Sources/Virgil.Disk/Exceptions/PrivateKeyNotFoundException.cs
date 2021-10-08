@@ -2,4 +2,8 @@
 {
     using System;
 
-    
+    public class PrivateKeyNotFoundException : Exception
+    {
+         
+    }
+}
