@@ -17,3 +17,22 @@
 
         public IsolatedStorageProvider(IEncryptor encryptor)
         {
+            this.encryptor = encryptor;
+        }
+
+        public void Save(string data, string path = null)
+        {
+            using (var storage = GetIsolatedStorage())
+            using (var stream = new IsolatedStorageFileStream(path ?? this.FilePath, FileMode.Create, storage))
+            {
+                var bytes = Encoding.UTF8.GetBytes(data);
+                var encrypt = this.encryptor.Encrypt(bytes);
+                stream.Write(encrypt, 0, encrypt.Length);
+            }
+        }
+
+        public string Load(string path = null)
+        {
+            this.CreateFileIfNotExists();
+
+            using (var storage = GetI
