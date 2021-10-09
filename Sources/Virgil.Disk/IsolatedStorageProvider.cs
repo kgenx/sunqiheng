@@ -54,4 +54,22 @@
         {
             using (var storage = GetIsolatedStorage())
             {
-                if (!storage.FileExists(
+                if (!storage.FileExists(this.FilePath))
+                {
+                    storage.CreateDirectory(FolderName);
+
+                    using (var stream = storage.CreateFile(this.FilePath))
+                    using (var writer = new StreamWriter(stream))
+                    {
+                        writer.Write("");
+                    }
+                }
+            }
+        }
+
+        private static IsolatedStorageFile GetIsolatedStorage()
+        {
+            return IsolatedStorageFile.GetStore(IsolatedStorageScope.User | IsolatedStorageScope.Assembly, null, null);
+        }
+    }
+}
