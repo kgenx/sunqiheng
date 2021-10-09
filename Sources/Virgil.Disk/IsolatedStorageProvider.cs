@@ -35,4 +35,23 @@
         {
             this.CreateFileIfNotExists();
 
-            using (var storage = GetI
+            using (var storage = GetIsolatedStorage())
+            using (var stream = new IsolatedStorageFileStream(path ?? this.FilePath, FileMode.OpenOrCreate, storage))
+            {
+                if (stream.Length == 0)
+                {
+                    return "";
+                }
+
+                var result = new byte[stream.Length];
+                stream.Read(result, 0, result.Length);
+                var decrypt = this.encryptor.Decrypt(result);
+                return Encoding.UTF8.GetString(decrypt);
+            }
+        }
+
+        private void CreateFileIfNotExists()
+        {
+            using (var storage = GetIsolatedStorage())
+            {
+                if (!storage.FileExists(
