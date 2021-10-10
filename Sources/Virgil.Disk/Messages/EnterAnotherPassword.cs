@@ -4,4 +4,11 @@
 
     public class EnterAnotherPassword
     {
-        public E
+        public EnterAnotherPassword(DecryptWithAnotherPasswordOperation decryptWithAnotherPasswordOperation)
+        {
+            this.Operation = decryptWithAnotherPasswordOperation;
+        }
+
+        public DecryptWithAnotherPasswordOperation Operation { get; }
+    }
+}
