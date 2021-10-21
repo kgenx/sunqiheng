@@ -927,3 +927,72 @@ namespace Virgil.Sync.Properties
   public sealed class AspMethodPropertyAttribute : Attribute { }
 
   [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+  public sealed class AspRequiredAttributeAttribute : Attribute
+  {
+    public AspRequiredAttributeAttribute([NotNull] string attribute)
+    {
+      this.Attribute = attribute;
+    }
+
+    public string Attribute { get; private set; }
+  }
+
+  [AttributeUsage(AttributeTargets.Property)]
+  public sealed class AspTypePropertyAttribute : Attribute
+  {
+    public bool CreateConstructorReferences { get; private set; }
+
+    public AspTypePropertyAttribute(bool createConstructorReferences)
+    {
+      this.CreateConstructorReferences = createConstructorReferences;
+    }
+  }
+
+  [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
+  public sealed class RazorImportNamespaceAttribute : Attribute
+  {
+    public RazorImportNamespaceAttribute(string name)
+    {
+      this.Name = name;
+    }
+
+    public string Name { get; private set; }
+  }
+
+  [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
+  public sealed class RazorInjectionAttribute : Attribute
+  {
+    public RazorInjectionAttribute(string type, string fieldName)
+    {
+      this.Type = type;
+      this.FieldName = fieldName;
+    }
+
+    public string Type { get; private set; }
+    public string FieldName { get; private set; }
+  }
+
+  [AttributeUsage(AttributeTargets.Method)]
+  public sealed class RazorHelperCommonAttribute : Attribute { }
+
+  [AttributeUsage(AttributeTargets.Property)]
+  public sealed class RazorLayoutAttribute : Attribute { }
+
+  [AttributeUsage(AttributeTargets.Method)]
+  public sealed class RazorWriteLiteralMethodAttribute : Attribute { }
+
+  [AttributeUsage(AttributeTargets.Method)]
+  public sealed class RazorWriteMethodAttribute : Attribute { }
+
+  [AttributeUsage(AttributeTargets.Parameter)]
+  public sealed class RazorWriteMethodParameterAttribute : Attribute { }
+
+  /// <summary>
+  /// Prevents the Member Reordering feature from tossing members of the marked class.
+  /// </summary>
+  /// <remarks>
+  /// The attribute must be mentioned in your member reordering patterns
+  /// </remarks>
+  [AttributeUsage(AttributeTargets.All)]
+  public sealed class NoReorder : Attribute { }
+}
