@@ -54,4 +54,20 @@
 
         private void Thumb_OnDragDeltaTop(object sender, DragDeltaEventArgs e)
         {
-            var newHeight = Math.Max(this.Height - e.VerticalC
+            var newHeight = Math.Max(this.Height - e.VerticalChange, this.MinHeight);
+            var newWidth = this.Height * this.AspectRatio;
+
+            var heightDelta = this.Height - newHeight;
+            var widthDelta = this.Width - newWidth;
+
+            if ((int) (heightDelta - this.Height) != 0)
+            {
+                this.Top = Math.Round(this.Top + heightDelta);
+                this.Left = Math.Round(this.Left + widthDelta);
+
+                this.Height = Math.Round(newHeight);
+                this.Width = Math.Round(newWidth);
+            }
+        }
+    }
+}
