@@ -14,3 +14,19 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+           
+        </Grid.RowDefinitions>
+
+        <controls:ErrorMessage Margin="0 30 0 0"  Grid.Row="1" />
+
+        <Image Source="Images/Logo.png" Stretch="None" VerticalAlignment="Top" Grid.Row="0"/>
+
+        <TextBlock Text="We've sent you a code" Style="{StaticResource LargeText}" Grid.Row="1"/>
+        <TextBlock Text="Check the email and enter the code below"  Grid.Row="2" 
+                   TextAlignment="Center"
+                 FontSize="18"
+                 Foreground="#BEBEBE" />
+
+        <Grid Grid.Row="3" Width="400" Margin="0 30">
+            <!--<controls:ConfirmationCodeEdit FontSize="30" Height="100" x:Nam
