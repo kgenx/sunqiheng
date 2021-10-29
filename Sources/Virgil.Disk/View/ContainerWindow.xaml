@@ -1,0 +1,163 @@
+
+﻿<Window x:Class="Virgil.Sync.View.ContainerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+
+        xmlns:controls="clr-namespace:Virgil.Sync.View.Controls"
+        xmlns:view="clr-namespace:Virgil.Sync.View"
+        xmlns:viewModels="clr-namespace:Virgil.Sync.ViewModels"
+        xmlns:converters="clr-namespace:Virgil.Sync.View.Converters"
+        SnapsToDevicePixels="True"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        Background="{x:Null}"
+        AllowsTransparency="False"
+        Title="Virgil Sync"                                    
+        ResizeMode="NoResize"
+        Icon="Images/virgil_icon.ico"
+        WindowStartupLocation="CenterScreen"
+        MinHeight="400"
+        Height="650" 
+        Width="395">
+
+    <Window.Resources>
+        <Style x:Key="BorderThumb" TargetType="Thumb">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Rectangle MinWidth="4" MinHeight="4" StrokeThickness="0">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="Transparent"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="BorderThumbBottomRight" TargetType="Thumb">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <controls:ThumbContent />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Viewbox SnapsToDevicePixels="True" x:Name="Viewbox" Stretch="Fill">
+
+        <Grid>
+            <Grid.Resources>
+
+                <DataTemplate DataType="{x:Type viewModels:KeyManagementViewModel}">
+                    <view:LocalKeypairManagementView>
+                        <i:Interaction.Behaviors>
+                            <converters:EntranceTransitionBehavior
+                                Duration="00:00:00.50"
+                                FromHorizontalOffset="50"
+                                IsStaggeringEnabled="True"
+                                StaggerdOverlapRatio="0.5" />
+                        </i:Interaction.Behaviors>
+                    </view:LocalKeypairManagementView>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewModels:WrongPasswordViewModel}">
+                    <view:WrongPasswordView>
+                        <i:Interaction.Behaviors>
+                            <converters:EntranceTransitionBehavior
+                                Duration="00:00:00.50"
+                                FromHorizontalOffset="50"
+                                IsStaggeringEnabled="True"
+                                StaggerdOverlapRatio="0.5" />
+                        </i:Interaction.Behaviors>
+                    </view:WrongPasswordView>
+                </DataTemplate>
+                
+                <DataTemplate DataType="{x:Type viewModels:ErrorMessageViewModel}">
+                    <view:ErrorMessageView>
+                        <i:Interaction.Behaviors>
+                            <converters:EntranceTransitionBehavior
+                                Duration="00:00:00.50"
+                                FromHorizontalOffset="50"
+                                IsStaggeringEnabled="True"
+                                StaggerdOverlapRatio="0.5" />
+                        </i:Interaction.Behaviors>
+                    </view:ErrorMessageView>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewModels:DropBoxSignInViewModel}">
+                    <view:DropBoxSignInView />
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewModels:SignInViewModel}">
+                    <view:SignInView>
+                        <i:Interaction.Behaviors>
+                            <converters:EntranceTransitionBehavior
+                                Duration="00:00:00.50"
+                                FromHorizontalOffset="50"
+                                IsStaggeringEnabled="True"
+                                StaggerdOverlapRatio="0.5" />
+                        </i:Interaction.Behaviors>
+                    </view:SignInView>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewModels:ForgotPasswordViewModel}">
+                    <view:ForgotPasswordView >
+                        <i:Interaction.Behaviors>
+                            <converters:EntranceTransitionBehavior
+                                Duration="00:00:00.50"
+                                FromHorizontalOffset="50"
+                                IsStaggeringEnabled="True"
+                                StaggerdOverlapRatio="0.5" />
+                        </i:Interaction.Behaviors>
+                    </view:ForgotPasswordView>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewModels:FolderSettingsViewModel}">
+                    <view:FolderSettingsDropBoxView >
+                        <i:Interaction.Behaviors>
+                            <converters:EntranceTransitionBehavior
+                                Duration="00:00:00.50"
+                                FromHorizontalOffset="50"
+                                IsStaggeringEnabled="True"
+                                StaggerdOverlapRatio="0.5" />
+                        </i:Interaction.Behaviors>
+                    </view:FolderSettingsDropBoxView>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewModels:CreateAccountViewModel}">
+                    <view:CreateAccountView>
+                        <i:Interaction.Behaviors>
+                            <converters:EntranceTransitionBehavior
+                                Duration="00:00:00.50"
+                                FromHorizontalOffset="50"
+                                IsStaggeringEnabled="True"
+                                StaggerdOverlapRatio="0.5" />
+                        </i:Interaction.Behaviors>
+                    </view:CreateAccountView>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewModels:ConfirmationCodeViewModel}">
+                    <view:ConfirmationCodeView>
+                        <i:Interaction.Behaviors>
+                            <converters:EntranceTransitionBehavior
+                                Duration="00:00:00.50"
+                                FromHorizontalOffset="50"
+                                IsStaggeringEnabled="True"
+                                StaggerdOverlapRatio="0.5" />
+                        </i:Interaction.Behaviors>
+                    </view:ConfirmationCodeView>
+                </DataTemplate>
+            </Grid.Resources>
+
+            <Border CornerRadius="5" Background="#414B54">
+                <ContentControl Content="{Binding Content}">
