@@ -40,4 +40,18 @@
                 this.DragMove();
         }
 
-        public void PositionWindowOnScreen(double horizontalShift = 0, double verticalShift
+        public void PositionWindowOnScreen(double horizontalShift = 0, double verticalShift = 0)
+        {
+            this.Left = 0 + (SystemParameters.PrimaryScreenWidth - this.ActualWidth) / 2 + horizontalShift;
+            this.Top = 0 + (SystemParameters.PrimaryScreenHeight - this.ActualHeight) / 2 + verticalShift;
+        }
+
+        private void Thumb_OnDragDelta(object sender, DragDeltaEventArgs e)
+        {
+            this.Height = Math.Round(Math.Max(this.Height + e.VerticalChange, this.MinHeight));
+            this.Width = Math.Round(this.Height * this.AspectRatio);
+        }
+
+        private void Thumb_OnDragDeltaTop(object sender, DragDeltaEventArgs e)
+        {
+            var newHeight = Math.Max(this.Height - e.VerticalC
