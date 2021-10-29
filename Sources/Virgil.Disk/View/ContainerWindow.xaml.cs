@@ -17,4 +17,27 @@
         public ContainerWindow() : base()
         {
             InitializeComponent();
-            this.MouseDown += this.OnMouseDown
+            this.MouseDown += this.OnMouseDown;
+            CurrentInstance = this;
+
+            this.AspectRatio = this.Width / this.Height;
+        }
+
+        private void Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            CurrentInstance = null;
+        }
+
+        private void Minimize(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
+
+        public void PositionWindowOnScreen(double horizontalShift = 0, double verticalShift
