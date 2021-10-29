@@ -51,3 +51,97 @@
                 <Grid  x:Name="errorText" Opacity="0" 
                         Margin="{Binding ElementName=borderForText, Path=ActualHeight, Converter={StaticResource HeightToNegativeMargin}, ConverterParameter=-20}" 
                         VerticalAlignment="Bottom">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Polygon Points="0,0 5,-5, 10,0" 
+                            HorizontalAlignment="Center"
+                            IsHitTestVisible="False"
+                            Stroke="{StaticResource ErrorBackground}" 
+                            Fill="{StaticResource ErrorBackground}" />
+
+                    <Border x:Name="borderForText"
+                        Grid.Row="1"
+                        Background="{StaticResource ErrorBackground}" 
+                        HorizontalAlignment="Center"
+                        IsHitTestVisible="False">
+                        <TextBlock Text="{Binding ElementName=ph, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Margin="5"
+                                Foreground="White" TextWrapping="Wrap"/>
+                    </Border>
+                </Grid>
+                
+            </Grid>
+
+            <ControlTemplate.Triggers>
+                <DataTrigger Value="True">
+                    <DataTrigger.Binding>
+                        <Binding ElementName="ph" Path="AdornedElement.IsTextBoxFocused" />
+                    </DataTrigger.Binding>
+
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard x:Name="fadeInStoryboard">
+                            <Storyboard>
+                                <DoubleAnimation Duration="00:00:00.15"
+                                        Storyboard.TargetName="errorBorder"
+                                        Storyboard.TargetProperty="Opacity"
+                                        To="0"/>
+                                <DoubleAnimation Duration="00:00:00.15"
+                                        Storyboard.TargetName="errorText"
+                                        Storyboard.TargetProperty="Opacity"
+                                        To="1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+
+                    <DataTrigger.ExitActions>
+                        <StopStoryboard BeginStoryboardName="fadeInStoryboard"/>
+                        <BeginStoryboard x:Name="fadeOutStoryBoard">
+                            <Storyboard>
+                                <DoubleAnimation Duration="00:00:00.15"
+                                        Storyboard.TargetName="errorBorder"
+                                        Storyboard.TargetProperty="Opacity"
+                                        To="1"/>
+                                <DoubleAnimation Duration="00:00:00.15"
+                                        Storyboard.TargetName="errorText"
+                                        Storyboard.TargetProperty="Opacity"
+                                        To="0"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+
+            </ControlTemplate.Triggers>
+
+        </ControlTemplate>
+
+        <Style TargetType="controls:TransparentTextBox" x:Key="SingleLetterShit">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid Width="300" Margin="0 30" x:Name="Controls">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <controls:TransparentTextBox Grid.Column="0" Style="{StaticResource SingleLetterShit}" />
+        <controls:TransparentTextBox Grid.Column="1" Style="{StaticResource SingleLetterShit}" />
+        <controls:TransparentTextBox Grid.Column="2" Style="{StaticResource SingleLetterShit}" />
+        <controls:TransparentTextBox Grid.Column="3" Style="{StaticResource SingleLetterShit}" />
+        <controls:TransparentTextBox Grid.Column="4" Style="{StaticResource SingleLetterShit}" />
+        <controls:TransparentTextBox Grid.Column="5" Style="{StaticResource SingleLetterShit}" />
+    </Grid>
+</UserControl>
