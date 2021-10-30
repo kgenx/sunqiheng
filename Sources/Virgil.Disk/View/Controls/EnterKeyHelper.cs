@@ -26,4 +26,21 @@
 
         public static object GetEnterKeyCommandParam(DependencyObject target)
         {
-            return (object)target.GetValue(EnterKeyComma
+            return (object)target.GetValue(EnterKeyCommandParamProperty);
+        }
+
+        public static void SetEnterKeyCommandParam(DependencyObject target, object value)
+        {
+            target.SetValue(EnterKeyCommandParamProperty, value);
+        }
+
+        public static readonly DependencyProperty EnterKeyCommandParamProperty =
+            DependencyProperty.RegisterAttached(
+                "EnterKeyCommandParam",
+                typeof(object),
+                typeof(EnterKeyHelper),
+                new PropertyMetadata(null));
+
+        static void OnEnterKeyCommandChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)
+        {
+           
