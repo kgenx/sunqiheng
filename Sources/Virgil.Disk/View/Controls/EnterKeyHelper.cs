@@ -54,4 +54,20 @@
                         control.GetBindingExpression(TextBox.TextProperty),
                         control.GetBindingExpression(ConfirmationCodeEdit.ConfirmationCodeProperty),
                         control.GetBindingExpression(SelectFolderTextBox.SelectedPathProperty),
-                        control.GetBindingExpression(TransparentTe
+                        control.GetBindingExpression(TransparentTextBox.TextProperty),
+                        control.GetBindingExpression(TransparentTextBox.PasswordProperty)
+                    };
+
+                    foreach (var bindingExpression in dps)
+                    {
+                        if (bindingExpression != null)
+                        {
+                            bindingExpression.UpdateSource();
+                        }
+                    }
+                    
+                    object commandParameter = GetEnterKeyCommandParam(target);
+                    command.Execute(commandParameter);
+                }
+            };
+        }
