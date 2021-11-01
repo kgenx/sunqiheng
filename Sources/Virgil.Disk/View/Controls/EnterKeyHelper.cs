@@ -43,4 +43,15 @@
 
         static void OnEnterKeyCommandChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)
         {
-           
+            ICommand command = (ICommand)e.NewValue;
+            Control control = (Control)target;
+            control.KeyDown += (s, args) =>
+            {
+                if (args.Key == Key.Enter)
+                {
+                    var dps = new[]
+                    {
+                        control.GetBindingExpression(TextBox.TextProperty),
+                        control.GetBindingExpression(ConfirmationCodeEdit.ConfirmationCodeProperty),
+                        control.GetBindingExpression(SelectFolderTextBox.SelectedPathProperty),
+                        control.GetBindingExpression(TransparentTe
