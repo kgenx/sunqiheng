@@ -25,3 +25,105 @@
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Polygon Points="0,0 5,-5, 10,0" 
+                             HorizontalAlignment="Center"
+                             IsHitTestVisible="False"
+                             Stroke="{StaticResource ErrorBackground}" 
+                             Fill="{StaticResource ErrorBackground}" />
+
+                    <Border x:Name="borderForText"
+                            Grid.Row="1"
+                            Background="{StaticResource ErrorBackground}" 
+                            HorizontalAlignment="Center"
+                            IsHitTestVisible="False">
+                        <TextBlock Text="{Binding ElementName=ph, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Margin="5"
+                                   Foreground="White" TextWrapping="Wrap"/>
+                    </Border>
+                </Grid>
+            </Grid>
+
+            <ControlTemplate.Triggers>
+                <DataTrigger Value="True">
+                    <DataTrigger.Binding>
+                        <Binding ElementName="ph" Path="AdornedElement.IsMouseOver" />
+                    </DataTrigger.Binding>
+
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard x:Name="fadeInStoryboard">
+                            <Storyboard>
+                                <DoubleAnimation Duration="00:00:00.15"
+                                         Storyboard.TargetName="errorBorder"
+                                         Storyboard.TargetProperty="Opacity"
+                                         To="0"/>
+                                <DoubleAnimation Duration="00:00:00.15"
+                                         Storyboard.TargetName="errorText"
+                                         Storyboard.TargetProperty="Opacity"
+                                         To="1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+
+                    <DataTrigger.ExitActions>
+                        <StopStoryboard BeginStoryboardName="fadeInStoryboard"/>
+                        <BeginStoryboard x:Name="fadeOutStoryBoard">
+                            <Storyboard>
+                                <DoubleAnimation Duration="00:00:00.15"
+                                         Storyboard.TargetName="errorBorder"
+                                         Storyboard.TargetProperty="Opacity"
+                                         To="1"/>
+                                <DoubleAnimation Duration="00:00:00.15"
+                                         Storyboard.TargetName="errorText"
+                                         Storyboard.TargetProperty="Opacity"
+                                         To="0"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+
+            </ControlTemplate.Triggers>
+
+        </ControlTemplate>
+
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <local:TransparentTextBox 
+            Grid.Column="0" Margin="5"
+            IsReadonly="True"
+            Text="{Binding ElementName=UserControl, Path=SelectedFile, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        
+        <Button Grid.Column="1" Margin="5" Width="35" Height="30" BorderBrush="Transparent" Click="ChoseKeyPairOnDisk" >
+
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+
+                    <Image x:Name="Image" Source="../Images/small_folder_icon.png"/>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="Image" Property="Opacity" Value="0.9" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="Image" Property="Opacity" Value="0.8" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="Image" Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</UserControl>
