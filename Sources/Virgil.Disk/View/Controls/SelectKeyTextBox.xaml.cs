@@ -18,4 +18,17 @@ namespace Virgil.Sync.View.Controls
         }
 
         public static readonly DependencyProperty SelectedPathProperty = DependencyProperty.Register(
-            
+            "SelectedPath", typeof(string), typeof(SelectKeyTextBox), new PropertyMetadata(default(string)));
+
+        public string SelectedPath
+        {
+            get { return (string)GetValue(SelectedPathProperty); }
+            set { SetValue(SelectedPathProperty, value); }
+        }
+
+        public static readonly DependencyProperty OnFileChangedCommandProperty = DependencyProperty.Register(
+            "OnFileChangedCommand", typeof(RelayCommand<string>), typeof(SelectKeyTextBox), new PropertyMetadata(default(RelayCommand<string>)));
+
+        public RelayCommand<string> OnFileChangedCommand
+        {
+            get { return (RelayCommand<string>)Ge
