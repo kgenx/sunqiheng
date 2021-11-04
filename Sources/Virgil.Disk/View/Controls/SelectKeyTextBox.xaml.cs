@@ -31,4 +31,22 @@ namespace Virgil.Sync.View.Controls
 
         public RelayCommand<string> OnFileChangedCommand
         {
-            get { return (RelayCommand<string>)Ge
+            get { return (RelayCommand<string>)GetValue(OnFileChangedCommandProperty); }
+            set { SetValue(OnFileChangedCommandProperty, value); }
+        }
+
+        private void ChoseKeyPairOnDisk(object sender, RoutedEventArgs e)
+        {
+            var dialog = new VistaOpenFileDialog()
+            {
+                Title = "Select Virgil Card",
+                Multiselect = false,
+                CheckFileExists = true,
+                CheckPathExists = true,
+                ReadOnlyChecked = true,
+                DefaultExt = "*.vcard",
+                Filter = "All files (*.*)|*.*|Virgil Card Files (*.vcard)|*.vcard",
+                FilterIndex = 2
+            };
+
+            if (
