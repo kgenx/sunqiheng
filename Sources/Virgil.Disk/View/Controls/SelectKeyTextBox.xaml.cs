@@ -49,4 +49,11 @@ namespace Virgil.Sync.View.Controls
                 FilterIndex = 2
             };
 
-            if (
+            if (dialog.ShowDialog() == true)
+            {
+                this.SelectedPath = dialog.FileName;
+                this.OnFileChangedCommand?.Execute(dialog.FileName);
+            }
+        }
+    }
+}
