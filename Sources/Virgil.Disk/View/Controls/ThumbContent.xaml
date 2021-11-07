@@ -4,4 +4,11 @@
     <Canvas>
         <Border Width="20" Height="20" Background="Transparent"/>
         <Border Width="3" Height="3" CornerRadius="2" Canvas.Right="5" Canvas.Bottom="5" Background="DarkGray"/>
-        <Border Width="3" Height="3" CornerRadius="2" Canv
+        <Border Width="3" Height="3" CornerRadius="2" Canvas.Right="10" Canvas.Bottom="5" Background="DarkGray"/>
+        <Border Width="3" Height="3" CornerRadius="2" Canvas.Right="5" Canvas.Bottom="10" Background="DarkGray"/>
+
+        <Border Width="3" Height="3" CornerRadius="2" Canvas.Right="10" Canvas.Bottom="10" Background="DarkGray"/>
+        <Border Width="3" Height="3" CornerRadius="2" Canvas.Right="5" Canvas.Bottom="15" Background="DarkGray"/>
+        <Border Width="3" Height="3" CornerRadius="2" Canvas.Right="15" Canvas.Bottom="5" Background="DarkGray"/>
+    </Canvas>
+</UserControl>
