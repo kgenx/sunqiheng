@@ -36,4 +36,18 @@
             <Image Width="50" Margin="10"/>
             
             <StackPanel Grid.Column="1" Margin="10" VerticalAlignment="Center">
-                <TextBl
+                <TextBlock Text="Files synchronized" Grid.Column="1"/>
+                <TextBlock Text="Last update time: 15 minutes ago" Grid.Column="1"/>
+            </StackPanel>
+           
+        </Grid>
+        
+        
+        <StackPanel Margin="10" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <TextBlock Text="Open Source Folder" Style="{StaticResource Link}" />
+            <TextBlock Text="Open Settings" Style="{StaticResource Link}" />
+            <TextBlock Text="Logout" Style="{StaticResource Link}" />
+        </StackPanel>
+    </Grid>
+</UserControl>
