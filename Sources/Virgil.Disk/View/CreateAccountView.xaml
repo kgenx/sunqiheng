@@ -1,0 +1,105 @@
+
+﻿<UserControl x:Class="Virgil.Sync.View.CreateAccountView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:Virgil.Sync.View.Controls"
+             xmlns:viewModels="clr-namespace:Virgil.Sync.ViewModels"
+             mc:Ignorable="d" 
+             Style="{StaticResource AppPage}" 
+             d:DataContext="{d:DesignInstance Type=viewModels:CreateAccountViewModel}">
+
+    <Grid VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Image Source="Images/Logo.png" Stretch="None" VerticalAlignment="Top" Grid.Row="0"/>
+
+        <TextBlock Text="{Binding Title}" Style="{StaticResource LargeText}" Grid.Row="1" VerticalAlignment="Top"/>
+
+        <controls:ErrorMessage Margin="0 30 0 0"  Grid.Row="1" />
+
+        <controls:TransparentTextBox Grid.Row="2" 
+                                     controls:EnterKeyHelper.EnterKeyCommand="{Binding CreateAccountCommand}"
+                                     Hint="Email" Text="{Binding Login, Mode=TwoWay}" FontSize="20" Height="40"/>
+
+        <Grid Grid.RowSpan="2" Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <CheckBox 
+                Margin="50 10 0 0"
+                Grid.Row="0"
+                IsChecked="{Binding IsUploadPrivateKey, Mode=TwoWay}"
+                Style="{StaticResource CustomCheckbox}" 
+                      Content="Upload private key to the Virgil cloud"/>
+
+            <CheckBox 
+                Margin="50 10 0 10"
+                IsChecked="{Binding IsPasswordUsed, Mode=TwoWay}"
+                Style="{StaticResource CustomCheckbox}"
+                      Grid.Row="1"
+                      Content="Use private key password"/>
+
+            <controls:TransparentTextBox Grid.Row="2" 
+                                     Visibility="{Binding IsPasswordUsed, Converter={StaticResource BoolToVisibilityConverter}}"
+                                     controls:EnterKeyHelper.EnterKeyCommand="{Binding CreateAccountCommand}"
+                                     Hint="Password" Password="{Binding Password, Mode=TwoWay}" 
+                                         IsPassword="True" FontSize="20" Height="40"/>
+
+            <controls:TransparentTextBox Grid.Row="3"
+                                     Visibility="{Binding IsPasswordUsed, Converter={StaticResource BoolToVisibilityConverter}}"
+                                     controls:EnterKeyHelper.EnterKeyCommand="{Binding CreateAccountCommand}"
+                                     Hint="Confirm Password" Password="{Binding ConfirmPassword, Mode=TwoWay}"
+                                         IsPassword="True" FontSize="20" Height="40"/>
+        </Grid>
+
+        <Button Grid.Row="5" Style="{StaticResource SignInButton}" Margin="0 10 0 0" Width="300" Command="{Binding CreateAccountCommand}">
+            <TextBlock Text="{Binding ConfirmButtonTitle}" Foreground="Black" FontSize="20" FontWeight="Bold" />
+        </Button>
+
+        <TextBlock Grid.Row="6" 
+                   TextWrapping="Wrap"
+                   TextAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Margin="5 20"
+                   Foreground="#FFA0A5AA" FontSize="20">
+            <TextBlock.Inlines>
+                <Span>
+                    By creating an account you agree to Virgil Security
+                    <Hyperlink  NavigateUri="https://virgilsecurity.com/terms-of-service" Foreground="White" Click="Hyperlink_OnClick">
+                        <TextBlock Text="Terms of Service" />
+                    </Hyperlink>
+                    &amp;
+                    <Hyperlink NavigateUri="https://virgilsecurity.com/privacy-policy" Foreground="White" Click="Hyperlink_OnClick">
+                        <TextBlock Text="Privacy Policy" />
+                    </Hyperlink>
+
+                </Span>
+            </TextBlock.Inlines>
+        </TextBlock>
+
+        <Button Grid.Row="7" Style="{StaticResource BorderedButton}" 
+                Width="300" Margin="0 0 0 20" 
+                VerticalAlignment="Bottom" 
+                Command="{Binding NavigateToSignInCommand}">
+            <TextBlock Text="{Binding ReturnToPreviousPageTitle}" Foreground="White" FontSize="20" FontWeight="Bold" />
+        </Button>
+
+        <controls:BusyIndicator Grid.Row="0" Grid.RowSpan="8" VerticalAlignment="Stretch" />
+
+    </Grid>
+</UserControl>
