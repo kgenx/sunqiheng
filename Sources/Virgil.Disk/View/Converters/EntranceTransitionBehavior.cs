@@ -330,3 +330,86 @@
             var horizontalAnimation = new DoubleAnimation(this.FromHorizontalOffset, 0, duration)
             {
                 EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
+            };
+
+            var storyboard = new Storyboard();
+            storyboard.Children.Add(horizontalAnimation);
+            Storyboard.SetTarget(horizontalAnimation, this.AssociatedObject);
+            Storyboard.SetTargetProperty(horizontalAnimation, new PropertyPath("RenderTransform.X"));
+            storyboard.BeginTime = startOffsetTime;
+            storyboard.Begin();
+            this.storyboards.Add(storyboard);
+            var veritcalAnimation = new DoubleAnimation(this.FromVerticalOffset, 0, duration)
+            {
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
+            };
+
+            storyboard = new Storyboard();
+            storyboard.Children.Add(veritcalAnimation);
+            Storyboard.SetTarget(veritcalAnimation, this.AssociatedObject);
+            Storyboard.SetTargetProperty(veritcalAnimation, new PropertyPath("RenderTransform.Y"));
+            storyboard.BeginTime = startOffsetTime;
+            storyboard.Begin();
+            this.storyboards.Add(storyboard);
+
+            var opacityAnimation = new DoubleAnimationUsingKeyFrames();
+            opacityAnimation.KeyFrames.Add(new EasingDoubleKeyFrame(0, TimeSpan.Zero));
+            opacityAnimation.KeyFrames.Add(new EasingDoubleKeyFrame(0, startOffsetTime, new CubicEase { EasingMode = EasingMode.EaseOut }));
+            opacityAnimation.KeyFrames.Add(new EasingDoubleKeyFrame(1, duration + startOffsetTime + TimeSpan.FromMilliseconds(this.Duration.TotalMilliseconds / 2), new CubicEase { EasingMode = EasingMode.EaseOut }));
+
+            storyboard = new Storyboard();
+            storyboard.Children.Add(opacityAnimation);
+            Storyboard.SetTarget(opacityAnimation, this.AssociatedObject);
+            Storyboard.SetTargetProperty(opacityAnimation, new PropertyPath(UIElement.OpacityProperty));
+            storyboard.Begin();
+            this.storyboards.Add(storyboard);
+        }
+
+        protected override void OnAttached()
+        {
+            this.AssociatedObject.Loaded += this.AssociatedObject_Loaded;
+            this.AssociatedObject.Unloaded += this.AssociatedObject_Unloaded;
+            base.OnAttached();
+        }
+
+        protected override void OnDetaching()
+        {
+            this.AssociatedObject.Loaded -= this.AssociatedObject_Loaded;
+            this.AssociatedObject.Unloaded -= this.AssociatedObject_Unloaded;
+
+            base.OnDetaching();
+        }
+
+        void AssociatedObject_Unloaded(object sender, RoutedEventArgs e)
+        {
+            var parent = VisualTreeHelper.GetParent(this.AssociatedObject);
+            if (parent != null)
+            {
+                this.hasAnimated = false;
+            }
+
+            this.StopAnimation();
+
+            this.lastUnloadTime = stopwatch.Elapsed;
+        }
+
+        void AssociatedObject_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (stopwatch.Elapsed - this.lastUnloadTime < TimeSpan.FromMilliseconds(30))
+            {
+                this.StopAnimation();
+                return;
+            }
+            this.lastUnloadTime = stopwatch.Elapsed;
+            this.StopAnimation();
+            if (this.IsStaggeringEnabled)
+            {
+                this.StartStaggardAnimation();
+            }
+            else
+            {
+                this.StartAnimation(TimeSpan.Zero, this.Duration);
+            }
+        }
+    }
+}
