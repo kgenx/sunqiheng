@@ -1,24 +1,21 @@
-namespace Virgil.Sync.View.Converters
+
+﻿namespace Virgil.Sync.View.Converters
 {
     using System;
     using System.Globalization;
     using System.Windows;
     using System.Windows.Data;
 
-    public class HeightToNegativeMargin : IValueConverter
+    public class NotEmptyStringToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            double d;
-
-            bool parsed = double.TryParse(parameter?.ToString() ?? "", out d);
-
-            if (!parsed)
+            if (string.IsNullOrEmpty(value?.ToString()))
             {
-                d = 5;
+                return Visibility.Collapsed;
             }
-            var bottom = -((double) value + d);
-            return new Thickness(0, 0, 0, bottom);
+
+            return Visibility.Visible;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
