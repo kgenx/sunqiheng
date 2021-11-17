@@ -14,4 +14,22 @@
     {
         public DropBoxSignInView()
         {
-            this.Initial
+            this.InitializeComponent();
+            ServiceLocator.Resolve<IEventAggregator>().Subscribe(this);
+        }
+
+        private DropBoxSignInViewModel Model => this.DataContext as DropBoxSignInViewModel;
+        
+        private void BrowserNavigating(object sender, NavigatingCancelEventArgs e)
+        {
+            var handleNavigation = new HandleNavigation(e.Uri);
+            this.Model?.HandleNavigating(handleNavigation);
+            e.Cancel = handleNavigation.Cancel;
+        }
+
+        public void Handle(DropboxSignOut message)
+        {
+            this.Browser.Navigate("https://www.dropbox.com/logout");
+        }
+    }
+}
