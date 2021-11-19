@@ -10,4 +10,20 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="300"/>
-            <Row
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Image Source="Images/Logo.png" Stretch="None" VerticalAlignment="Top" Grid.Row="0"/>
+
+        <TextBlock Text="{Binding ErrorLarge}" Style="{StaticResource LargeText}" Grid.Row="1"/>
+
+        <TextBlock Grid.Row="2" 
+                   TextWrapping="Wrap"
+                   TextAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Margin="5 20"
+                   Text="{Binding ErrorDetails}"
+                   For
