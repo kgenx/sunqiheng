@@ -28,3 +28,101 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Image Source="Images/disconnected.png" Height="190" Margin="0 0 0 20" Stretch="None"/>
+
+            <Border Grid.Row="1"  Width="300" BorderBrush="#65727C" BorderThickness="3" CornerRadius="20">
+                <TextBlock Margin="5"  Text="Disconnected" Foreground="#65727C" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+
+            <TextBlock Grid.Row="2" Margin="5" FontSize="20" Text="from Dropbox" HorizontalAlignment="Center" Foreground="#65727C" FontWeight="Light"/>
+
+            <Button Width="300"
+                    Grid.Row="3"
+                    Content="CONNECT"
+                    FontSize="18"
+                    FontStretch="Expanded"
+                    Command="{Binding ConnectDropboxCommand}"
+                    Style="{StaticResource SignInButton}" Margin="5 150 5 0"/>
+        </Grid>
+
+        <Grid Grid.Row="0" Background="#F5EFEE" Visibility="{Binding DropboxConnected, Converter={StaticResource BoolToVisibilityConverter}}">
+        <!--<Grid Grid.Row="0" Background="#F5EFEE" Visibility="Visible">-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Image Source="Images/connected.png" Height="210"  Stretch="None"/>
+
+            <Border Grid.Row="1"  Width="300" BorderBrush="#65727C" BorderThickness="3" 
+                    Background="#5DC7B9"
+                    CornerRadius="20">
+                <TextBlock Margin="5"  Text="Connected" Foreground="#65727C" FontSize="20"
+                           FontWeight="Bold" HorizontalAlignment="Center"/>
+            </Border>
+
+            <TextBlock Grid.Row="2" Margin="5" FontSize="20" Text="to Dropbox" HorizontalAlignment="Center" Foreground="#65727C" FontWeight="Light"/>
+
+            <Button Width="300"
+                    Grid.Row="3"
+                    Content="DISCONNECT"
+                    FontSize="18"
+                    FontStretch="Expanded"
+                    Command="{Binding DisconnectDropboxCommand}"
+                    Style="{StaticResource SignInButton}" Margin="5 50 5 0"/>
+          
+            
+            <TextBlock Grid.Row="5" Margin="50 5 5 5" FontSize="20" Text="{Binding DropboxUserName}" 
+                       HorizontalAlignment="Left" Foreground="#65727C" FontWeight="DemiBold"/>
+            <TextBlock Grid.Row="6" Margin="50 5 5 5" FontSize="20" Text="{Binding UsedSpaceString}" 
+                       HorizontalAlignment="Left" Foreground="#65727C" FontWeight="Light"/>
+
+            <TextBlock Grid.Row="7"  FontSize="15" Text="Low dropbox space" 
+                       Margin="50 5 5 5"
+                       Visibility="{Binding LowDropBoxSpace, Converter={StaticResource BoolToVisibilityConverter}}"
+                       HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Red" 
+                       FontWeight="Light"/>
+            
+            <ProgressBar Grid.Row="8" VerticalAlignment="Stretch"  
+                                             BorderThickness="0"
+                                             Foreground="{Binding LowDropBoxSpace, Converter={StaticResource BoolToDropboxStatusColorConverter}}"
+                                             Margin="50 10 55 30"
+                                             Background="#E3DAD8"
+                                             Maximum="{Binding TotalSpace}"
+                                             Height="8" Value="{Binding UsedSpace}"/>
+
+        </Grid>
+
+        <Grid Grid.Row="1" >
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock x:Name="textBlock" Text="Virgil Folder" Style="{StaticResource LargeText}" 
+                       Grid.Row="1" Margin="50 10 10 0" HorizontalAlignment="Left" />
+            
+            <controls:SelectFolderTextBox Grid.Row="3" 
+                                          Margin="45 15 20 20" Height="50" 
+                                          OnFolderChangedCommand="{Binding SourceFolder.OnFolderChangedCommand}"
+                                          SelectedPath="{Binding SourceFolder.FolderPath}"/>
+        </Grid>
+        
+    </Grid>
+
+</UserControl>
