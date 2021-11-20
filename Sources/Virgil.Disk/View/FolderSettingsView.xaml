@@ -189,3 +189,159 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+            <Image x:Name="FolderLogo" Source="Images/red_logo_folder.png" Stretch="None" Margin="30 70 30 0" RenderTransformOrigin="0.5,0.5" Width="205" Height="161">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <TextBlock x:Name="textBlock" Text="Virgil Folder" Style="{StaticResource LargeText}" Grid.Row="1" Margin="10 50 10 10"/>
+            <TextBlock x:Name="TooltipTextBlock" Grid.Row="2" 
+				Margin="50 10 50 0"
+				TextWrapping="Wrap"
+				TextAlignment="Center"
+				HorizontalAlignment="Center"
+				Foreground="#FFA0A5AA" 
+                       FontSize="20" 
+                       RenderTransformOrigin="0.5,0.5" 
+                       Width="350" 
+                       Height="54">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform><Run Text="Select the folder path with the data you need to encrypt:"/>
+            </TextBlock>
+            <controls:SelectFolderTextBox Grid.Row="3" 
+                                          Margin="30 5" Height="50" 
+                                          OnFolderChangedCommand="{Binding SourceFolder.OnFolderChangedCommand}"
+                                          SelectedPath="{Binding SourceFolder.FolderPath}"/>
+        </Grid>
+
+        <Grid x:Name="SourceFoldersGrid" Grid.Row="1" Background="#F5EFEE">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="textBlock1" Text="Secret Folders" Style="{StaticResource LargeText}" Grid.Row="0" Margin="10 30 10 10" Foreground="#4A504E"/>
+
+            <Image Grid.Row="1" x:Name="SourceFolderLogo" Source="Images/SourceFolderLogo.png" Stretch="None" Margin="10" RenderTransformOrigin="0.5,0.5" Width="215" Height="200" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+
+            <TextBlock x:Name="TooltipTextBlock2" Grid.Row="2" 
+				Margin="50 10 50 0"
+				TextWrapping="Wrap"
+				TextAlignment="Center"
+				HorizontalAlignment="Center"
+				Foreground="#FFA0A5AA" FontSize="20" RenderTransformOrigin="0.5,0.5" Width="350" Height="54">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            <Run Text="Select the folder path where you want to put your encrypted files:"/>
+            </TextBlock>
+
+            <ScrollViewer x:Name="scrollViewer" Grid.Row="3"  Margin="5">
+                <ItemsControl ItemsSource="{Binding TargetFolders}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel  />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock x:Name="TooltipTextBlock" Grid.Row="0" Grid.ColumnSpan="2" 
+				                Margin="10 0 0 0"
+				                TextWrapping="Wrap"
+				                TextAlignment="Center"
+				                HorizontalAlignment="Left"
+                                Text="{Binding Alias}"
+				                Foreground="#FFA0A5AA" FontSize="20" />
+
+                                <controls:SelectFolderTextBox Height="50" Grid.Column="0" Grid.Row="1"
+                                                              OnFolderChangedCommand="{Binding OnFolderChangedCommand}"
+                                                              SelectedPath="{Binding FolderPath}"/>
+
+                                <Button Grid.Column="1" Grid.Row="1" 
+                                        CommandParameter="{Binding}"
+                                        Command="{Binding DataContext.RemoveTargetCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}">
+
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+
+                                            <Image x:Name="Image" Source="Images/BrownCross.png" Stretch="Uniform" Height="20" Margin="5 5 10 5" />
+
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="true">
+                                                    <Setter TargetName="Image" Property="Opacity" Value="0.9" />
+                                                </Trigger>
+                                                <Trigger Property="IsPressed" Value="true">
+                                                    <Setter TargetName="Image" Property="Opacity" Value="0.8" />
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="false">
+                                                    <Setter TargetName="Image" Property="Opacity" Value="0.5" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Button.Template>
+
+                                </Button>
+
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+            <Border x:Name="border" Height="2" Grid.Row="4" Margin="10" Background="#E9DBD8" />
+
+            <controls:SelectFolderTextBox x:Name="selectFolderTextBox" Grid.Row="5" Margin="30 5" Height="50"
+                                          OnFolderChangedCommand="{Binding NewTargetFolder.OnFolderChangedCommand}"
+                                          SelectedPath="{Binding NewTargetFolder.FolderPath, Mode=TwoWay}"/>
+
+            <Button x:Name="button" Grid.Row="6" 
+                    Content="ADD NEW FOLDER"
+                    Command="{Binding AddNewTargetCommand}"
+                    Style="{StaticResource SignInButton}" Margin="35,10,80,10"/>
+
+        </Grid>
+    </Grid>
+
+</UserControl>
