@@ -16,4 +16,17 @@
             this.UpdateAnimation(false);
         }
 
-        public static readonly DependencyProperty SettingsStageProperty = DependencyProperty.Re
+        public static readonly DependencyProperty SettingsStageProperty = DependencyProperty.Register(
+            "SettingsStage", typeof (SettingsStage), typeof (FolderSettingsView), new PropertyMetadata(SettingsStage.None,
+                PropertyChangedCallback));
+
+        private static void PropertyChangedCallback(DependencyObject source, DependencyPropertyChangedEventArgs args)
+        {
+            var @this = (FolderSettingsView) source;
+            var state = (SettingsStage) args.NewValue;
+
+            switch (state)
+            {
+                case SettingsStage.IntroStart:
+                    VisualStateManager.GoToState(@this, "Initial", false);
+                    break
