@@ -29,4 +29,21 @@
             {
                 case SettingsStage.IntroStart:
                     VisualStateManager.GoToState(@this, "Initial", false);
-                    break
+                    break;
+                case SettingsStage.IntroContinue:
+                    VisualStateManager.GoToState(@this, "Second", false);
+                    break;
+                case SettingsStage.FullView:
+                    VisualStateManager.GoToState(@this, "Third", false);
+                    break;
+            }
+        }
+
+        public SettingsStage SettingsStage
+        {
+            get { return (SettingsStage) this.GetValue(SettingsStageProperty); }
+            set { this.SetValue(SettingsStageProperty, value); }
+        }
+
+        public static readonly DependencyProperty UseAnimationProperty = DependencyProperty.Register(
+            "UseAnimation", typeof (bool), ty
