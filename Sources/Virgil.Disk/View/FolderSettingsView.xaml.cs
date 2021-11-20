@@ -65,4 +65,17 @@
                 this.StoryboardSecond.SpeedRatio = SpeedRatio;
                 this.StoryboardThird.SpeedRatio = SpeedRatio;
             }
-       
+            else
+            {
+                this.StoryboardSecond.SpeedRatio = double.MaxValue;
+                this.StoryboardThird.SpeedRatio = double.MaxValue;
+            }
+        }
+
+        public bool UseAnimation
+        {
+            get { return (bool) this.GetValue(UseAnimationProperty); }
+            set { this.SetValue(UseAnimationProperty, value); }
+        }
+    }
+}
