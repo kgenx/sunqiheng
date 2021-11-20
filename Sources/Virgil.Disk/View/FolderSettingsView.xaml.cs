@@ -46,4 +46,23 @@
         }
 
         public static readonly DependencyProperty UseAnimationProperty = DependencyProperty.Register(
-            "UseAnimation", typeof (bool), ty
+            "UseAnimation", typeof (bool), typeof (FolderSettingsView), new PropertyMetadata(false, ChangedCallback));
+
+        const int SpeedRatio = 1;
+
+        private static void ChangedCallback(DependencyObject source, DependencyPropertyChangedEventArgs args)
+        {
+            var @this = (FolderSettingsView)source;
+            var useAnimation = (bool)args.NewValue;
+
+            @this.UpdateAnimation(useAnimation);
+        }
+
+        private void UpdateAnimation(bool useAnimation)
+        {
+            if (useAnimation)
+            {
+                this.StoryboardSecond.SpeedRatio = SpeedRatio;
+                this.StoryboardThird.SpeedRatio = SpeedRatio;
+            }
+       
