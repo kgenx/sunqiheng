@@ -20,4 +20,9 @@ namespace Virgil.Sync.View
     /// </summary>
     public partial class LocalKeypairManagementView : UserControl
     {
-        public LocalKeypairManagementVie
+        public LocalKeypairManagementView()
+        {
+            InitializeComponent();
+        }
+    }
+}
