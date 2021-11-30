@@ -32,4 +32,13 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <TextBlock Text="{Binding Title}" Foreground="#9A9FA4"/>
-                                <ProgressBar Grid.Row="1"
+                                <ProgressBar Grid.Row="1" VerticalAlignment="Stretch"  
+                                             BorderThickness="0"
+                                             Foreground="#5DC7B9"
+                                             Margin="0 4"
+                                             Height="8" Value="{Binding Progress}"/>
+                                <TextBlock Grid.Row="2" VerticalAlignment="Stretch"  Text="{Binding ErrorMessage}" Foreground="#D07E7E" TextWrapping="Wrap"/>
+                                <Border Height="1" Grid.Row="3" Background="#525A62" Margin="0 2"/>
+                            </Grid>
+                        </DataTemplate>
+ 
