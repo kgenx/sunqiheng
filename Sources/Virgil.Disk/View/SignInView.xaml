@@ -20,4 +20,17 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             
-        </Grid.RowDefin
+        </Grid.RowDefinitions>
+
+        <Image Source="Images/Logo.png" Stretch="None" VerticalAlignment="Top" Grid.Row="0"/>
+
+        <TextBlock Text="Sign In" Style="{StaticResource LargeText}" Grid.Row="1"/>
+
+        <controls:ErrorMessage Margin="0 30 0 0"  Grid.Row="1" />
+
+        <controls:TransparentTextBox Grid.Row="2" FontSize="20" Height="40"
+                                     controls:EnterKeyHelper.EnterKeyCommand="{Binding SignInCommand}"
+                                     Hint="Email" Margin="30 0 30 15" Text="{Binding Login, Mode=TwoWay}"/>
+
+        <!--<controls:TransparentTextBox Grid.Row="3" FontSize="20" Height="40"
+                               
