@@ -41,4 +41,9 @@
                                 <Border Height="1" Grid.Row="3" Background="#525A62" Margin="0 2"/>
                             </Grid>
                         </DataTemplate>
- 
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</UserControl>
