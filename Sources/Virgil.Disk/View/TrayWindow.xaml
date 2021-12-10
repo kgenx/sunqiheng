@@ -7,4 +7,16 @@
         xmlns:view="clr-namespace:Virgil.Sync.View"
         mc:Ignorable="d"
         AllowsTransparency="True"
-        Loaded="
+        Loaded="TrayWindow_OnLoaded"
+        Height="200" Width="200">
+    <Grid>
+        <tb:TaskbarIcon
+                      x:Name="TaskbarIcon"
+                      TrayMouseDoubleClick="TaskbarIcon_OnTrayMouseDoubleClick"
+                      IconSource="/View/Images/control_panel.ico"
+                      PopupActivation="LeftClick"
+                      ToolTipText="Virgil Disk">
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu >
+                    <MenuItem Header="Open Virgil Folder in File Explorer" Click="OnOpenVirgilDiskClick" x:Name="OpenFolderItem"/>
+                    <MenuItem Header="Settings" Click="OnSettingsClick
