@@ -24,4 +24,24 @@
         {
             this.InitializeComponent();
 
-      
+            this.Hide();
+            this.ShowInTaskbar = false;
+
+            ServiceLocator.Resolve<IEventAggregator>().Subscribe(this);
+
+            this.UpdateLogout();
+            this.UpdateOpenFolder();
+        }
+
+        private void TaskbarIcon_OnTrayMouseDoubleClick(object sender, RoutedEventArgs e)
+        {
+            ((App)Application.Current).ShowUI();
+        }
+
+        private void TrayWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void OnOpenVirgilDiskClick(object sender, RoutedEventArgs e)
+        {
+            ((App)Application.Current).ShowDecrypte
