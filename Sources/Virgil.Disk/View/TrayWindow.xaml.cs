@@ -67,4 +67,23 @@
 
             Application.Current.Dispatcher.InvokeAsync(async () =>
             {
-              
+                await Task.Delay(200);
+
+                var shouldLogout = System.Windows.MessageBox.Show(
+                "Are you sure you want to logout?\nIf your private key is not stored in the Virgil cloud, you should export it first to be able to login with same Virgil card again.",
+                "Logout confirmation",
+                MessageBoxButton.YesNo) == MessageBoxResult.Yes;
+
+                if (shouldLogout)
+                {
+                    ((App)Application.Current).Logout();
+                }
+            });
+
+            
+        }
+
+        public void Handle(CardLoaded message)
+        {
+            this.UpdateLogout();
+            this
