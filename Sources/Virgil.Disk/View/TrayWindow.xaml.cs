@@ -44,4 +44,27 @@
 
         private void OnOpenVirgilDiskClick(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).ShowDecrypte
+            ((App)Application.Current).ShowDecryptedDirectory();
+        }
+
+        private void OnSettingsClick(object sender, RoutedEventArgs e)
+        {
+            ((App)Application.Current).ShowUI();
+        }
+
+        private void OnMenuExitClick(object sender, RoutedEventArgs e)
+        {
+            ((App)Application.Current).Shutdown(0);
+        }
+
+        public void Handle(ErrorMessage message)
+        {
+            this.TaskbarIcon.ShowBalloonTip(message.Title, message.Error, BalloonIcon.Error);
+        }
+
+        private void OnLogoutClick(object sender, RoutedEventArgs e)
+        {
+
+            Application.Current.Dispatcher.InvokeAsync(async () =>
+            {
+              
