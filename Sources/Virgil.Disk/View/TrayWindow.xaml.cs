@@ -86,4 +86,29 @@
         public void Handle(CardLoaded message)
         {
             this.UpdateLogout();
-            this
+            this.UpdateOpenFolder();
+        }
+
+        public void Handle(Logout message)
+        {
+            this.UpdateLogout();
+            this.UpdateOpenFolder();
+        }
+
+        public void Handle(FolderSettingsChanged message)
+        {
+            this.UpdateOpenFolder();
+        }
+
+        private void UpdateLogout()
+        {
+            var hasAccount = ((App)Application.Current).AppState.HasAccount;
+            this.LogoutMenuItem.IsEnabled = hasAccount;
+            this.ExportKeyItem.IsEnabled = hasAccount;
+        }
+
+        private void UpdateOpenFolder()
+        {
+            try
+            {
+                var folderPath = ((App)Application.
