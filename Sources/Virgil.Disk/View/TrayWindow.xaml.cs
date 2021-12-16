@@ -111,4 +111,22 @@
         {
             try
             {
-                var folderPath = ((App)Application.
+                var folderPath = ((App)Application.Current).FolderSettings.FolderSettings.SourceFolder.FolderPath;
+                this.OpenFolderItem.IsEnabled = Directory.Exists(folderPath);
+            }
+            catch (Exception)
+            {
+                this.OpenFolderItem.IsEnabled = false;
+            }
+        }
+
+        private void OnExportClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Dispatcher.InvokeAsync(async () =>
+            {
+                await Task.Delay(200);
+
+                var dialog = new VistaSaveFileDialog
+                {
+                    Title = "Export Virgil Card",
+                    CheckFileExists = false,
