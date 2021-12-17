@@ -130,3 +130,21 @@
                 {
                     Title = "Export Virgil Card",
                     CheckFileExists = false,
+                    CheckPathExists = true,
+                    DefaultExt = "*.vcard",
+                    Filter = "All files (*.*)|*.*|Virgil Card Files (*.vcard)|*.vcard",
+                    FilterIndex = 2
+                };
+
+                if (dialog.ShowDialog() == true)
+                {
+                    ((App)Application.Current).AppState.ExportCurrentAccount(dialog.FileName);
+                }
+            });
+        }
+
+        private void OnExportClick2(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Dispatcher.InvokeAsync(async () =>
+            {
+                await Task.Delay(200);
