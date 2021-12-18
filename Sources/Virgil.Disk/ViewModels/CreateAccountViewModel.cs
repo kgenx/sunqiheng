@@ -48,4 +48,21 @@
                     this.ConfirmButtonTitle = "CREATE MY ACCOUNT";
                     this.ReturnToPreviousPageTitle = "HAVE AN ACCOUNT";
                     break;
-  
+                case State.RegenerateKeyPair:
+                    this.Title = "Regenerate keypair";
+                    this.ConfirmButtonTitle = "REGENERATE KEYPAIR";
+                    this.ReturnToPreviousPageTitle = "RETURN TO SIGN IN";
+                    break;
+            }
+
+            this.aggregator = aggregator;
+            this.state = state;
+
+            this.NavigateToSignInCommand = new RelayCommand(() =>
+            {
+                this.aggregator.Publish(new NavigateTo(typeof (SignInViewModel)));
+                this.CleanupState();
+            });
+
+            this.CreateAccountCommand = new RelayCommand(async () =>
+      
