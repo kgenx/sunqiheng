@@ -17,4 +17,22 @@ namespace Virgil.Sync.View
 
         public static void SetBindableSource(DependencyObject obj, string value)
         {
-            obj.SetValue(Bind
+            obj.SetValue(BindableSourceProperty, value);
+        }
+
+        public static void BindableSourcePropertyChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        {
+            WebBrowser browser = o as WebBrowser;
+            if (browser != null)
+            {
+                string uri = e.NewValue as string;
+                if (uri != null)
+                {
+                    browser.Navigate(new Uri(uri));
+                }
+            }
+        }
+
+        public static void SetZoom(this WebBrowser webBrowser, double zoom)
+        {
+            mshtml.IHTMLDocument2 doc = webBrowser.Document as mshtml.IHTMLDocume
