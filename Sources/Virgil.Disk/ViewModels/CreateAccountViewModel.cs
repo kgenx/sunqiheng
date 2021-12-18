@@ -65,4 +65,23 @@
             });
 
             this.CreateAccountCommand = new RelayCommand(async () =>
-      
+            {
+                this.ClearErrors();
+
+                if (string.IsNullOrWhiteSpace(this.Login))
+                {
+                    this.AddErrorFor(nameof(this.Login), "Login should be a valid email");
+                }
+
+                if (this.IsPasswordUsed)
+                {
+                    if (string.IsNullOrEmpty(this.Password))
+                    {
+                        this.AddErrorFor(nameof(this.Password), "You should provide password");
+                    }
+
+                    if (!string.IsNullOrEmpty(this.Password))
+                    {
+                        if (this.Password != this.ConfirmPassword)
+                        {
+       
