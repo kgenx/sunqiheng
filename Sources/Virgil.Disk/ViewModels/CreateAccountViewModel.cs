@@ -26,4 +26,26 @@
         private string confirmPassword;
         private string login;
         private string password;
-        private bool isUploadPrivateKey
+        private bool isUploadPrivateKey;
+        private bool isPasswordUsed;
+
+        public enum State
+        {
+            CreateNewAccount,
+            RegenerateKeyPair
+        }
+
+        public CreateAccountViewModel(IEventAggregator aggregator, State state)
+        {
+            this.Title = "";
+            this.ConfirmButtonTitle = "";
+            this.ReturnToPreviousPageTitle = "";
+
+            switch (state)
+            {
+                case State.CreateNewAccount:
+                    this.Title = "Create an account";
+                    this.ConfirmButtonTitle = "CREATE MY ACCOUNT";
+                    this.ReturnToPreviousPageTitle = "HAVE AN ACCOUNT";
+                    break;
+  
