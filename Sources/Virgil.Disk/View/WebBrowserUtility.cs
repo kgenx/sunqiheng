@@ -35,4 +35,8 @@ namespace Virgil.Sync.View
 
         public static void SetZoom(this WebBrowser webBrowser, double zoom)
         {
-            mshtml.IHTMLDocument2 doc = webBrowser.Document as mshtml.IHTMLDocume
+            mshtml.IHTMLDocument2 doc = webBrowser.Document as mshtml.IHTMLDocument2;
+            doc?.parentWindow.execScript("document.body.style.zoom=" + zoom.ToString(CultureInfo.InvariantCulture).Replace(",", ".") + ";");
+        }
+    }
+}
