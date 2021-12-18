@@ -84,4 +84,20 @@
                     {
                         if (this.Password != this.ConfirmPassword)
                         {
-       
+                            this.AddErrorFor(nameof(this.Password), "Passwords should match");
+                            this.AddErrorFor(nameof(this.ConfirmPassword), "Passwords should match");
+                        }
+                    }
+                }
+
+                if (this.HasErrors)
+                    return;
+
+                try
+                {
+                    this.IsBusy = true;
+                    IConfirmationRequiredOperation operation;
+                    switch (this.state)
+                    {
+                        case State.CreateNewAccount:
+                            operation = new CreateAccountOperation(thi
