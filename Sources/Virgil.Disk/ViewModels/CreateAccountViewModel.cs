@@ -111,4 +111,19 @@
 
                     await operation.Initiate(this.Login, this.Password);
                     this.aggregator.Publish(new ConfirmOperation(operation));
-    
+                }
+                catch (VirgilPublicServicesException exception) when (exception.ErrorCode == 30202)
+                {
+                    this.AddErrorFor(nameof(this.Login), exception.Message);
+                }
+                catch (IdentityServiceException exception) when (exception.ErrorCode == 40200)
+                {
+                    this.AddErrorFor(nameof(this.Login), exception.Message);
+                }
+                catch (Exception exception)
+                {
+                    this.RaiseErrorMessage(exception.Message);
+                }
+                finally
+                {
+                    this.IsBu
