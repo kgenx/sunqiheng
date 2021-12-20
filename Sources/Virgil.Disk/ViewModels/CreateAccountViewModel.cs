@@ -100,4 +100,15 @@
                     switch (this.state)
                     {
                         case State.CreateNewAccount:
-                            operation = new CreateAccountOperation(thi
+                            operation = new CreateAccountOperation(this.aggregator, this.IsPasswordUsed, this.IsUploadPrivateKey);
+                            break;
+                        case State.RegenerateKeyPair:
+                            operation = new RegenerateKeyPairOperation(this.aggregator, this.IsPasswordUsed, this.IsUploadPrivateKey);
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException(nameof(state), state, null);
+                    }
+
+                    await operation.Initiate(this.Login, this.Password);
+                    this.aggregator.Publish(new ConfirmOperation(operation));
+    
