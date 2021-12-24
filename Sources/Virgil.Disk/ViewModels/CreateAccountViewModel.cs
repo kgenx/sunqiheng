@@ -173,4 +173,27 @@
                 if (value == this.confirmPassword) return;
                 this.confirmPassword = value;
                 this.RaisePropertyChanged();
-           
+            }
+        }
+
+        public string Title { get; }
+        public string ConfirmButtonTitle { get; }
+        public string ReturnToPreviousPageTitle { get; }
+
+        public bool IsUploadPrivateKey
+        {
+            get { return this.isUploadPrivateKey; }
+            set
+            {
+                if (value == this.isUploadPrivateKey) return;
+                this.isUploadPrivateKey = value;
+                this.RaisePropertyChanged();
+                
+            }
+        }
+
+        public bool IsPasswordUsed
+        {
+            get { return this.isPasswordUsed; }
+            set
+     
