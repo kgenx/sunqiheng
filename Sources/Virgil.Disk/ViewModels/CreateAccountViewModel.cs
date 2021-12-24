@@ -150,4 +150,27 @@
             {
                 if (value == this.login) return;
                 this.login = value;
-                this.Rai
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public string Password
+        {
+            get { return this.password; }
+            set
+            {
+                if (value == this.password) return;
+                this.password = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public string ConfirmPassword
+        {
+            get { return this.confirmPassword; }
+            set
+            {
+                if (value == this.confirmPassword) return;
+                this.confirmPassword = value;
+                this.RaisePropertyChanged();
+           
