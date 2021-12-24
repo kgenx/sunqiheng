@@ -126,4 +126,28 @@
                 }
                 finally
                 {
-                    this.IsBu
+                    this.IsBusy = false;
+                }
+            });
+        }
+
+        public override void CleanupState()
+        {
+            this.Login = "";
+            this.Password = "";
+            this.ConfirmPassword = "";
+            this.ClearErrors();
+        }
+
+        public ICommand NavigateToSignInCommand { get; }
+
+        public ICommand CreateAccountCommand { get; }
+
+        public string Login
+        {
+            get { return this.login; }
+            set
+            {
+                if (value == this.login) return;
+                this.login = value;
+                this.Rai
