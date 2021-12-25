@@ -16,4 +16,21 @@ namespace Virgil.Sync.ViewModels
         }
 
         public Uri Uri { get; set; }
- 
+        public bool Cancel { get; set; }
+    }
+
+    public class DropBoxSignInViewModel : ViewModel
+    {
+        private readonly IEventAggregator eventAggregator;
+        
+        private const string RedirectUri = "https://virgilsecurity.com/";
+        private string oauth2State;
+        private string authorizeUri;
+
+        public DropBoxSignInViewModel(IEventAggregator eventAggregator)
+        {
+            this.eventAggregator = eventAggregator;
+            this.NavigateBack = new RelayCommand(() =>
+            {
+                eventAggregator.Publish(new NavigateTo(typeof(FolderSettingsViewModel)));
+        
