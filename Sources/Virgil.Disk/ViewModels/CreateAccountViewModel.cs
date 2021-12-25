@@ -196,4 +196,11 @@
         {
             get { return this.isPasswordUsed; }
             set
-     
+            {
+                if (value == this.isPasswordUsed) return;
+                this.isPasswordUsed = value;
+                this.RaisePropertyChanged();
+            }
+        }
+    }
+}
