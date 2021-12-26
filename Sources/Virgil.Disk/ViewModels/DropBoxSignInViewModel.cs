@@ -33,4 +33,26 @@ namespace Virgil.Sync.ViewModels
             this.NavigateBack = new RelayCommand(() =>
             {
                 eventAggregator.Publish(new NavigateTo(typeof(FolderSettingsViewModel)));
-        
+            });
+        }
+
+        public ICommand NavigateBack { get; set; }
+
+        public string AuthorizeUri
+        {
+            get { return this.authorizeUri; }
+            set
+            {
+                if (Equals(value, this.authorizeUri)) return;
+                this.authorizeUri = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public void Start()
+        {
+            this.oauth2State = Guid.NewGuid().ToString("N");
+
+            this.AuthorizeUri = DropboxOAuth2Helper.GetAuthorizeUri(
+                OAuthResponseType.Token, ApiConfig.DropboxClientId, new Uri(RedirectUri), state: this.oauth2State)
+  
