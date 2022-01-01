@@ -55,4 +55,26 @@ namespace Virgil.Sync.ViewModels
 
             this.AuthorizeUri = DropboxOAuth2Helper.GetAuthorizeUri(
                 OAuthResponseType.Token, ApiConfig.DropboxClientId, new Uri(RedirectUri), state: this.oauth2State)
+                .ToString();
+        }
+
+        public void HandleNavigating(HandleNavigation e)
+        {
+            if (!e.Uri.ToString().StartsWith(RedirectUri, StringComparison.OrdinalIgnoreCase))
+            {
+                return;
+            }
+            try
+            {
+                var result = DropboxOAuth2Helper.ParseTokenFragment(e.Uri);
+                if (result.State != this.oauth2State)
+                {
+                    return;
+                }
+                this.eventAggregator.Publish(new DropboxSignInSuccessfull(result));
+            }
+            finally
+            {
+                e.Cancel = true;
+            }
   
