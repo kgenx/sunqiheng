@@ -77,4 +77,6 @@ namespace Virgil.Sync.ViewModels
             {
                 e.Cancel = true;
             }
-  
+        }
+    }
+}
