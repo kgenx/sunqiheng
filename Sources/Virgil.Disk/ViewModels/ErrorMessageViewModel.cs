@@ -41,4 +41,15 @@
             }
         }
 
-        publ
+        public string ErrorDetails
+        {
+            get { return this.errorDetails; }
+            set
+            {
+                if (value == this.errorDetails) return;
+                this.errorDetails = value;
+                this.RaisePropertyChanged();
+            }
+        }
+    }
+}
