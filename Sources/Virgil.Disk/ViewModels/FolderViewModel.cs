@@ -68,4 +68,29 @@ namespace Virgil.Sync.ViewModels
 
         public void Validate()
         {
-  
+            this.ClearErrors();
+            this.AddErrors(this.folder.Validate());
+        }
+
+        public void Reset()
+        {
+            this.folder.Alias = "";
+            this.folder.FolderPath = "";
+            this.ClearErrors();
+
+            this.RaisePropertyChanged(nameof(this.Alias));
+            this.RaisePropertyChanged(nameof(this.FolderPath));
+        }
+
+        public bool IsEmpty()
+        {
+            return this.FolderPath == "";
+        }
+
+        public void AddErrors(List<string> value)
+        {
+            foreach (var error in value)
+            {
+                this.AddErrorFor(nameof(this.FolderPath), error);
+            }
+ 
