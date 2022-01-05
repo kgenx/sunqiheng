@@ -20,4 +20,24 @@ namespace Virgil.Sync.ViewModels
             {
                 if (!string.IsNullOrWhiteSpace(path))
                 {
+                    if (!path.EndsWith(Path.DirectorySeparatorChar.ToString()))
+                    {
+                        path = path + Path.DirectorySeparatorChar;
+                    }
+                }
+                this.FolderPath = path;
+                if (!this.HasErrors)
+                {
+                    this.OnSuccessfullyChanged?.Invoke(this);
+                }
+            });
+        }
+
+        public string Alias
+        {
+            get { return this.folder.Alias; }
+            set
+            {
+                if (value == this.folder.Alias) return;
+                this.folder.Alias = value;
         
