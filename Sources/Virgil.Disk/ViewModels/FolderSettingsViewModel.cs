@@ -362,3 +362,10 @@ namespace Virgil.Sync.ViewModels
         {
             this.UpdateViewState();
         }
+
+        public void Handle(DropBoxBatchCompleted message)
+        {
+            this.UpdateViewState();
+        }
+    }
+}
