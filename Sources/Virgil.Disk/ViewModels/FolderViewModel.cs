@@ -40,4 +40,32 @@ namespace Virgil.Sync.ViewModels
             {
                 if (value == this.folder.Alias) return;
                 this.folder.Alias = value;
-        
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public string FolderPath
+        {
+            get { return this.folder.FolderPath; }
+            set
+            {
+                this.folder.FolderPath = value;
+                this.RaisePropertyChanged();
+                this.Validate();
+            }
+        }
+
+        public string UUID => this.folder?.UUID ?? "";
+
+        public ICommand OnFolderChangedCommand { get; }
+
+        public event FolderViewModelAction OnSuccessfullyChanged;
+
+        public Folder ToFolder()
+        {
+            return this.folder;
+        }
+
+        public void Validate()
+        {
+  
