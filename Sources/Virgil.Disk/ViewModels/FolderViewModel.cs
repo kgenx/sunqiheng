@@ -93,4 +93,6 @@ namespace Virgil.Sync.ViewModels
             {
                 this.AddErrorFor(nameof(this.FolderPath), error);
             }
- 
+        }
+    }
+}
