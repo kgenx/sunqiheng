@@ -16,4 +16,14 @@
 
             this.ReturnToSignInCommand = new RelayCommand(() =>
             {
-                eventAggregator.Publish(new NavigateTo(ty
+                eventAggregator.Publish(new NavigateTo(typeof(SignInViewModel)));
+            });
+        }
+
+        public ICommand RegenerateKeyPairCommand { get; set; }
+
+        public ICommand ReturnToSignInCommand { get; set; }
+
+        public string Email { get; set; }
+    }
+}
