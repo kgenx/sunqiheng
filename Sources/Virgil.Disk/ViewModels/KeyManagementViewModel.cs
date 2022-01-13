@@ -150,4 +150,29 @@ namespace Virgil.Sync.ViewModels
             }
             catch (WrongPrivateKeyPasswordException e)
             {
-                this.AddErrorFor(nameof(this.Password), e.
+                this.AddErrorFor(nameof(this.Password), e.Message);
+            }
+            catch (Exception e)
+            {
+                this.RaiseErrorMessage(e.Message);
+            }
+            finally
+            {
+                this.IsBusy = false;
+            }
+        }
+
+        private void ImportKey()
+        {
+            try
+            {
+                this.ClearErrors();
+
+                var dialog = new VistaOpenFileDialog
+                {
+                    Title = "Select Virgil Card",
+                    Multiselect = false,
+                    CheckFileExists = true,
+                    CheckPathExists = true,
+                    ReadOnlyChecked = true,
+                   
