@@ -132,4 +132,22 @@ namespace Virgil.Sync.ViewModels
                 var personalCard = new PersonalCard(recipientCard, new PrivateKey(fileDto.private_key));
                 if (personalCard.IsPrivateKeyEncrypted && !personalCard.CheckPrivateKeyPassword(this.Password))
                 {
-                    throw new WrongPrivateKeyPasswordException("Wrong passwor
+                    throw new WrongPrivateKeyPasswordException("Wrong password");
+                }
+
+                try
+                {
+                    var encrypt = personalCard.Encrypt("test");
+                    personalCard.Decrypt(encrypt, this.Password);
+                }
+                catch
+                {
+                    throw new Exception("Virgil card is malformed");
+                }
+
+                this.aggregator.Publish(new CardLoaded(personalCard, this.Password));
+                this.aggregator.Publish(new ConfirmationSuccessfull());
+            }
+            catch (WrongPrivateKeyPasswordException e)
+            {
+                this.AddErrorFor(nameof(this.Password), e.
