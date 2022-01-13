@@ -119,3 +119,17 @@ namespace Virgil.Sync.ViewModels
                 this.IsBusy = true;
 
                 var fileDto = this.SelectedCard;
+
+                if (this.SelectedCard == null)
+                {
+                    this.RaiseErrorMessage("Please select card");
+                    return;
+                }
+
+                var cardDto = await SDK.Domain.ServiceLocator.Services.Cards.Get(fileDto.card.id);
+
+                var recipientCard = new RecipientCard(cardDto);
+                var personalCard = new PersonalCard(recipientCard, new PrivateKey(fileDto.private_key));
+                if (personalCard.IsPrivateKeyEncrypted && !personalCard.CheckPrivateKeyPassword(this.Password))
+                {
+                    throw new WrongPrivateKeyPasswordException("Wrong passwor
