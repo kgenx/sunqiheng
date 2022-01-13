@@ -77,4 +77,23 @@ namespace Virgil.Sync.ViewModels
             }
         }
 
-        public ObservableCollection<VirgilCardDto> Cards { 
+        public ObservableCollection<VirgilCardDto> Cards { get; set; } = new ObservableCollection<VirgilCardDto>();
+
+        public VirgilCardDto SelectedCard
+        {
+            get { return this.selectedCard; }
+            set
+            {
+                if (Equals(value, this.selectedCard)) return;
+                this.selectedCard = value;
+                this.RaisePropertyChanged();
+                ((RelayCommand) this.SelectKeyCommand).TriggerCanExecute();
+            }
+        }
+        
+        public bool IsMultipleKeys
+        {
+            get { return this.isMultipleKeys; }
+            set
+            {
+                if (value == this.isMultipleKeys) 
