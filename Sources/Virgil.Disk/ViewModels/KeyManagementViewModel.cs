@@ -31,4 +31,29 @@ namespace Virgil.Sync.ViewModels
 
             this.ReturnToSignInCommand = new RelayCommand(() =>
             {
-                this.aggregator.Publish(new NavigateTo(typeof(SignInVi
+                this.aggregator.Publish(new NavigateTo(typeof(SignInViewModel)));
+            });
+
+            this.ImportKeyCommand = new RelayCommand(this.ImportKey);
+
+            this.SelectKeyCommand = new RelayCommand(arg => this.SelectedCard != null, this.SelectKey);
+        }
+
+
+        public ICommand SelectKeyCommand { get; }
+        public ICommand ReturnToSignInCommand { get; }
+        public ICommand ImportKeyCommand { get; }
+
+        public string SelectedPath
+        {
+            get { return this.selectedPath; }
+            set
+            {
+                if (value == this.selectedPath) return;
+                this.selectedPath = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public string Password
+ 
