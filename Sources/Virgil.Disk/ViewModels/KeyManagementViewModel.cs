@@ -96,4 +96,26 @@ namespace Virgil.Sync.ViewModels
             get { return this.isMultipleKeys; }
             set
             {
-                if (value == this.isMultipleKeys) 
+                if (value == this.isMultipleKeys) return;
+                this.isMultipleKeys = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public override void CleanupState()
+        {
+            this.SelectedCard = null;
+            this.SelectedPath = "";
+            this.Password = "";
+            this.Cards.Clear();
+            this.IsShowKeyNotFoundMessage = false;
+        }
+
+        private async void SelectKey(object arg)
+        {
+            try
+            {
+                this.ClearErrors();
+                this.IsBusy = true;
+
+                var fileDto = this.SelectedCard;
