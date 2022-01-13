@@ -56,4 +56,25 @@ namespace Virgil.Sync.ViewModels
         }
 
         public string Password
- 
+        {
+            get { return this.password; }
+            set
+            {
+                if (value == this.password) return;
+                this.password = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public bool IsShowKeyNotFoundMessage
+        {
+            get { return this.isShowKeyNotFoundMessage; }
+            set
+            {
+                if (Equals(value, this.isShowKeyNotFoundMessage)) return;
+                this.isShowKeyNotFoundMessage = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public ObservableCollection<VirgilCardDto> Cards { 
