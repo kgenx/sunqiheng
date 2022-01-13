@@ -175,4 +175,18 @@ namespace Virgil.Sync.ViewModels
                     CheckFileExists = true,
                     CheckPathExists = true,
                     ReadOnlyChecked = true,
-                   
+                    DefaultExt = "*.vcard",
+                    Filter = "All files (*.*)|*.*|Virgil Card Files (*.vcard)|*.vcard",
+                    FilterIndex = 2
+                };
+
+                if (dialog.ShowDialog() == true)
+                {
+                    var text = Encoding.UTF8.GetString(Convert.FromBase64String(File.ReadAllText(dialog.FileName)));
+                    try
+                    {
+                        var virgilCardDtos = JsonConvert.DeserializeObject<VirgilCardDto[]>(text);
+                        this.Cards.Clear();
+                        foreach (var dto in virgilCardDtos)
+                        {
+          
