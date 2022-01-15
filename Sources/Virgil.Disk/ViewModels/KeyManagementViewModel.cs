@@ -189,4 +189,17 @@ namespace Virgil.Sync.ViewModels
                         this.Cards.Clear();
                         foreach (var dto in virgilCardDtos)
                         {
-          
+                            this.Cards.Add(dto);
+                        }
+                        this.SelectedCard = this.Cards.First();
+                    }
+                    catch (JsonException)
+                    {
+                        var virgilCardDto = JsonConvert.DeserializeObject<VirgilCardDto>(text);
+                        this.Cards.Clear();
+                        this.Cards.Add(virgilCardDto);
+                        this.SelectedCard = virgilCardDto;
+                    }
+
+                    this.IsMultipleKeys = this.Cards.Count > 1;
+                    this.SelectedPath = Path.GetFileName
