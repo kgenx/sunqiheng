@@ -73,4 +73,9 @@
             if (dropBoxLink != null)
             {
                 this.operations = dropBoxLink.OperationsView;
-                this.Operations = new ObservableColl
+                this.Operations = new ObservableCollection<OperationViewModel>(this.operations.Select(x => new OperationViewModel(x)));
+                this.operations.CollectionChanged += this.OnOperationsChanged;
+            }
+        }
+    }
+}
