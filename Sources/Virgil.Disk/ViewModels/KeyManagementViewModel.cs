@@ -202,4 +202,19 @@ namespace Virgil.Sync.ViewModels
                     }
 
                     this.IsMultipleKeys = this.Cards.Count > 1;
-                    this.SelectedPath = Path.GetFileName
+                    this.SelectedPath = Path.GetFileName(dialog.FileName);
+                }
+            }
+            catch (Exception)
+            {
+                this.SelectedPath = "";
+                this.RaiseErrorMessage("Malformed on unaccessible file");
+            }
+        }
+
+        public void ShowKeyNotFoundOnServerError()
+        {
+            this.IsShowKeyNotFoundMessage = true;
+        }
+    }
+}
