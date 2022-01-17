@@ -58,4 +58,20 @@ namespace Virgil.Sync.ViewModels
             {
                 message = "Not enough space in Dropbox account";
             }
-            else if (error.Message.StartsWith("VirgilCipherBase: Recipient with given 
+            else if (error.Message.StartsWith("VirgilCipherBase: Recipient with given id") && error.Message.EndsWith("is not found."))
+            {
+                message = "File is encrypted with another account";
+            }
+            else if (error.Message.StartsWith("Encrypted file does not contain embedded content info"))
+            {
+                message = "File is not encrypted or malformed";
+            }
+            else
+            {
+                message = error.Message;
+            }
+
+            return message;
+        }
+    }
+}
