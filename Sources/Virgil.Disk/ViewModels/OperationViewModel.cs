@@ -15,4 +15,29 @@ namespace Virgil.Sync.ViewModels
             set
             {
                 if (value.Equals(this.progress)) return;
-                th
+                this.progress = value;
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public Operation Operation { get; }
+
+        public OperationViewModel(Operation operation)
+        {
+            this.Operation = operation;
+            this.Title = operation.Title;
+            this.Progress = operation.Progress;
+            operation.AcceptProgress(this);
+        }
+
+        public void Report(double value)
+        {
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                this.Progress = value;
+            });
+        }
+
+        public void NotifyError(Exception error)
+        {
+            App.Curr
