@@ -54,4 +54,23 @@
                         }
                         break;
                     case NotifyCollectionChangedAction.Reset:
-                       
+                        this.Operations.Clear();
+                        break;
+                }
+            });
+        }
+        
+        public void Handle(DropBoxLinkChanged message)
+        {
+            if (this.operations != null)
+            {
+                this.Operations.Clear();
+                this.operations.CollectionChanged -= this.OnOperationsChanged;
+            }
+
+            var dropBoxLink = message.Instance;
+
+            if (dropBoxLink != null)
+            {
+                this.operations = dropBoxLink.OperationsView;
+                this.Operations = new ObservableColl
