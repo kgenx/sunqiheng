@@ -40,4 +40,22 @@ namespace Virgil.Sync.ViewModels
 
         public void NotifyError(Exception error)
         {
-            App.Curr
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                this.ErrorMessage = GetErrorMessage(error);
+            });
+        }
+
+        private static string GetErrorMessage(Exception error)
+        {
+            string message;
+
+            if (error.Message.StartsWith("path_lookup/not_found/"))
+            {
+                message = "File is not found in Dropbox";
+            }
+            else if (error.Message.StartsWith("path/insufficient_space/"))
+            {
+                message = "Not enough space in Dropbox account";
+            }
+            else if (error.Message.StartsWith("VirgilCipherBase: Recipient with given 
