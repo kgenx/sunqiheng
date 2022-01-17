@@ -41,4 +41,17 @@
                             this.Operations.Insert(0, model);
                         }
 
-                    
+                        break;
+                    case NotifyCollectionChangedAction.Remove:
+                        var toDelete = args.OldItems.Cast<Operation>().ToList();
+                        foreach (var op in toDelete)
+                        {
+                            var model = this.Operations.FirstOrDefault(x => x.Operation == op);
+                            if (model?.HasErrors == false)
+                            {
+                                this.Operations.Remove(model);
+                            }
+                        }
+                        break;
+                    case NotifyCollectionChangedAction.Reset:
+                       
