@@ -22,4 +22,24 @@ namespace Virgil.Sync.ViewModels.Operations
         {
             this.eventAggregator = eventAggregator;
             this.usePassword = usePassword;
-            this.uploadPrivateKey =
+            this.uploadPrivateKey = uploadPrivateKey;
+        }
+
+        public async Task Initiate(string email, string password)
+        {
+            this.email = email.Trim().ToLowerInvariant();
+            this.password = password;
+
+            var search = await Cards.Search(this.email);
+            if (search.Count != 0)
+            {
+                throw new VirgilException("The card with this e-mail was already created");
+            }
+
+            this.request = await Identity.Verify(this.email);
+        }
+
+        public async Task Confirm(string code)
+        {
+            var token = await this.request.Confirm(code);
+
