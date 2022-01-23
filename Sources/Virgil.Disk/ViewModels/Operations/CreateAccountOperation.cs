@@ -61,4 +61,9 @@ namespace Virgil.Sync.ViewModels.Operations
             this.eventAggregator.Publish(new NavigateTo(typeof (ICreateNewAccountModel)));
         }
 
-        public voi
+        public void NavigateBack(VirgilException e)
+        {
+            this.eventAggregator.Publish(new NavigateTo(typeof(ICreateNewAccountModel)));
+        }
+    }
+}
