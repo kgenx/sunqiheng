@@ -12,4 +12,21 @@ namespace Virgil.Sync.ViewModels.Operations
     {
         private readonly PrivateKeyModel privateKeyResponse;
         private readonly RecipientCard recipientCard;
-        private rea
+        private readonly IEventAggregator aggregator;
+
+        public DecryptWithAnotherPasswordOperation(
+            string email,
+            PrivateKeyModel privateKeyResponse,
+            RecipientCard recipientCard,
+            IEventAggregator aggregator)
+        {
+            this.Email = email;
+            this.privateKeyResponse = privateKeyResponse;
+            this.recipientCard = recipientCard;
+            this.aggregator = aggregator;
+        }
+
+        public bool IsPasswordValid(string anotherPassword)
+        {
+            return VirgilKeyPair.CheckPrivateKeyPassword(this.privateKeyResponse.PrivateKey,
+                Encoding
