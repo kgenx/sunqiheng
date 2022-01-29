@@ -29,4 +29,20 @@ namespace Virgil.Sync.ViewModels.Operations
         public bool IsPasswordValid(string anotherPassword)
         {
             return VirgilKeyPair.CheckPrivateKeyPassword(this.privateKeyResponse.PrivateKey,
-                Encoding
+                Encoding.UTF8.GetBytes(anotherPassword));
+        }
+
+        public void DecryptWithAnotherPassword(string anotherPassword)
+        {
+            if (VirgilKeyPair.IsPrivateKeyEncrypted(this.privateKeyResponse.PrivateKey) &&
+
+                !VirgilKeyPair.CheckPrivateKeyPassword(
+                    this.privateKeyResponse.PrivateKey,
+                    Encoding.UTF8.GetBytes(anotherPassword))
+
+                    )
+            {
+                throw new WrongPrivateKeyPasswordException("Wrong password");
+            }
+
+            var card = new PersonalCard(this.recipientCard, new PrivateKey(this.privateKeyResponse.Privat
