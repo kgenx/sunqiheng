@@ -45,4 +45,10 @@ namespace Virgil.Sync.ViewModels.Operations
                 throw new WrongPrivateKeyPasswordException("Wrong password");
             }
 
-            var card = new PersonalCard(this.recipientCard, new PrivateKey(this.privateKeyResponse.Privat
+            var card = new PersonalCard(this.recipientCard, new PrivateKey(this.privateKeyResponse.PrivateKey));
+            this.aggregator.Publish(new CardLoaded(card, anotherPassword));
+        }
+
+        public string Email { get; }
+    }
+}
