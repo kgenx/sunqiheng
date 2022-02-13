@@ -37,4 +37,24 @@ namespace Virgil.Sync.ViewModels.Operations
         {
             var token = await this.request.Confirm(code);
 
-            var card = await PersonalCard.Create(token, this.usePassw
+            var card = await PersonalCard.Create(token, this.usePassword ? this.password : null, new Dictionary<string, string>
+            {
+                ["CreatedWith"] = "Virgil.Disk"
+            });
+
+            if (this.uploadPrivateKey)
+            {
+                await card.UploadPrivateKey(this.password);
+            }
+
+            this.eventAggregator.Publish(new CardLoaded(card, this.password));
+        }
+
+        public void NavigateBack()
+        {
+            this.eventAggregator.Publish(new NavigateTo(typeof(IRegenerateKeypairModel)));
+        }
+
+        public void NavigateBack(VirgilException e)
+        {
+            this.eventAggregator.Publish(new NavigateTo(typeof(IRegenerate
