@@ -13,4 +13,7 @@
 
         public byte[] Decrypt(byte[] data)
         {
-            r
+            return ProtectedData.Unprotect(data, Entropy, DataProtectionScope.CurrentUser);
+        }
+    }
+}
