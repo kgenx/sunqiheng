@@ -44,4 +44,28 @@ namespace Virgil.DropBox.Client.Encryption
             this.virgilCipher.SetContentInfo(contentInfo);
             
             this.chunkSize = (int)this.virgilCipher.StartDecryptionWithKey(recipientId, privateKey);
-            this.
+            this.buffer = new byte[this.chunkSize];
+
+            this.hashOrigianl.Start();
+            this.hashEncrypted.Start();
+        }
+
+        public async Task<byte[]> GetChunk()
+        {
+            var chunk = await this.sourceStream.TryReadExactly(this.chunkSize, this.buffer);
+            this.hashEncrypted.Update(chunk);
+
+            this.hasMore = chunk.Length == this.chunkSize;
+
+            var decrypted = this.virgilCipher.Process(chunk);
+            this.hashOrigianl.Update(decrypted);
+
+            if (!this.hasMore)
+            {
+                this.virgilCipher.Finish();
+            }
+
+            return decrypted;
+        }
+        
+        public boo
