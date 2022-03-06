@@ -16,4 +16,20 @@ namespace Virgil.DropBox.Client.Encryption
         private bool disposed;
 
         private readonly VirgilHash hashOrigianl = VirgilHash.Sha512();
-        private readonly VirgilHash hashEncryp
+        private readonly VirgilHash hashEncrypted = VirgilHash.Sha512();
+        private Hashes? hashes;
+
+        public CipherStreamDecryptor(Stream sourceStream)
+        {
+            this.sourceStream = sourceStream;
+            this.virgilCipher = new VirgilChunkCipher();
+        }
+
+        public async Task Init(byte[] recipientId, byte[] privateKey)
+        {
+            const int contentInfoHeaderSize = 16;
+            var contentInfoHeader = new byte[contentInfoHeaderSize];
+            await this.sourceStream.ReadAsync(contentInfoHeader, 0, contentInfoHeaderSize);
+            int infoSize = (int)VirgilCipherBase.DefineContentInfoSize(contentInfoHeader);
+
+            if (infoSize == 0 || i
