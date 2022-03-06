@@ -32,4 +32,16 @@ namespace Virgil.DropBox.Client.Encryption
             await this.sourceStream.ReadAsync(contentInfoHeader, 0, contentInfoHeaderSize);
             int infoSize = (int)VirgilCipherBase.DefineContentInfoSize(contentInfoHeader);
 
-            if (infoSize == 0 || i
+            if (infoSize == 0 || infoSize < contentInfoHeaderSize)
+            {
+                throw new VirgilException("Encrypted file does not contain embedded content info.");
+            }
+
+            var contentInfo = new byte[infoSize];
+            await this.sourceStream.ReadAsync(contentInfo, contentInfoHeaderSize, infoSize - contentInfoHeaderSize);
+            Array.Copy(contentInfoHeader,contentInfo,contentInfoHeaderSize);
+            
+            this.virgilCipher.SetContentInfo(contentInfo);
+            
+            this.chunkSize = (int)this.virgilCipher.StartDecryptionWithKey(recipientId, privateKey);
+            this.
