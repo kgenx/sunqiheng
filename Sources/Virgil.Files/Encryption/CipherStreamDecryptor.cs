@@ -96,4 +96,10 @@ namespace Virgil.DropBox.Client.Encryption
 
             if (disposing)
             {
-                ((IDisposable
+                ((IDisposable)this.virgilCipher).Dispose();
+            }
+
+            this.disposed = true;
+        }
+    }
+}
