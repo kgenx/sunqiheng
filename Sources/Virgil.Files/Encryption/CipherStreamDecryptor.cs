@@ -68,4 +68,32 @@ namespace Virgil.DropBox.Client.Encryption
             return decrypted;
         }
         
-        public boo
+        public bool HasMore()
+        {
+            return this.hasMore;
+        }
+
+        public Hashes GetHashes()
+        {
+            if (this.hashes == null)
+            {
+                this.hashes = new Hashes(this.hashOrigianl.Finish(), this.hashEncrypted.Finish());
+            }
+
+            return this.hashes.Value;
+        }
+
+        public void Dispose()
+        {
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (this.disposed)
+                return;
+
+            if (disposing)
+            {
+                ((IDisposable
