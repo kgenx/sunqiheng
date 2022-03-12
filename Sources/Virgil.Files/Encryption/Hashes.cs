@@ -15,4 +15,17 @@ namespace Virgil.DropBox.Client.Encryption
 
         public bool Equals(Hashes other)
         {
-            return this.Original.SequenceEqual(
+            return this.Original.SequenceEqual(other.Original) && this.Encrypted.SequenceEqual(other.Encrypted);
+        }
+
+        public static bool operator ==(Hashes left, Hashes right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Hashes left, Hashes right)
+        {
+            return !left.Equals(right);
+        }
+    }
+}
