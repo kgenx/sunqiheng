@@ -31,4 +31,22 @@ namespace Virgil.DropBox.Client.Encryption
 
     public static class Keystore
     {
-        private const string AppToken = "45fd8a505f50243fa84
+        private const string AppToken = "45fd8a505f50243fa8400594ba0b2b29";
+        private const string EmailId = "samasdad@mailinator.com";
+        private const string ContainerPassword = "2SZGfXN7WJmsmpQs";
+
+        public async static Task CreateKeyPair()
+        {
+            var keysService = new KeysClient(AppToken);
+            var privateKeysService = new KeyringClient(AppToken);
+
+            //var key  = await keysService.PublicKeys.Search(EmailId);
+            
+            byte[] publicKey;
+            byte[] privateKey;
+
+            // Step 1. Generate Public/Private key pair.
+
+            using (var keyPair = new VirgilKeyPair())
+            {
+                publicK
