@@ -49,4 +49,23 @@ namespace Virgil.DropBox.Client.Encryption
 
             using (var keyPair = new VirgilKeyPair())
             {
-                publicK
+                publicKey = keyPair.PublicKey();
+                privateKey = keyPair.PrivateKey();
+            }
+
+            Console.WriteLine("Generated Public/Private keys\n");
+            Console.WriteLine(Encoding.UTF8.GetString(publicKey));
+            Console.WriteLine(Encoding.UTF8.GetString(privateKey));
+
+            // Step 2. Register Public Key on Keys Service.
+
+            var userData = new UserData
+            {
+                Class = UserDataClass.UserId,
+                Type = UserDataType.EmailId,
+                Value = EmailId
+            };
+
+            var vPublicKey = await keysService.PublicKeys.Create(publicKey, privateKey, userData);
+
+            // Step 3. Confir
