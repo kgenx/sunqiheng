@@ -68,4 +68,15 @@ namespace Virgil.DropBox.Client.Encryption
 
             var vPublicKey = await keysService.PublicKeys.Create(publicKey, privateKey, userData);
 
-            // Step 3. Confir
+            // Step 3. Confirm UDID (User data identity) with code recived on email box.
+
+            Console.WriteLine("Enter Confirmation Code:");
+            var confirmCode = Console.ReadLine();
+
+            await keysService.UserData.Confirm(vPublicKey.UserData.First().UserDataId, confirmCode, vPublicKey.PublicKeyId, privateKey);
+
+            Console.WriteLine("Public Key has been successfully published." + vPublicKey.PublicKeyId);
+
+            // Step 4. Store Private Key on Private Keys Service.
+            
+            await privateKeysService.Container.Initialize(ContainerType.Easy, vPublicKey.PublicKeyId, privateKey
