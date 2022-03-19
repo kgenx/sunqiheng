@@ -79,4 +79,17 @@ namespace Virgil.DropBox.Client.Encryption
 
             // Step 4. Store Private Key on Private Keys Service.
             
-            await privateKeysService.Container.Initialize(ContainerType.Easy, vPublicKey.PublicKeyId, privateKey
+            await privateKeysService.Container.Initialize(ContainerType.Easy, vPublicKey.PublicKeyId, privateKey, ContainerPassword);
+            privateKeysService.Connection.SetCredentials(new Credentials(EmailId, ContainerPassword));
+            await privateKeysService.PrivateKeys.Add(vPublicKey.PublicKeyId, privateKey);
+        }
+
+        public async static Task<EncryptionCredentials> Get()
+        {
+            var keysService = new KeysClient(AppToken);
+            var privateKeysService = new KeyringClient(AppToken);
+            privateKeysService.Connection.SetCredentials(new Credentials(EmailId, ContainerPassword));
+
+            var key = await keysService.PublicKeys.Search(EmailId);
+
+            var privatek = await private
