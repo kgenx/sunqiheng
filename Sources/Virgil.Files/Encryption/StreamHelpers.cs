@@ -16,4 +16,17 @@ namespace Virgil.DropBox.Client.Encryption
             int offset = 0;
             while (offset < count)
             {
-                int read 
+                int read = await stream.ReadAsync(buffer, offset, count - offset);
+                offset += read;
+                if (read == 0)
+                {
+                    var result = new byte[offset];
+                    Array.Copy(buffer, result, offset);
+                    return result;
+                }
+            }
+            
+            return buffer;
+        }
+    }
+}
