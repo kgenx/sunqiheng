@@ -37,4 +37,20 @@ namespace Virgil.DropBox.Client.Encryption
             return this.Load()?.FirstOrDefault(it => string.Equals(it.Path, localPath, StringComparison.InvariantCultureIgnoreCase));
         }
 
-        pri
+        private List<LogEntry> Load()
+        {
+            using (var stream = File.Open(StorageFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            {
+                var streamReader = new StreamReader(stream);
+                var text = streamReader.ReadToEnd();
+                return JsonConvert.DeserializeObject<List<LogEntry>>(text);
+            }
+        }
+
+        private void Save(List<LogEntry> list)
+        {
+            using (var stream = File.Open(StorageFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            {
+                using (var streamWriter = new StreamWriter(stream))
+                {
+    
