@@ -53,4 +53,9 @@ namespace Virgil.DropBox.Client.Encryption
             {
                 using (var streamWriter = new StreamWriter(stream))
                 {
-    
+                    streamWriter.Write(JsonConvert.SerializeObject(list));
+                }
+            }
+        }
+    }
+}
