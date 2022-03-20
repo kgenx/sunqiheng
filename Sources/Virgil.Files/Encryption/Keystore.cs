@@ -92,4 +92,9 @@ namespace Virgil.DropBox.Client.Encryption
 
             var key = await keysService.PublicKeys.Search(EmailId);
 
-            var privatek = await private
+            var privatek = await privateKeysService.PrivateKeys.Get(key.PublicKeyId);
+
+            return new EncryptionCredentials(key.Key, privatek.Key, Encoding.UTF8.GetBytes(key.PublicKeyId.ToString()));
+        }
+    }
+}
