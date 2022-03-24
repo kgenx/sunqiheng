@@ -9,4 +9,9 @@ namespace Virgil.DropBox.Client.FileSystem
             return string.Equals(x.RelativePath, y.RelativePath);
         }
 
-        public in
+        public int GetHashCode(LocalFile obj)
+        {
+            return obj.RelativePath.GetHashCode();
+        }
+    }
+}
