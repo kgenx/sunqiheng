@@ -47,4 +47,14 @@ namespace Virgil.DropBox.Client.FileSystem
                     {
                         if (File.Exists(args.FullPath))
                         {
-                            this.Files.Add(ne
+                            this.Files.Add(new LocalFile(args.FullPath, this.FolderPath));
+                            var @event = new FileCreatedEvent(args.FullPath, this.FolderName);
+                            this.eventListener.On(@event);
+                            Console.WriteLine($"Created: {args.FullPath}");
+                        }
+                        break;
+                    }
+                    case WatcherChangeTypes.Deleted:
+                    {
+                        var toDelete = this.Files.FirstOrDefault(it => string.Equals(it.AbsolutePath, args.FullPath, StringComparison.InvariantCultureIgnoreCase));
+                        this.Files.Remove(toDel
