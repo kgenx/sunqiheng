@@ -25,4 +25,26 @@ namespace Virgil.DropBox.Client.FileSystem
 
         public void Scan()
         {
-            var paths = Directory.EnumerateFiles(this.FolderPath, 
+            var paths = Directory.EnumerateFiles(this.FolderPath, "*", SearchOption.AllDirectories);
+
+            this.Files.Clear();
+            
+            foreach (var path in paths)
+            {
+                var localFileItem = new LocalFile(path, this.FolderPath);
+                this.Files.Add(localFileItem);
+                Console.WriteLine(localFileItem);
+            }
+        }
+
+        public void HandleChange(FileSystemEventArgs args)
+        {
+            try
+            {
+                switch (args.ChangeType)
+                {
+                    case WatcherChangeTypes.Created:
+                    {
+                        if (File.Exists(args.FullPath))
+                        {
+                            this.Files.Add(ne
