@@ -57,4 +57,16 @@ namespace Virgil.DropBox.Client.FileSystem
                     case WatcherChangeTypes.Deleted:
                     {
                         var toDelete = this.Files.FirstOrDefault(it => string.Equals(it.AbsolutePath, args.FullPath, StringComparison.InvariantCultureIgnoreCase));
-                        this.Files.Remove(toDel
+                        this.Files.Remove(toDelete);
+                        var @event = new FileDeletedEvent(args.FullPath, this.FolderName);
+                        this.eventListener.On(@event);
+                        Console.WriteLine($"Deleted: {args.FullPath}");
+                        break;
+                    }
+                    case WatcherChangeTypes.Changed:
+                    {
+                        if (File.Exists(args.FullPath))
+                        {
+                            var @event = new FileChangedEvent(args.FullPath, this.FolderName);
+                            this.eventListener.On(@event);
+                            Console.WriteLine($"
