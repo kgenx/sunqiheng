@@ -45,4 +45,20 @@ namespace Virgil.DropBox.Client.FileSystem
 
                 if (enc.Modified > dec.Modified)
                 {
-                    this.operations.Enqueue(new DecryptFileOperation(enc.AbsolutePath, dec.AbsolutePath, this.credentials)
+                    this.operations.Enqueue(new DecryptFileOperation(enc.AbsolutePath, dec.AbsolutePath, this.credentials));
+                }
+                else if (enc.Modified < dec.Modified)
+                {
+                    this.operations.Enqueue(new EncryptFileOperation(dec.AbsolutePath, enc.AbsolutePath, this.credentials));
+                }
+            }
+
+            var toEncrypt = decrypted.Except(common, comparer).ToList();
+
+            foreach (var localFile in toEncrypt)
+            {
+                var path = this.encryptedFolder.FolderPath + localFile.RelativePath;
+                this.operations.Enqueue(new EncryptFileOperation(localFile.AbsolutePath, path, this.credentials));
+            }
+
+            var toDecrypt = encrypted.Except(common,
