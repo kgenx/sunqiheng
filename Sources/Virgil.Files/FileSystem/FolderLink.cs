@@ -33,4 +33,16 @@ namespace Virgil.DropBox.Client.FileSystem
             this.encryptedFolder.Scan();
             this.decryptedFolder.Scan();
 
-            var encr
+            var encrypted = this.encryptedFolder.Files.ToList();
+            var decrypted = this.decryptedFolder.Files.ToList();
+            var comparer = new ByPathComparer();
+            var common = encrypted.Intersect(decrypted, comparer).ToList();
+
+            foreach (var localFile in common)
+            {
+                var enc = encrypted.First(it => it.RelativePath == localFile.RelativePath);
+                var dec = decrypted.First(it => it.RelativePath == localFile.RelativePath);
+
+                if (enc.Modified > dec.Modified)
+                {
+                    this.operations.Enqueue(new DecryptFileOperation(enc.AbsolutePath, dec.AbsolutePath, this.credentials)
