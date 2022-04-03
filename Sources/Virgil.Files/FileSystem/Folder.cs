@@ -69,4 +69,26 @@ namespace Virgil.DropBox.Client.FileSystem
                         {
                             var @event = new FileChangedEvent(args.FullPath, this.FolderName);
                             this.eventListener.On(@event);
-                            Console.WriteLine($"
+                            Console.WriteLine($"Changed: {args.FullPath}");
+                        }
+                        break;
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception.ToString());
+            }
+        }
+
+        public string GetRelativePath(string absolutePath)
+        {
+            return absolutePath.Replace(this.FolderPath, "");
+        }
+
+        public string GetAbsolutePath(string relativePath)
+        {
+            return this.FolderPath + relativePath;
+        }
+    }
+}
