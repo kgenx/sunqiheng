@@ -61,4 +61,24 @@ namespace Virgil.DropBox.Client.FileSystem
                 this.operations.Enqueue(new EncryptFileOperation(localFile.AbsolutePath, path, this.credentials));
             }
 
-            var toDecrypt = encrypted.Except(common,
+            var toDecrypt = encrypted.Except(common, comparer).ToList();
+
+            foreach (var localFile in toDecrypt)
+            {
+                var path = this.decryptedFolder.FolderPath + localFile.RelativePath;
+                this.operations.Enqueue(new DecryptFileOperation(localFile.AbsolutePath, path, this.credentials));
+            }
+            
+            Task.Factory.StartNew(this.Consumer);
+
+            this.encryptedFolderWatcher.Start();
+            this.decryptedFolderWatcher.Start();
+        }
+
+        public void On(FileCreatedEvent @event)
+        {
+            string source = @event.Path;
+            string target;
+            Operation operation;
+
+            if (@event.Sender == t
