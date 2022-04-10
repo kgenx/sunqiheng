@@ -81,4 +81,20 @@ namespace Virgil.DropBox.Client.FileSystem
             string target;
             Operation operation;
 
-            if (@event.Sender == t
+            if (@event.Sender == this.encryptedFolder.FolderName)
+            {
+                target = this.decryptedFolder.GetAbsolutePath(this.encryptedFolder.GetRelativePath(source));
+                operation = new DecryptFileOperation(source, target, this.credentials);
+            }
+            else
+            {
+                target = this.encryptedFolder.GetAbsolutePath(this.decryptedFolder.GetRelativePath(source));
+                operation = new EncryptFileOperation(source, target, this.credentials);
+            }
+
+            this.operations.Enqueue(operation);
+        }
+
+        public void On(FileDeletedEvent @event)
+        {
+  
