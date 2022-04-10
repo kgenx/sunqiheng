@@ -130,4 +130,23 @@ namespace Virgil.DropBox.Client.FileSystem
         {
             while (true)
             {
-                Operation ope
+                Operation operation;
+                if (this.operations.TryDequeue(out operation))
+                {
+                    try
+                    {
+                        await operation.Execute();
+                    }
+                    catch (Exception exception)
+                    {
+                        Console.WriteLine(exception.ToString());
+                    }
+                }
+                else
+                {
+                    await Task.Delay(500);
+                }
+            }
+        }
+    }
+}
