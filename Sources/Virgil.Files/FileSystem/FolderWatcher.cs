@@ -22,3 +22,20 @@ namespace Virgil.DropBox.Client.FileSystem
                     NotifyFilters.DirectoryName |
                     NotifyFilters.FileName |
                     NotifyFilters.LastWrite |
+                    NotifyFilters.Size |
+                    NotifyFilters.Attributes
+            };
+        }
+        
+        public void Start()
+        {
+            var created = Observable.FromEventPattern<FileSystemEventArgs>(this.fileSystemWatcher, "Created");
+            var changed = Observable.FromEventPattern<FileSystemEventArgs>(this.fileSystemWatcher, "Changed");
+
+            var merged = created.Merge(changed)
+                .Buffer(TimeSpan.FromSeconds(2))
+                .Where(it => it.Count > 0)
+                .Select(eventPatterns =>
+                {
+                    return eventPatterns
+                    .GroupBy(x
