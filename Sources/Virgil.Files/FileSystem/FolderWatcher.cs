@@ -55,4 +55,18 @@ namespace Virgil.DropBox.Client.FileSystem
                {
                    new FileSystemEventArgs(
                        WatcherChangeTypes.Deleted,
-                 
+                       Path.GetDirectoryName(it.EventArgs.OldFullPath),
+                       Path.GetFileName(it.EventArgs.OldFullPath)),
+
+                   new FileSystemEventArgs(
+                       WatcherChangeTypes.Created,
+                       Path.GetDirectoryName(it.EventArgs.FullPath),
+                       Path.GetFileName(it.EventArgs.FullPath))
+               })
+               .SelectMany(it => it)
+               .Subscribe(this.Handle);
+
+            Observable.FromEventPattern<FileSystemEventArgs>(this.fileSystemWatcher, "Deleted")
+                .Subscribe(input => this.Handle(input.EventArgs));
+
+            this.fileSystemWatch
