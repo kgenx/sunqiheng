@@ -69,4 +69,17 @@ namespace Virgil.DropBox.Client.FileSystem
             Observable.FromEventPattern<FileSystemEventArgs>(this.fileSystemWatcher, "Deleted")
                 .Subscribe(input => this.Handle(input.EventArgs));
 
-            this.fileSystemWatch
+            this.fileSystemWatcher.EnableRaisingEvents = true;
+        }
+
+        public void Stop()
+        {
+            this.fileSystemWatcher.EnableRaisingEvents = false;
+        }
+
+        private void Handle(FileSystemEventArgs args)
+        {
+            this.folder.HandleChange(args);
+        }
+    }
+}
