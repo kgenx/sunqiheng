@@ -38,4 +38,21 @@ namespace Virgil.DropBox.Client.FileSystem
                 .Select(eventPatterns =>
                 {
                     return eventPatterns
-                    .GroupBy(x
+                    .GroupBy(x => x.EventArgs.FullPath)
+                    .Select(x =>
+                    {
+                        return x.FirstOrDefault(j => j.EventArgs.ChangeType == WatcherChangeTypes.Created) ??
+                               x.FirstOrDefault();
+                    });
+
+                })
+                .SelectMany(it => it.ToArray());
+
+            merged.Subscribe(input => this.Handle(input.EventArgs));
+
+            Observable.FromEventPattern<RenamedEventArgs>(this.fileSystemWatcher, "Renamed")
+               .Select(it => new []
+               {
+                   new FileSystemEventArgs(
+                       WatcherChangeTypes.Deleted,
+                 
