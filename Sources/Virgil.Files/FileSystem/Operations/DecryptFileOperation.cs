@@ -22,4 +22,18 @@ namespace Virgil.DropBox.Client.FileSystem.Operations
 
         public override async Task Execute()
         {
-            if (File.Exists(this.tar
+            if (File.Exists(this.target))
+            {
+                if (File.GetLastWriteTimeUtc(this.source) == File.GetLastWriteTimeUtc(this.target))
+                {
+                    return;
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(this.target) ?? "");
+            }
+
+            using (var sourceStream = new FileStream(this.source, FileMode.Open, FileAccess.Read, FileShare.Read, Consts.BufferSize, FileOptions.Asynchronous))
+            using (var targetStream = new FileStream(this.target, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite, Consts.BufferSize, FileOptions.Asynchronous))
+    
