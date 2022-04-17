@@ -5,4 +5,17 @@ namespace Virgil.DropBox.Client.FileSystem.Operations
 
     public class DeleteFileOperation : Operation
     {
-        private readonly string 
+        private readonly string filePath;
+
+        public DeleteFileOperation(string filePath)
+        {
+            this.filePath = filePath;
+        }
+
+        public override Task Execute()
+        {
+            File.Delete(this.filePath);
+            return Task.FromResult(0);
+        }
+    }
+}
