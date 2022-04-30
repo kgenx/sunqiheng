@@ -12,4 +12,8 @@ namespace Virgil.FolderLink.Core
         }
 
         public override string ToString()
-        
+        {
+            return this.Value;
+        }
+    }
+}
