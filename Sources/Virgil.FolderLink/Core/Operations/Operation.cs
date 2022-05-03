@@ -30,4 +30,31 @@ namespace Virgil.FolderLink.Core.Operations
                 await payload;
                 this.CompletionSource.TrySetResult(0);
             }
-        
+            catch (Exception e)
+            {
+                this.CompletionSource.TrySetException(e);
+                this.observer?.NotifyError(e);
+                throw;
+            }
+            finally
+            {
+                this.Progress = 100.0;
+            }
+        }
+
+        public void Report(double value)
+        {
+            this.Progress = value;
+        }
+
+        public override string ToString()
+        {
+            return $"{this.Title}; Competed: {this.Completed}";
+        }
+
+        public double Progress
+        {
+            get { return this.progress; }
+            protected set
+            {
+                this.p
