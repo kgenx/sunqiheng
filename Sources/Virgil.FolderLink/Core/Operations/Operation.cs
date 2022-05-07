@@ -57,4 +57,14 @@ namespace Virgil.FolderLink.Core.Operations
             get { return this.progress; }
             protected set
             {
-                this.p
+                this.progress = value;
+                this.observer?.Report(value);
+            }
+        }
+
+        public void AcceptProgress(IOperationObserver target)
+        {
+            this.observer = target;
+        }
+    }
+}
