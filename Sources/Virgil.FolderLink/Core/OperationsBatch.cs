@@ -16,4 +16,15 @@ namespace Virgil.FolderLink.Core
 
         public OperationsBatch(string batchId, IEnumerable<Operation> operations)
         {
-            th
+            this.BatchId = batchId;
+            this.Operations = operations;
+
+            this.work = this.Operations.Select(it => it.CompletionSource.Task).ToArray();
+        }
+
+        public async Task WhenAll()
+        {
+            await Task.WhenAll(work);
+        }
+    }
+}
