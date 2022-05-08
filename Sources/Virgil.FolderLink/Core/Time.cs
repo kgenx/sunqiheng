@@ -24,4 +24,9 @@ namespace Virgil.FolderLink.Core
             return dateTime.Truncate() == other?.Truncate();
         }
 
-        public static bool AlmostEquals(this Dat
+        public static bool AlmostEquals(this DateTime? dateTime, DateTime? other)
+        {
+            return dateTime?.Truncate() == other?.Truncate();
+        }
+    }
+}
