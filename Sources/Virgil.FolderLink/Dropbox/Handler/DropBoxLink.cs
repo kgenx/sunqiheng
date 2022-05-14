@@ -54,4 +54,19 @@ namespace Virgil.FolderLink.Dropbox.Handler
             await this.serverFolderWatcher.Start();
 
 
-			var localFiles = this.localFold
+			var localFiles = this.localFolder.Files.ToList();
+            var serverFiles = this.serverFolder.Files.ToList();
+
+            var diffResult = FileDiff.Calculate(localFiles, serverFiles);
+
+            foreach (var localFile in diffResult.Upload)
+            {
+                this.EnqueOperation(new UploadFileToServerOperation(new LocalFileSystemEvent(localFile.LocalPath, ""), this.cloudStorage));
+            }
+
+            foreach (var serverFile in diffResult.Download)
+            {
+                this.EnqueOperation(new DownloadFileFromServer(new DropBoxEvent(serverFile.Path, ""), this.cloudStorage, this.localFolder.Root));
+            }
+
+            this.IsStopped = false
