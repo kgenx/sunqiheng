@@ -15,4 +15,7 @@
         public UniversalPath(LocalPath path)
         {
             var separator = Path.DirectorySeparatorChar.ToString();
-            this.Value = path.AsRelativeToRoot
+            this.Value = path.AsRelativeToRoot().Replace(separator, "/");
+        }
+    }
+}
