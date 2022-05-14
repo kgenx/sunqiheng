@@ -38,4 +38,20 @@ namespace Virgil.FolderLink.Dropbox.Handler
             var localFolderRoot = new LocalFolderRoot(dropBoxLinkParams.LocalFolderPath);
 
             this.cloudStorage = new DropBoxCloudStorage(client, dropBoxLinkParams.Card, dropBoxLinkParams.PrivateKeyPassword);
-            this.localFold
+            this.localFolder = new LocalFolder(localFolderRoot, "Source");
+            this.localFolderWatcher = new LocalFolderWatcher(this.localFolder);
+            this.serverFolder = new ServerFolder();
+            this.serverFolderWatcher = new DropboxFolderWatcher(client, this.serverFolder);
+            this.operationsFactory = new OperationsFactory(this.cloudStorage, this.localFolder);
+
+            this.serverFolder.Subscribe(this);
+            this.localFolder.Subscribe(this);
+        }
+
+        public async Task Launch()
+        {
+            this.localFolderWatcher.Start();
+            await this.serverFolderWatcher.Start();
+
+
+			var localFiles = this.localFold
