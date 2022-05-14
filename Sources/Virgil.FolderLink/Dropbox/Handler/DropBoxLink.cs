@@ -27,4 +27,15 @@ namespace Virgil.FolderLink.Dropbox.Handler
         private readonly DropboxFolderWatcher serverFolderWatcher;
 
         private readonly ConcurrentQueue<Operation> operations = new ConcurrentQueue<Operation>();
-        private readonly Can
+        private readonly CancellationTokenSource cts = new CancellationTokenSource();
+
+        public ObservableCollection<Operation> OperationsView = new ObservableCollection<Operation>();
+        
+        public DropBoxLink(DropBoxLinkParams dropBoxLinkParams, IEventAggregator aggregator)
+        {
+            this.aggregator = aggregator;
+            var client = new DropboxClientFactory(dropBoxLinkParams.AccessToken).GetInstance();
+            var localFolderRoot = new LocalFolderRoot(dropBoxLinkParams.LocalFolderPath);
+
+            this.cloudStorage = new DropBoxCloudStorage(client, dropBoxLinkParams.Card, dropBoxLinkParams.PrivateKeyPassword);
+            this.localFold
