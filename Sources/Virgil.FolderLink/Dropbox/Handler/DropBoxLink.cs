@@ -69,4 +69,24 @@ namespace Virgil.FolderLink.Dropbox.Handler
                 this.EnqueOperation(new DownloadFileFromServer(new DropBoxEvent(serverFile.Path, ""), this.cloudStorage, this.localFolder.Root));
             }
 
-            this.IsStopped = false
+            this.IsStopped = false;
+
+            Task.Run(this.Consumer);
+        }
+
+        private async Task Consumer()
+        {
+            while (!this.IsStopped)
+            {
+                Operation operation;
+                if (this.operations.TryDequeue(out operation))
+                {
+                    try
+                    {
+                        await operation.Execute(this.cts.Token);
+                        Console.WriteLine(operation);
+                        this.RemoveOperation(operation);
+                    }
+                    catch (global::Dropbox.Api.AuthException e) when (e.ErrorResponse.IsInvalidAccessToken)
+                    {
+            
