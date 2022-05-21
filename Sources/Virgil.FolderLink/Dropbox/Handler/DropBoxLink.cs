@@ -89,4 +89,23 @@ namespace Virgil.FolderLink.Dropbox.Handler
                     }
                     catch (global::Dropbox.Api.AuthException e) when (e.ErrorResponse.IsInvalidAccessToken)
                     {
-            
+                        ExceptionNotifier.Current.NotifyDropboxSessionExpired();
+                    }
+                    catch (Exception exception)
+                    {
+                        Console.WriteLine(operation);
+                        Console.WriteLine(exception.ToString());
+                    }
+                }
+                else
+                {
+                    await Task.Delay(500);
+                }
+            }
+        }
+        
+        public async Task Handle(ServerEventsBatch batch)
+        {
+            var commands = this.operationsFactory.CreateFor(batch);
+
+            foreach (var operation i
