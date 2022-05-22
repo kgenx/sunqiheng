@@ -129,4 +129,29 @@ namespace Virgil.FolderLink.Dropbox.Handler
                 this.EnqueOperation(operation);
             }
 
-            await Task.WhenAll(commands.Select(it => it.CompletionSource.Task).T
+            await Task.WhenAll(commands.Select(it => it.CompletionSource.Task).ToArray());
+
+            // notify batch completed
+
+            this.aggregator.Publish(new DropBoxBatchCompleted());
+        }
+
+        private bool disposed = false;
+
+        public void Dispose()
+        {
+            if (!this.disposed)
+            {
+                this.IsStopped = true;
+                this.cts.Cancel();
+                this.localFolderWatcher.Stop();
+                this.localFolderWatcher.Dispose();
+                this.serverFolderWatcher.Stop();
+
+                this.disposed = true;
+            }
+        }
+
+        public bool IsStopped { get; set; }
+
+        private void EnqueOperation(Operation 
