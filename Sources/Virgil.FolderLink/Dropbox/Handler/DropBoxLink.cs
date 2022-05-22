@@ -108,4 +108,25 @@ namespace Virgil.FolderLink.Dropbox.Handler
         {
             var commands = this.operationsFactory.CreateFor(batch);
 
-            foreach (var operation i
+            foreach (var operation in commands)
+            {
+                this.EnqueOperation(operation);
+            }
+
+            await Task.WhenAll(commands.Select(it => it.CompletionSource.Task).ToArray());
+
+            // notify batch completed
+
+            this.aggregator.Publish(new DropBoxBatchCompleted());
+        }
+
+        public async Task Handle(LocalEventsBatch batch)
+        {
+            var commands = this.operationsFactory.CreateFor(batch);
+
+            foreach (var operation in commands)
+            {
+                this.EnqueOperation(operation);
+            }
+
+            await Task.WhenAll(commands.Select(it => it.CompletionSource.Task).T
