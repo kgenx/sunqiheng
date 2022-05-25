@@ -154,4 +154,15 @@ namespace Virgil.FolderLink.Dropbox.Handler
 
         public bool IsStopped { get; set; }
 
-        private void EnqueOperation(Operation 
+        private void EnqueOperation(Operation operation)
+        {
+            this.operations.Enqueue(operation);
+            this.OperationsView.Add(operation);
+        }
+
+        private void RemoveOperation(Operation operation)
+        {
+            this.OperationsView.Remove(operation);
+        }
+    }
+}
