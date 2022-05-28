@@ -25,4 +25,25 @@ namespace Virgil.FolderLink.Dropbox.Handler
 
         public Operation CreateOperation(DropBoxFileAddedEvent @event)
         {
-            return new DownloadFileFromServer(@event, this.cloudStorage, this.
+            return new DownloadFileFromServer(@event, this.cloudStorage, this.localFolderRoot);
+        }
+
+        public Operation CreateOperation(DropBoxFileChangedEvent @event)
+        {
+            return new DownloadFileFromServer(@event, this.cloudStorage, this.localFolderRoot);
+        }
+
+        public Operation CreateOperation(DropBoxFileDeletedEvent @event)
+        {
+            var toDelete = this.localFolder.Files.FirstOrDefault(it => it.ServerPath == @event.ServerPath);
+
+            if (toDelete != null)
+            {
+                return new DeleteFileOperation(toDelete.LocalPath);
+            }
+
+            return null;
+        }
+
+        public Operation CreateOperation(LocalFileCreatedEvent localEvent)
+        {
