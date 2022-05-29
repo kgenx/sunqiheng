@@ -47,3 +47,21 @@ namespace Virgil.FolderLink.Dropbox.Handler
 
         public Operation CreateOperation(LocalFileCreatedEvent localEvent)
         {
+            return new UploadFileToServerOperation(localEvent, this.cloudStorage);
+        }
+
+        public Operation CreateOperation(LocalFileDeletedEvent localEvent)
+        {
+            return new DeleteFileOnServerOperation(localEvent, this.cloudStorage);
+        }
+
+        public Operation CreateOperation(LocalFileChangedEvent localEvent)
+        {
+            return new UploadFileToServerOperation(localEvent, this.cloudStorage);
+            //return new UploadChangedFileToServerOperation(localEvent, this.cloudStorage);
+        }
+
+
+        public List<Operation> CreateFor(ServerEventsBatch batch)
+        {
+            return batch.
