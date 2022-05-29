@@ -64,4 +64,20 @@ namespace Virgil.FolderLink.Dropbox.Handler
 
         public List<Operation> CreateFor(ServerEventsBatch batch)
         {
-            return batch.
+            return batch.Events.Cast<dynamic>()
+                .Select(it => this.CreateOperation(it))
+                .Where(it => it != null)
+                .Cast<Operation>()
+                .ToList();
+        }
+
+        public List<Operation> CreateFor(LocalEventsBatch batch)
+        {
+            return batch.Events.Cast<dynamic>()
+                .Select(it => this.CreateOperation(it))
+                .Where(it => it != null)
+                .Cast<Operation>()
+                .ToList();
+        }
+    }
+}
