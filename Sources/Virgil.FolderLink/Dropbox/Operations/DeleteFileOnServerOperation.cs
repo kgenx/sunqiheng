@@ -20,3 +20,8 @@ namespace Virgil.FolderLink.Dropbox.Operations
         }
 
         public override Task Execute(CancellationToken cancellationToken)
+        {
+            return this.Wrap(this.cloudStore.DeleteFile(this.@event.Path.ToServerPath(), cancellationToken));
+        }
+    }
+}
