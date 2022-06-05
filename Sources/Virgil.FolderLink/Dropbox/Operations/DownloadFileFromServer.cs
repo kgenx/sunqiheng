@@ -13,4 +13,22 @@ namespace Virgil.FolderLink.Dropbox.Operations
         private readonly LocalFolderRoot root;
         private readonly ServerPath serverPath;
         
-        public DownloadFileFromServer(DropBoxEvent @event, IC
+        public DownloadFileFromServer(DropBoxEvent @event, ICloudStorage cloudStorage, LocalFolderRoot root)
+        {
+            this.serverPath = @event.ServerPath;
+            this.Title = "Download : " + this.serverPath.Value;
+            this.cloudStorage = cloudStorage;
+            this.root = root;
+        }
+
+        public override Task Execute(CancellationToken ct)
+        {
+            return this.Wrap(this.ExecuteInternal(ct));
+        }
+
+        private Task ExecuteInternal(CancellationToken ct)
+        {
+            return this.cloudStorage.DownloadFile(this.serverPath, this.root, ct, this);
+        }
+    }
+}
