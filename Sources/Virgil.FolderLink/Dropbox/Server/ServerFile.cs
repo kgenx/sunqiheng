@@ -19,4 +19,11 @@ namespace Virgil.FolderLink.Dropbox.Server
             this.ClientModified = entry.ClientModified;
         }
 
-        public override
+        public override string ToString()
+        {
+            return $"{this.Path} [{this.Bytes}] ({this.ServerModified.ToShortTimeString()}) ({this.ClientModified.ToShortTimeString()})";
+        }
+
+
+    }
+}
