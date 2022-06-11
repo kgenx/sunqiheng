@@ -43,4 +43,18 @@
 
         public async Task<byte[]> GetChunk()
         {
- 
+            var bytesRead = await this.sourceStream.ReadAsync(this.buffer, 0, this.chunkSize);
+            this.hasMore = bytesRead >= this.buffer.Length;
+            
+            if (this.hasMore)
+            {
+                var encryptedBytes = this.virgilCipher.Process(this.buffer);
+                return encryptedBytes;
+            }
+            else
+            {
+                var lastChunk = new byte[bytesRead];
+                Array.Copy(this.buffer, lastChunk, bytesRead);
+                var process = this.virgilCipher.Process(lastChunk);
+                this.virgilCipher.Finish();
+                retur
