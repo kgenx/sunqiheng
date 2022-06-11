@@ -27,4 +27,20 @@
             using (var cipher = new VirgilCipher())
             {
                 cipher.AddKeyRecipient(recipientId, publicKey);
-         
+                var encryptedValue = cipher.Encrypt(Encoding.UTF8.GetBytes(value), true);
+                this.virgilCipher.CustomParams().SetString(Encoding.UTF8.GetBytes(key), encryptedValue);
+            }
+        }
+
+        public byte[] Init(byte[] recipientId, byte[] publicKey, int preferredChunkSize)
+        {
+            this.virgilCipher.AddKeyRecipient(recipientId, publicKey);
+            this.chunkSize = (int)this.virgilCipher.StartEncryption((uint) preferredChunkSize);
+            this.buffer = new byte[this.chunkSize];
+            
+            return this.virgilCipher.GetContentInfo();
+        }
+
+        public async Task<byte[]> GetChunk()
+        {
+ 
