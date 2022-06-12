@@ -57,4 +57,32 @@
                 Array.Copy(this.buffer, lastChunk, bytesRead);
                 var process = this.virgilCipher.Process(lastChunk);
                 this.virgilCipher.Finish();
-                retur
+                return process;
+            }
+        }
+
+        public bool HasMore()
+        {
+            return this.hasMore;
+        }
+
+        public void Dispose()
+        {
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (this.disposed)
+                return;
+
+            if (disposing)
+            {
+                ((IDisposable)this.virgilCipher).Dispose();
+            }
+
+            this.disposed = true;
+        }
+    }
+}
