@@ -24,4 +24,8 @@ namespace Virgil.FolderLink.Encryption
         }
 
         public static bool operator !=(Hashes left, Hashes right)
-       
+        {
+            return !left.Equals(right);
+        }
+    }
+}
