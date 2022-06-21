@@ -30,4 +30,24 @@ namespace Virgil.FolderLink.Facade
         {
             try
             {
-                this.settings = JsonConvert.DeserializeObject<PerUserFolderSe
+                this.settings = JsonConvert.DeserializeObject<PerUserFolderSettings>(this.storageProvider.Load(FilePath))
+                            ?? new PerUserFolderSettings();
+            }
+            catch (Exception)
+            {
+                this.settings = new PerUserFolderSettings();
+            }
+        }
+
+        public FolderSettings FolderSettings
+        {
+            get
+            {
+                if (!this.appState.HasAccount)
+                {
+                    throw new InvalidOperationException("User not logged in");
+                }
+
+                this.recipientId = this.appState.CurrentCard.Identity.Value.ToLowerInvariant();
+
+                if (!this.settings.ContainsKey(this.recipientId)
