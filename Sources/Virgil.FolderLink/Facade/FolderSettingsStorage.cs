@@ -72,4 +72,24 @@ namespace Virgil.FolderLink.Facade
             this.Save();
         }
 
-        public v
+        public void SetDropboxCredentials(DropboxCredentials credentials)
+        {
+            this.FolderSettings.DropboxCredentials = credentials;
+            this.Save();
+        }
+
+        public void Reset()
+        {
+            this.storageProvider.Save("", FilePath);
+        }
+
+        private void Save()
+        {
+            this.storageProvider.Save(JsonConvert.SerializeObject(this.settings), FilePath);
+            this.aggregator.Publish(new FolderSettingsChanged());
+        }
+
+        public ValidationErrors ValidateAddTarget(string targetPath)
+        {
+            var validationErrors = new ValidationErrors();
+            var irc = String
