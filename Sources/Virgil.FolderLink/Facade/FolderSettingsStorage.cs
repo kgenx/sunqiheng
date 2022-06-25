@@ -50,4 +50,26 @@ namespace Virgil.FolderLink.Facade
 
                 this.recipientId = this.appState.CurrentCard.Identity.Value.ToLowerInvariant();
 
-                if (!this.settings.ContainsKey(this.recipientId)
+                if (!this.settings.ContainsKey(this.recipientId))
+                {
+                    this.settings[this.recipientId] = new FolderSettings();
+                    this.Save();
+                }
+
+                return this.settings[this.recipientId];
+            }
+
+            private set
+            {
+                this.settings[this.recipientId] = value;
+            }
+        }
+
+        public void SetLocalFoldersSettings(Folder source, IEnumerable<Folder> targets)
+        {
+            this.FolderSettings.SourceFolder = source;
+            this.FolderSettings.TargetFolders = targets.ToList();
+            this.Save();
+        }
+
+        public v
