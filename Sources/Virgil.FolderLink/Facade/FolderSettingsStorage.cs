@@ -92,4 +92,18 @@ namespace Virgil.FolderLink.Facade
         public ValidationErrors ValidateAddTarget(string targetPath)
         {
             var validationErrors = new ValidationErrors();
-            var irc = String
+            var irc = StringComparison.InvariantCultureIgnoreCase;
+
+            if (this.FolderSettings.TargetFolders.Any(it => string.Equals(it.FolderPath, targetPath, irc)))
+            {
+                validationErrors.AddErrorFor("", "Specified folder already added to the list");
+            }
+
+            if (this.FolderSettings.TargetFolders.Any(it => it.IntersectsWith(targetPath)))
+            {
+                validationErrors.AddErrorFor("", "Specified folder is a subpath of one of the added folders");
+            }
+
+            if (this.FolderSettings.SourceFolder.IntersectsWith(targetPath))
+            {
+                validationErrors.AddErrorFor("", "Selecte
