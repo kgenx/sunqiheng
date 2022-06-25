@@ -10,4 +10,8 @@ namespace Virgil.FolderLink.Local
         }
 
         public int GetHashCode(LocalFile obj)
-    
+        {
+            return obj.RelativePath.GetHashCode();
+        }
+    }
+}
