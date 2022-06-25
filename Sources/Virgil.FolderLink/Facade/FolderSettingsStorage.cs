@@ -106,4 +106,10 @@ namespace Virgil.FolderLink.Facade
 
             if (this.FolderSettings.SourceFolder.IntersectsWith(targetPath))
             {
-                validationErrors.AddErrorFor("", "Selecte
+                validationErrors.AddErrorFor("", "Selected folder intersects with source folder");
+            }
+
+            return validationErrors;
+        }
+    }
+}
