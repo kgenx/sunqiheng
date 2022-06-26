@@ -10,4 +10,5 @@ namespace Virgil.FolderLink.Local
             return !string.IsNullOrWhiteSpace(filePath) && !filePath.EndsWith(DropBoxCloudStorage.VirgilTempExtension) &&
                    !filePath.Contains("~$") && !filePath.EndsWith(".DS_Store", StringComparison.OrdinalIgnoreCase);
         }
-  
+    }
+}
