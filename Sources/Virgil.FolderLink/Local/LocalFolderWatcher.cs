@@ -23,4 +23,23 @@ namespace Virgil.FolderLink.Local
             this.folder = folder;
             this.fileSystemWatcher = new FileSystemWatcher(folder.Root.Value)
             {
-           
+                IncludeSubdirectories = true,
+                InternalBufferSize = 1024 * 64,
+                NotifyFilter = NotifyFilters.FileName |
+                                NotifyFilters.DirectoryName |
+                                NotifyFilters.Attributes |
+                                NotifyFilters.Size |
+                                NotifyFilters.LastWrite |
+                                NotifyFilters.LastAccess |
+                                NotifyFilters.CreationTime
+
+
+
+            };
+        }
+
+        public struct TimestampedEvent
+        {
+            public RawFileSystemEvent Event { get; }
+            public DateTime DateTime { get; }
+            public LocalPath Lo
