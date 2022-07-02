@@ -42,4 +42,19 @@ namespace Virgil.FolderLink.Local
         {
             public RawFileSystemEvent Event { get; }
             public DateTime DateTime { get; }
-            public LocalPath Lo
+            public LocalPath LocalPath { get; set; }
+
+            public TimestampedEvent(FileSystemEventArgs args, LocalFolderRoot root)
+            {
+                this.Event = new RawFileSystemEvent(args);
+                this.DateTime = DateTime.UtcNow;
+                this.LocalPath = new LocalPath(args.FullPath, root);
+            }
+        }
+        
+        public void Start()
+        {
+            var deleted = Observable.FromEventPattern<FileSystemEventArgs>(this.fileSystemWatcher, "Deleted")
+                .Select(it => new TimestampedEvent(it.EventArgs, this.folder.Root));
+
+            var created = Observable.FromEventPattern<FileSystemEventArgs>(this.fileSystemWatcher, "Creat
