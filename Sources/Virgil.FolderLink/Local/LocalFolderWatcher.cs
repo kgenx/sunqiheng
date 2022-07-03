@@ -57,4 +57,19 @@ namespace Virgil.FolderLink.Local
             var deleted = Observable.FromEventPattern<FileSystemEventArgs>(this.fileSystemWatcher, "Deleted")
                 .Select(it => new TimestampedEvent(it.EventArgs, this.folder.Root));
 
-            var created = Observable.FromEventPattern<FileSystemEventArgs>(this.fileSystemWatcher, "Creat
+            var created = Observable.FromEventPattern<FileSystemEventArgs>(this.fileSystemWatcher, "Created")
+                .Select(it => new TimestampedEvent(it.EventArgs, this.folder.Root));
+
+            var changed = Observable.FromEventPattern<FileSystemEventArgs>(this.fileSystemWatcher, "Changed")
+                .Select(it => new TimestampedEvent(it.EventArgs, this.folder.Root));
+
+            var renames = Observable.FromEventPattern<RenamedEventArgs>(this.fileSystemWatcher, "Renamed")
+                .Select(it => new TimestampedEvent(it.EventArgs, this.folder.Root));
+
+                //{
+                //    it => 
+
+                //    var fullPath = it.EventArgs.FullPath;
+                //    var oldFullPath = it.EventArgs.OldFullPath;
+
+                //    var isDire
