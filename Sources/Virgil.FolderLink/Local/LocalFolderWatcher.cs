@@ -72,4 +72,19 @@ namespace Virgil.FolderLink.Local
                 //    var fullPath = it.EventArgs.FullPath;
                 //    var oldFullPath = it.EventArgs.OldFullPath;
 
-                //    var isDire
+                //    var isDirectory = IsDirectory(fullPath);
+
+
+                //    return new[]
+                //    {
+                //        new FileSystemEventArgs(
+                //            WatcherChangeTypes.Deleted,
+                //            Path.GetDirectoryName(oldFullPath),
+                //            Path.GetFileName(oldFullPath)),
+                //        new FileSystemEventArgs(
+                //            WatcherChangeTypes.Created,
+                //            Path.GetDirectoryName(fullPath),
+                //            Path.GetFileName(fullPath)),
+                //        it.EventArgs
+                //    };
+  
