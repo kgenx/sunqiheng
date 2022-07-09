@@ -87,4 +87,20 @@ namespace Virgil.FolderLink.Local
                 //            Path.GetFileName(fullPath)),
                 //        it.EventArgs
                 //    };
-  
+                    
+                //})
+                //.SelectMany(it => it)
+                //.Select(it => new TimestampedEvent(it, this.folder.Root));
+
+
+            var poll = created.Merge(changed).Merge(renames).Merge(deleted)
+                .Where(it => FileNameRules.FileNameValid(it.Event.FullPath))
+                .Collect(
+                    () => new List<TimestampedEvent>(),
+                    (list, x) =>
+                    {
+                        list.Add(x);
+                        return list;
+                    },
+                    list => new List<TimestampedEvent>()
+             
