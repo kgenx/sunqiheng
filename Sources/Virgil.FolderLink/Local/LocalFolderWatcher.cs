@@ -103,4 +103,25 @@ namespace Virgil.FolderLink.Local
                         return list;
                     },
                     list => new List<TimestampedEvent>()
-             
+                );
+
+            this.Init();
+
+            this.fileSystemWatcher.EnableRaisingEvents = true;
+
+            Task.Run(() => this.Poll(poll));
+        }
+
+        private async Task Poll(IEnumerable<List<TimestampedEvent>> observable)
+        {
+            using (var enumerator = observable.GetEnumerator())
+            {
+                while (!this.stopped)
+                {
+                    try
+                    {
+                        enumerator.MoveNext();
+                        var aggregated = AggregateEvents(enumerator.Current);
+                        if (aggregated.Any())
+                        {
+           
