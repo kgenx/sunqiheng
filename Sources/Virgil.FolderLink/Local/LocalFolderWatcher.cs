@@ -124,4 +124,22 @@ namespace Virgil.FolderLink.Local
                         var aggregated = AggregateEvents(enumerator.Current);
                         if (aggregated.Any())
                         {
-           
+                            await this.Handle(aggregated);
+                        }
+                        else
+                        {
+                            await Task.Delay(5000);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
+                    }
+                }
+            }
+        }
+
+        private void Init()
+        {
+            var paths = Directory.EnumerateFiles(this.folder.Root.Value, "*", SearchOption.AllDirectories)
+                .Where(FileNameRules.FileNameValid);
