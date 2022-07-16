@@ -143,3 +143,20 @@ namespace Virgil.FolderLink.Local
         {
             var paths = Directory.EnumerateFiles(this.folder.Root.Value, "*", SearchOption.AllDirectories)
                 .Where(FileNameRules.FileNameValid);
+
+            this.folder.Init(paths);
+        }
+
+        public static List<RawFileSystemEvent> AggregateEvents(IList<TimestampedEvent> eventPatterns)
+        {
+            //var processedFiles = OperationExecutionContext.Instance.PathsBeingProcessed();
+
+            var result = eventPatterns
+                //.Where(it => !processedFiles.Contains(it.LocalPath))
+                .GroupBy(x => x.Event.FullPath.ToLowerInvariant())
+                .Select(x =>
+                {
+                    var events = x.OrderBy(it => it.DateTime).Select(it => it.Event).ToArray();
+
+                    if (events.Length == 1)
+                        return events[
