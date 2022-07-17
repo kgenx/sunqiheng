@@ -205,3 +205,17 @@ namespace Virgil.FolderLink.Local
             if (!this.disposed)
             {
                 this.fileSystemWatcher.EnableRaisingEvents = false;
+                this.stopped = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            if (!this.disposed)
+            {
+                this.fileSystemWatcher.Dispose();
+                this.disposed = true;
+            }
+        }
+    }
+}
