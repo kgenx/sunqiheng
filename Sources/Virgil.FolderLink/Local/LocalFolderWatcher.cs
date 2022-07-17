@@ -159,4 +159,21 @@ namespace Virgil.FolderLink.Local
                     var events = x.OrderBy(it => it.DateTime).Select(it => it.Event).ToArray();
 
                     if (events.Length == 1)
-                        return events[
+                        return events[0];
+
+                    bool fileAlreadyExists = events.First().ChangeType != WatcherChangeTypes.Created;
+                    bool fileDeleted = events.Last().ChangeType == WatcherChangeTypes.Deleted;
+
+                    if (!fileAlreadyExists && fileDeleted)
+                    {
+                        return null;
+                    }
+
+                    if (fileAlreadyExists && fileDeleted)
+                    {
+                        return events.Last();
+                    }
+
+                    return events.LastOrDefault(it => it.ChangeType == WatcherChangeTypes.Created) ??
+                           events.Last();
+                
