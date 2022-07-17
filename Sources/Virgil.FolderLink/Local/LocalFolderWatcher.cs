@@ -176,4 +176,32 @@ namespace Virgil.FolderLink.Local
 
                     return events.LastOrDefault(it => it.ChangeType == WatcherChangeTypes.Created) ??
                            events.Last();
-                
+                })
+                .Where(it => it != null)
+                .ToList();
+
+            return result;
+        }
+
+        private async Task Handle(List<RawFileSystemEvent> input)
+        {
+            try
+            {
+                if (input.Any())
+                {
+                    await this.folder.HandleChange(input);
+                }
+
+                Console.WriteLine("Successfully finished batch");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
+
+        public void Stop()
+        {
+            if (!this.disposed)
+            {
+                this.fileSystemWatcher.EnableRaisingEvents = false;
