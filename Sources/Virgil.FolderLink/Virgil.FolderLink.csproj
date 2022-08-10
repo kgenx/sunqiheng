@@ -75,4 +75,17 @@
       <HintPath>..\packages\Rx-Linq.2.2.5\lib\net45\System.Reactive.Linq.dll</HintPath>
     </Reference>
     <Reference Include="Virgil.Crypto, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Virgil.Crypto.1.5.0\lib\portable-net4+sl4+wp7+win8+wpa81\Virgil.C
+      <HintPath>..\packages\Virgil.Crypto.1.5.0\lib\portable-net4+sl4+wp7+win8+wpa81\Virgil.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Virgil.SDK, Version=3.2.3.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Virgil.SDK.3.2.3\lib\portable45-net45+win8+wpa81\Virgil.SDK.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Events\DropboxFileAddedEvent.cs" />
+    <Compile Include="Core\Events\DropboxFileChangedEvent.cs" />
+    <Compile Include="Core\Events\DropboxFileDeletedEvent.cs" />
+    <Compile Include="Core\ExceptionNotifier.cs" />
+    <Compile Include="Core\ILocalFileSystem.cs" />
+    <Compile Include="Core\LocalFolderRoot.cs" />
+    <Compile Include="Core\LocalPath.cs" />
