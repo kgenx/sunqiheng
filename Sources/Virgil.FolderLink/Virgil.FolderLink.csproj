@@ -100,4 +100,14 @@
     <Compile Include="Dropbox\Handler\OperationsFactory.cs" />
     <Compile Include="Dropbox\Messages\DropBoxBatchCompleted.cs" />
     <Compile Include="Dropbox\Messages\DropBoxLinkChanged.cs" />
-    <Compile Include="Dropbox\Messages\Dr
+    <Compile Include="Dropbox\Messages\DropboxSessionExpired.cs" />
+    <Compile Include="Dropbox\Messages\DropboxSignInSuccessfull.cs" />
+    <Compile Include="Dropbox\Messages\DropboxSignOut.cs" />
+    <Compile Include="Dropbox\Messages\StartDropboxSignIn.cs" />
+    <Compile Include="Dropbox\OperationExecutionContext.cs" />
+    <Compile Include="Dropbox\Operations\DeleteFileOnServerOperation.cs" />
+    <Compile Include="Dropbox\Operations\DownloadFileFromServer.cs" />
+    <Compile Include="Dropbox\Operations\UploadFileToServerOperation.cs" />
+    <Compile Include="Dropbox\Server\ServerEventsBatch.cs" />
+    <Compile Include="Encryption\CipherStreamDecryptor.cs" />
+    <Compile Include="Encryption\C
