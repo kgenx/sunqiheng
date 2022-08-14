@@ -110,4 +110,16 @@
     <Compile Include="Dropbox\Operations\UploadFileToServerOperation.cs" />
     <Compile Include="Dropbox\Server\ServerEventsBatch.cs" />
     <Compile Include="Encryption\CipherStreamDecryptor.cs" />
-    <Compile Include="Encryption\C
+    <Compile Include="Encryption\CipherStreamEncryptor.cs" />
+    <Compile Include="Encryption\Hashes.cs" />
+    <Compile Include="Encryption\StreamHelpers.cs" />
+    <Compile Include="Encryption\VirgilException.cs" />
+    <Compile Include="Facade\ApplicationState.cs" />
+    <Compile Include="Facade\DropboxCredentials.cs" />
+    <Compile Include="Facade\Folder.cs" />
+    <Compile Include="Facade\FolderLinkFacade.cs" />
+    <Compile Include="Facade\FolderSettings.cs" />
+    <Compile Include="Facade\FolderSettingsStorage.cs" />
+    <Compile Include="Facade\PerUserFolderSettings.cs" />
+    <Compile Include="Facade\VirgilCardDto.cs" />
+    <Compile Include="Local\FileNameRule
