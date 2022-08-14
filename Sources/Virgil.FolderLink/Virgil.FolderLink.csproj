@@ -122,4 +122,16 @@
     <Compile Include="Facade\FolderSettingsStorage.cs" />
     <Compile Include="Facade\PerUserFolderSettings.cs" />
     <Compile Include="Facade\VirgilCardDto.cs" />
-    <Compile Include="Local\FileNameRule
+    <Compile Include="Local\FileNameRules.cs" />
+    <Compile Include="Local\LocalEventsBatch.cs" />
+    <Compile Include="Local\LocalFolderWatcher.cs" />
+    <Compile Include="Local\ByPathComparer.cs" />
+    <Compile Include="Local\Consts.cs" />
+    <Compile Include="Core\Events\LocalFileSystemEvent.cs" />
+    <Compile Include="Core\Events\LocalFileChangedEvent.cs" />
+    <Compile Include="Core\Events\LocalFileCreatedEvent.cs" />
+    <Compile Include="Core\Events\LocalFileDeletedEvent.cs" />
+    <Compile Include="Local\LocalFolder.cs" />
+    <Compile Include="Local\LocalFolderLink.cs" />
+    <Compile Include="Local\ILocalEventListener.cs" />
+    <Compile Include="Local\LocalFile.c
