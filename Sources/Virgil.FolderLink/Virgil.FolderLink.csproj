@@ -134,4 +134,15 @@
     <Compile Include="Local\LocalFolder.cs" />
     <Compile Include="Local\LocalFolderLink.cs" />
     <Compile Include="Local\ILocalEventListener.cs" />
-    <Compile Include="Local\LocalFile.c
+    <Compile Include="Local\LocalFile.cs" />
+    <Compile Include="Local\Operations\DecryptFileOperation.cs" />
+    <Compile Include="Local\Operations\DeleteFileOperation.cs" />
+    <Compile Include="Local\Operations\EncryptFileOperation.cs" />
+    <Compile Include="Core\Operations\Operation.cs" />
+    <Compile Include="Dropbox\DropboxClientFactory.cs" />
+    <Compile Include="Dropbox\DropBoxCloudStorage.cs" />
+    <Compile Include="Dropbox\Handler\DropBoxLink.cs" />
+    <Compile Include="Core\Events\DropboxEvent.cs" />
+    <Compile Include="Dropbox\Handler\IServerEventListener.cs" />
+    <Compile Include="Core\ICloudStorage.cs" />
+    <Compile Include="Dropbox\Server\Delta.cs" />
