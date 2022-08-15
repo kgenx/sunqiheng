@@ -146,3 +146,17 @@
     <Compile Include="Dropbox\Handler\IServerEventListener.cs" />
     <Compile Include="Core\ICloudStorage.cs" />
     <Compile Include="Dropbox\Server\Delta.cs" />
+    <Compile Include="Dropbox\Server\DropboxFolderWatcher.cs" />
+    <Compile Include="Dropbox\Server\ServerFile.cs" />
+    <Compile Include="Dropbox\Server\ServerFolder.cs" />
+    <Compile Include="Local\RawFileSystemEvent.cs" />
+    <Compile Include="Local\StringExtensionMethods.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure.Messaging\Infrastructure.Messaging.csproj">
+      <Project>{A32D8707-67F6-447C-9329-73DDB97FD70F}
