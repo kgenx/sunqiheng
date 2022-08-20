@@ -159,4 +159,18 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure.Messaging\Infrastructure.Messaging.csproj">
-      <Project>{A32D8707-67F6-447C-9329-73DDB97FD70F}
+      <Project>{A32D8707-67F6-447C-9329-73DDB97FD70F}</Project>
+      <Name>Infrastructure.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{7C04C9EA-37AA-4F31-92B2-FADD0A205AB2}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Virgil.SDK.Domain\Virgil.SDK.Domain.csproj">
+      <Project>{5A1CE0B6-D6FE-4620-BAC5-9A319E461913}</Project>
+      <Name>Virgil.SDK.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
