@@ -37,4 +37,20 @@ namespace Virgil.SDK.Domain
                 .Distinct();
 
             return saga;
-  
+        }
+
+        public async Task<IdentityTokenRequest> Verify()
+        {
+            return await Identity.Verify(this.identity, this.identity.ToIdentityType());
+        }
+
+        public async Task<IEnumerable<PersonalCard>> Finish(IdentityTokenRequest request, string confirmationCode)
+        {
+            var services = ServiceLocator.Services;
+
+            var confirmedInfo = await request.Confirm(confirmationCode, new ConfirmOptions(3600, this.setup.Count()))
+                .ConfigureAwait(false);
+
+            var list = this.setup.Select(async card =>
+            {
+                var grabResponse = await services.PrivateKeys.Get(card.Id, confirmedInfo
