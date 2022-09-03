@@ -53,4 +53,25 @@ namespace Virgil.SDK.Domain
 
             var list = this.setup.Select(async card =>
             {
-                var grabResponse = await services.PrivateKeys.Get(card.Id, confirmedInfo
+                var grabResponse = await services.PrivateKeys.Get(card.Id, confirmedInfo)
+                    .ConfigureAwait(false);
+
+                var privateKey = new PrivateKey(grabResponse.PrivateKey);
+
+
+                var cards = await services.Cards.GetCardsRealtedToThePublicKey(card.PublicKeyId, card.Id, privateKey)
+                            .ConfigureAwait(false);
+
+                return cards.Select(it => new PersonalCard(it, privateKey)).ToList();
+
+            }).ToList();
+
+            await Task.WhenAll(list)
+                .ConfigureAwait(false);
+
+            var personalCards = list.SelectMany(i => i.Result).ToList();
+
+            return personalCards;
+        }
+    }
+}
