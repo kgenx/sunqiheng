@@ -31,4 +31,28 @@
             this.Id = virgilCardDto.Id;
             this.Identity = new Identity(virgilCardDto.Identity);
             this.PublicKey = new PublishedPublicKey(virgilCardDto.PublicKey);
-            this.Hash = virgilCardDto.Has
+            this.Hash = virgilCardDto.Hash;
+            this.CreatedAt = virgilCardDto.CreatedAt;
+        }
+
+        public Dictionary<string, string> CustomData
+        {
+            get
+            {
+                var customData = this.VirgilCardDto?.CustomData;
+                if (customData == null)
+                {
+                    return new Dictionary<string, string>();
+                }
+                else
+                {
+                    return new Dictionary<string, string>(customData);
+                }
+            }
+        }
+
+        public Guid Id { get; protected set; }
+
+        public Identity Identity { get; protected set; }
+
+      
