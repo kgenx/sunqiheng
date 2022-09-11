@@ -55,4 +55,26 @@
 
         public Identity Identity { get; protected set; }
 
-      
+        public PublishedPublicKey PublicKey { get; protected set; }
+
+        public string Hash { get; protected set; }
+
+        public DateTime CreatedAt { get; protected set; }
+
+        public byte[] Encrypt(byte[] data)
+        {
+            using (var cipher = new VirgilCipher())
+            {
+                cipher.AddKeyRecipient(this.GetRecepientId(), this.PublicKey.Data);
+                return cipher.Encrypt(data, true);
+            }
+        }
+
+        public string Encrypt(string data)
+        {
+            return Convert.ToBase64String(this.Encrypt(data.GetBytes(Encoding.UTF8)));
+        }
+
+        public byte[] GetRecepientId()
+        {
+   
