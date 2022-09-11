@@ -77,4 +77,7 @@
 
         public byte[] GetRecepientId()
         {
-   
+            return this.Id.ToString().ToLowerInvariant().GetBytes(Encoding.UTF8);
+        }
+    }
+}
