@@ -65,4 +65,19 @@
       <HintPath>..\packages\Virgil.Crypto.1.2.2.45\lib\portable-net4+sl4+wp7+win8+wpa81\Virgil.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="Virgil.SDK, Version=3.0.7.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Virgil.SDK.3.0.7.0\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10
+      <HintPath>..\packages\Virgil.SDK.3.0.7.0\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\Virgil.SDK.dll</HintPath>
+    </Reference>
+    <Reference Include="Virgil.SDK.Domain, Version=1.0.0.2, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Virgil.SDK.Domain.1.0.2\lib\portable-net4+sl4+wp7+win8\Virgil.SDK.Domain.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiConfig.cs" />
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="MainWindow.cs" />
