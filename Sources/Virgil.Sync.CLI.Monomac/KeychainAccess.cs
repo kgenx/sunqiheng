@@ -12,3 +12,34 @@ namespace Virgil.Sync.CLI.Monomac
 		{
 			SecRecord searchRecord;
 			var record = FetchRecord(username, out searchRecord);
+
+			if (record == null)
+			{
+				password = string.Empty;
+				return false;
+			}
+
+			password = NSString.FromData(record.ValueData, NSStringEncoding.UTF8);
+			return true;
+		}
+			
+		public static void SetPassword(string username, string password)
+		{
+			SecRecord searchRecord;
+			var record = FetchRecord(username, out searchRecord);
+
+			if (record == null)
+			{
+				record = new SecRecord(SecKind.InternetPassword)
+				{
+					Service = ServiceName,
+					Label = ServiceName,
+					Account = username,
+					ValueData = NSData.FromString(password)
+				};
+
+				SecKeyChain.Add(record);
+				return;
+			}
+
+			record.ValueData
