@@ -42,4 +42,30 @@ namespace Virgil.Sync.CLI.Monomac
 				return;
 			}
 
-			record.ValueData
+			record.ValueData = NSData.FromString(password);
+			SecKeyChain.Update(searchRecord, record);
+		}
+			
+		public static void ClearPassword(string username)
+		{
+			var searchRecord = new SecRecord(SecKind.InternetPassword)
+			{
+				Service = ServiceName,
+				Account = username
+			};
+
+			SecKeyChain.Remove(searchRecord);
+		}
+			
+		private static SecRecord FetchRecord(string username, out SecRecord searchRecord)
+		{
+			searchRecord = new SecRecord(SecKind.InternetPassword)
+			{
+				Service = ServiceName,
+				Account = username
+			};
+
+			SecStatusCode code;
+			var data = SecKeyChain.QueryAsRecord(searchRecord, out code);
+
+			if (code == SecStatusCode.Succes
