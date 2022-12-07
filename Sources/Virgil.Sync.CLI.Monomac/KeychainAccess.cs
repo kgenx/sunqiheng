@@ -68,4 +68,10 @@ namespace Virgil.Sync.CLI.Monomac
 			SecStatusCode code;
 			var data = SecKeyChain.QueryAsRecord(searchRecord, out code);
 
-			if (code == SecStatusCode.Succes
+			if (code == SecStatusCode.Success)
+				return data;
+			else
+				return null;
+		}
+	}
+}
