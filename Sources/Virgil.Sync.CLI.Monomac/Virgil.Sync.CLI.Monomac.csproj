@@ -20,4 +20,18 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Externalconsole>true</Externalconsole>
-    <Commandl
+    <Commandlineparameters>start</Commandlineparameters>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+    <Commandlineparameters>config -v "//users//r2d2/Downloads/virgilclitests.vcard" -k "//users//r2d2/Downloads/private.key" -s "//users//r2d2/Downloads/Source"
+</Commandlineparameters>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Inc
