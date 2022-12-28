@@ -59,4 +59,16 @@
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{7C04C9EA-37AA-4F31-92B2-FADD0A205AB2}</Project>
-      <Name>Infrastruc
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Messaging\Infrastructure.Messaging.csproj">
+      <Project>{A32D8707-67F6-447C-9329-73DDB97FD70F}</Project>
+      <Name>Infrastructure.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Virgil.CLI.Common\Virgil.CLI.Common.csproj">
+      <Project>{39771EEA-B6B5-4A12-9CEC-6F372DEFA973}</Project>
+      <Name>Virgil.CLI.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Virgil.FolderLink\Virgil.FolderLink.csproj">
+      <Project>{10188A5A-FF14-4D1E-86AC-0F775D3C7C7E}</Project>
+      <
