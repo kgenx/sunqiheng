@@ -71,4 +71,19 @@
     </ProjectReference>
     <ProjectReference Include="..\Virgil.FolderLink\Virgil.FolderLink.csproj">
       <Project>{10188A5A-FF14-4D1E-86AC-0F775D3C7C7E}</Project>
-      <
+      <Name>Virgil.FolderLink</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Virgil.SDK.Domain\Virgil.SDK.Domain.csproj">
+      <Project>{5A1CE0B6-D6FE-4620-BAC5-9A319E461913}</Project>
+      <Name>Virgil.SDK.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="..\packages\Virgil.Crypto.1.5.0\build\native\mac\libvirgil_crypto_net.dylib">
+      <Link>libvirgil_crypto_net.dylib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="libxammac.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirect
