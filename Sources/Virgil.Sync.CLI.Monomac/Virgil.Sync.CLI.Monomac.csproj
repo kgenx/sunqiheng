@@ -86,4 +86,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="libxammac.dylib">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirect
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
