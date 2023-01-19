@@ -13,4 +13,10 @@
             var boroda = Path.GetFileName(list.Last());
             var bytes = Encoding.UTF8.GetBytes(boroda);
 
-            var bootstr
+            var bootstrapper = new WindowsBootstrapper();
+            bootstrapper.Initialize();
+
+            return DefaultImplementation.Process(bootstrapper, args);
+        }
+    }
+}
