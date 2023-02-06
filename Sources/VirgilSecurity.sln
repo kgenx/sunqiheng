@@ -35,4 +35,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virgil.Sync.CLI.Monomac", "Virgil.Sync.CLI.Monomac\Virgil.Sync.CLI.Monomac.csproj", "{098022CB-8DCE-446B-B892-D7C7F1C97A6D}"
 EndProject
 Global
-	GlobalSection(SolutionConfi
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A1CE0B6-D6FE-4620-BAC5-9A319E461913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A1CE0B6-D6FE-4620-BAC5-9A319E461913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A1CE0B6-D6FE-4620-BAC5-9A319E461913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A1CE0B6-D6FE-4620-BAC5-9A319E461913}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10188A5A-FF14-4D1E-86AC-0F775D3C7C7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10188A5A-FF14-4D1E-86AC-0F7
