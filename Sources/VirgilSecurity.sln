@@ -17,4 +17,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolderLink.Tests", "FolderLink.Tests\FolderLink.Tests.csproj", "{6B11B3B0-5E37-4677-A54D-99BA370DB6BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Mes
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Messaging", "Infrastructure.Messaging\Infrastructure.Messaging.csproj", "{A32D8707-67F6-447C-9329-73DDB97FD70F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installer", "Installer", "{78D4B7B2-F483-4702-84D4-ACBE4BA52B81}"
+	ProjectSection(SolutionItems) = preProject
+		..\Setup\Virgil Sync.aip = ..\Setup\Virgil Sync.aip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CLI", "CLI", "{707507CA-CEFD-4942-92CE-35C7F68CCB7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virgil.CLI.Common", "Virgil.CLI.Common\Virgil.CLI.Common.csproj", "{39771EEA-B6B5-4A12-9CEC
