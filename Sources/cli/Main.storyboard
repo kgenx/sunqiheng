@@ -431,3 +431,252 @@
 																	</connections>
 																</menuItem>
 																<menuItem title="Subscript" id="I0S-gh-46l">
+																	<modifierMask key="keyEquivalentModifierMask" />
+																	<connections>
+																		<action selector="subscript:" target="Ady-hI-5gd" id="Q6W-4W-IGz" />
+																	</connections>
+																</menuItem>
+																<menuItem title="Raise" id="2h7-ER-AoG">
+																	<modifierMask key="keyEquivalentModifierMask" />
+																	<connections>
+																		<action selector="raiseBaseline:" target="Ady-hI-5gd" id="4sk-31-7Q9" />
+																	</connections>
+																</menuItem>
+																<menuItem title="Lower" id="1tx-W0-xDw">
+																	<modifierMask key="keyEquivalentModifierMask" />
+																	<connections>
+																		<action selector="lowerBaseline:" target="Ady-hI-5gd" id="OF1-bc-KW4" />
+																	</connections>
+																</menuItem>
+															</items>
+														</menu>
+													</menuItem>
+													<menuItem isSeparatorItem="YES" id="Ndw-q3-faq" />
+													<menuItem title="Show Colors" keyEquivalent="C" id="bgn-CT-cEk">
+														<connections>
+															<action selector="orderFrontColorPanel:" target="Ady-hI-5gd" id="mSX-Xz-DV3" />
+														</connections>
+													</menuItem>
+													<menuItem isSeparatorItem="YES" id="iMs-zA-UFJ" />
+													<menuItem title="Copy Style" keyEquivalent="c" id="5Vv-lz-BsD">
+														<modifierMask key="keyEquivalentModifierMask" option="YES" command="YES" />
+														<connections>
+															<action selector="copyFont:" target="Ady-hI-5gd" id="GJO-xA-L4q" />
+														</connections>
+													</menuItem>
+													<menuItem title="Paste Style" keyEquivalent="v" id="vKC-jM-MkH">
+														<modifierMask key="keyEquivalentModifierMask" option="YES" command="YES" />
+														<connections>
+															<action selector="pasteFont:" target="Ady-hI-5gd" id="JfD-CL-leO" />
+														</connections>
+													</menuItem>
+												</items>
+											</menu>
+										</menuItem>
+										<menuItem title="Text" id="Fal-I4-PZk">
+											<modifierMask key="keyEquivalentModifierMask" />
+											<menu key="submenu" title="Text" id="d9c-me-L2H">
+												<items>
+													<menuItem title="Align Left" keyEquivalent="{" id="ZM1-6Q-yy1">
+														<connections>
+															<action selector="alignLeft:" target="Ady-hI-5gd" id="zUv-R1-uAa" />
+														</connections>
+													</menuItem>
+													<menuItem title="Center" keyEquivalent="|" id="VIY-Ag-zcb">
+														<connections>
+															<action selector="alignCenter:" target="Ady-hI-5gd" id="spX-mk-kcS" />
+														</connections>
+													</menuItem>
+													<menuItem title="Justify" id="J5U-5w-g23">
+														<modifierMask key="keyEquivalentModifierMask" />
+														<connections>
+															<action selector="alignJustified:" target="Ady-hI-5gd" id="ljL-7U-jND" />
+														</connections>
+													</menuItem>
+													<menuItem title="Align Right" keyEquivalent="}" id="wb2-vD-lq4">
+														<connections>
+															<action selector="alignRight:" target="Ady-hI-5gd" id="r48-bG-YeY" />
+														</connections>
+													</menuItem>
+													<menuItem isSeparatorItem="YES" id="4s2-GY-VfK" />
+													<menuItem title="Writing Direction" id="H1b-Si-o9J">
+														<modifierMask key="keyEquivalentModifierMask" />
+														<menu key="submenu" title="Writing Direction" id="8mr-sm-Yjd">
+															<items>
+																<menuItem title="Paragraph" enabled="NO" id="ZvO-Gk-QUH">
+																	<modifierMask key="keyEquivalentModifierMask" />
+																</menuItem>
+																<menuItem id="YGs-j5-SAR">
+																	<string key="title">	Default</string>
+																	<modifierMask key="keyEquivalentModifierMask" />
+																	<connections>
+																		<action selector="makeBaseWritingDirectionNatural:" target="Ady-hI-5gd" id="qtV-5e-UBP" />
+																	</connections>
+																</menuItem>
+																<menuItem id="Lbh-J2-qVU">
+																	<string key="title">	Left to Right</string>
+																	<modifierMask key="keyEquivalentModifierMask" />
+																	<connections>
+																		<action selector="makeBaseWritingDirectionLeftToRight:" target="Ady-hI-5gd" id="S0X-9S-QSf" />
+																	</connections>
+																</menuItem>
+																<menuItem id="jFq-tB-4Kx">
+																	<string key="title">	Right to Left</string>
+																	<modifierMask key="keyEquivalentModifierMask" />
+																	<connections>
+																		<action selector="makeBaseWritingDirectionRightToLeft:" target="Ady-hI-5gd" id="5fk-qB-AqJ" />
+																	</connections>
+																</menuItem>
+																<menuItem isSeparatorItem="YES" id="swp-gr-a21" />
+																<menuItem title="Selection" enabled="NO" id="cqv-fj-IhA">
+																	<modifierMask key="keyEquivalentModifierMask" />
+																</menuItem>
+																<menuItem id="Nop-cj-93Q">
+																	<string key="title">	Default</string>
+																	<modifierMask key="keyEquivalentModifierMask" />
+																	<connections>
+																		<action selector="makeTextWritingDirectionNatural:" target="Ady-hI-5gd" id="lPI-Se-ZHp" />
+																	</connections>
+																</menuItem>
+																<menuItem id="BgM-ve-c93">
+																	<string key="title">	Left to Right</string>
+																	<modifierMask key="keyEquivalentModifierMask" />
+																	<connections>
+																		<action selector="makeTextWritingDirectionLeftToRight:" target="Ady-hI-5gd" id="caW-Bv-w94" />
+																	</connections>
+																</menuItem>
+																<menuItem id="RB4-Sm-HuC">
+																	<string key="title">	Right to Left</string>
+																	<modifierMask key="keyEquivalentModifierMask" />
+																	<connections>
+																		<action selector="makeTextWritingDirectionRightToLeft:" target="Ady-hI-5gd" id="EXD-6r-ZUu" />
+																	</connections>
+																</menuItem>
+															</items>
+														</menu>
+													</menuItem>
+													<menuItem isSeparatorItem="YES" id="fKy-g9-1gm" />
+													<menuItem title="Show Ruler" id="vLm-3I-IUL">
+														<modifierMask key="keyEquivalentModifierMask" />
+														<connections>
+															<action selector="toggleRuler:" target="Ady-hI-5gd" id="FOx-HJ-KwY" />
+														</connections>
+													</menuItem>
+													<menuItem title="Copy Ruler" keyEquivalent="c" id="MkV-Pr-PK5">
+														<modifierMask key="keyEquivalentModifierMask" control="YES" command="YES" />
+														<connections>
+															<action selector="copyRuler:" target="Ady-hI-5gd" id="71i-fW-3W2" />
+														</connections>
+													</menuItem>
+													<menuItem title="Paste Ruler" keyEquivalent="v" id="LVM-kO-fVI">
+														<modifierMask key="keyEquivalentModifierMask" control="YES" command="YES" />
+														<connections>
+															<action selector="pasteRuler:" target="Ady-hI-5gd" id="cSh-wd-qM2" />
+														</connections>
+													</menuItem>
+												</items>
+											</menu>
+										</menuItem>
+									</items>
+								</menu>
+							</menuItem>
+							<menuItem title="View" id="H8h-7b-M4v">
+								<modifierMask key="keyEquivalentModifierMask" />
+								<menu key="submenu" title="View" id="HyV-fh-RgO">
+									<items>
+										<menuItem title="Show Toolbar" keyEquivalent="t" id="snW-S8-Cw5">
+											<modifierMask key="keyEquivalentModifierMask" option="YES" command="YES" />
+											<connections>
+												<action selector="toggleToolbarShown:" target="Ady-hI-5gd" id="BXY-wc-z0C" />
+											</connections>
+										</menuItem>
+										<menuItem title="Customize Toolbar…" id="1UK-8n-QPP">
+											<modifierMask key="keyEquivalentModifierMask" />
+											<connections>
+												<action selector="runToolbarCustomizationPalette:" target="Ady-hI-5gd" id="pQI-g3-MTW" />
+											</connections>
+										</menuItem>
+									</items>
+								</menu>
+							</menuItem>
+							<menuItem title="Window" id="aUF-d1-5bR">
+								<modifierMask key="keyEquivalentModifierMask" />
+								<menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
+									<items>
+										<menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
+											<connections>
+												<action selector="performMiniaturize:" target="Ady-hI-5gd" id="VwT-WD-YPe" />
+											</connections>
+										</menuItem>
+										<menuItem title="Zoom" id="R4o-n2-Eq4">
+											<modifierMask key="keyEquivalentModifierMask" />
+											<connections>
+												<action selector="performZoom:" target="Ady-hI-5gd" id="DIl-cC-cCs" />
+											</connections>
+										</menuItem>
+										<menuItem isSeparatorItem="YES" id="eu3-7i-yIM" />
+										<menuItem title="Bring All to Front" id="LE2-aR-0XJ">
+											<modifierMask key="keyEquivalentModifierMask" />
+											<connections>
+												<action selector="arrangeInFront:" target="Ady-hI-5gd" id="DRN-fu-gQh" />
+											</connections>
+										</menuItem>
+									</items>
+								</menu>
+							</menuItem>
+							<menuItem title="Help" id="wpr-3q-Mcd">
+								<modifierMask key="keyEquivalentModifierMask" />
+								<menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
+									<items>
+										<menuItem title="cli Help" keyEquivalent="?" id="FKE-Sm-Kum">
+											<connections>
+												<action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no" />
+											</connections>
+										</menuItem>
+									</items>
+								</menu>
+							</menuItem>
+						</items>
+					</menu>
+					<connections>
+						<outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m" />
+					</connections>
+				</application>
+				<customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="" />
+				<customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder" />
+			</objects>
+			<point key="canvasLocation" x="75" y="0.0" />
+		</scene>
+		<!--Window Controller - Window-->
+		<scene sceneID="R2V-B0-nI4">
+			<objects>
+				<windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+					<window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+						<windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" />
+						<windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES" />
+						<rect key="contentRect" x="196" y="240" width="480" height="270" />
+						<rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027" />
+					</window>
+					<connections>
+						<segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM" />
+					</connections>
+				</windowController>
+				<customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder" />
+			</objects>
+			<point key="canvasLocation" x="75" y="250" />
+		</scene>
+		<!--View Controller-->
+		<scene sceneID="hIz-AP-VOD">
+			<objects>
+				<viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+					<view key="view" id="m2S-Jp-Qdl">
+						<rect key="frame" x="0.0" y="0.0" width="480" height="270" />
+						<autoresizingMask key="autoresizingMask" />
+					</view>
+				</viewController>
+				<customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder" />
+			</objects>
+			<point key="canvasLocation" x="75" y="655" />
+		</scene>
+	</scenes>
+</document>
