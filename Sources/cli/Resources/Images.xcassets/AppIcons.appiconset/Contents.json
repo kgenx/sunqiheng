@@ -135,4 +135,36 @@
     },
     {
       "role": "longLook",
-      "size": "44x44"
+      "size": "44x44",
+      "subtype": "42mm",
+      "scale": "2x",
+      "idiom": "watch"
+    },
+    {
+      "role": "quickLook",
+      "size": "86x86",
+      "subtype": "38mm",
+      "scale": "2x",
+      "idiom": "watch"
+    },
+    {
+      "role": "quickLook",
+      "size": "98x98",
+      "subtype": "42mm",
+      "scale": "2x",
+      "idiom": "watch"
+    },
+    {
+      "filename": "AppIcon-16.png",
+      "size": "16x16",
+      "scale": "1x",
+      "idiom": "mac"
+    },
+    {
+      "filename": "AppIcon-16@2x.png",
+      "size": "16x16",
+      "scale": "2x",
+      "idiom": "mac"
+    },
+    {
+      "fil
